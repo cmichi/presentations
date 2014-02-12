@@ -131,6 +131,7 @@ var callback = function (result) {
     <article>
 <pre class="prettyprint" data-lang="javascript">
 var fs = require('fs');
+
 fs.readFile("/etc/passwd", function (err, data) {
 	if (err) throw err;
 	console.log(data);
@@ -146,6 +147,7 @@ fs.readFile("/etc/passwd", function (err, data) {
     <article>
 <pre class="prettyprint" data-lang="javascript">
 var http = require("http");
+
 http.get("http://uni-ulm.de", function(res) {
 	console.log("Got response: " + res.statusCode);
 }).on('error', function(e) {
@@ -260,7 +262,9 @@ $ cd someProject/
 $ ls
 someProject.js	package.json
 $ npm publish
+</pre>
 
+<pre class="prettyprint" data-lang="shell">
 $ npm install someProject
 ...
 </pre>
@@ -337,21 +341,21 @@ $ cat package.json
     <article>
 	<table style="" class="white">
 	<tr>
-		<th width="30%" class="white">Sprache</th>
-		<td class="black">Funktional, Pattern Matching</td>
+		<th width="30%" class="white">Powered By</th>
+		<td class="black">JavaScript.<br/>Googles V8</td>
 	</tr>
 	<tr>
-		<th width="30%" class="white">Nebenl&auml;ufigkeit</th>
-		<td class="black">
-			Leichtgewichtige Prozesse + Asynchrones Message Passing<br />&nbsp;<br />
-			<strong>No shared state!</strong>
-		</td>
+		<th width="30%" class="white">JavaScript</th>
+		<td class="black">Ereignisbasierte Programierung mittels Callbacks.
+		<br />Funktional.</td>
 	</tr>
 	<tr>
-		<th width="30%" class="white">Verteilung</th>
-		<td class="black">
-			Erlang Nodes + Message Passing
-		</td>
+		<th width="30%" class="white">St&auml;rken</th>
+		<td class="black">Netzwerk-Anwendungen.<br />I/O lastige Tasks.</td>
+	</tr>
+	<tr>
+		<th width="30%" class="white">Schw&auml;chen</th>
+		<td class="black">CPU-lastige Tasks.</td>
 	</tr>
 	</table>
     </article>
