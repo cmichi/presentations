@@ -40,12 +40,72 @@ URL: https://code.google.com/p/io-2012-slides
       <aside class="note">
 	<section>
 	<ul>
-		<li></li>
+		<li>Letztes halbes Jahr, nur sh & js</li>
+		<li>GitHub, dritte Stelle</li>
 	</ul>
 	</section>
 	</aside>
     <footer class="source white"></footer>
   </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Sequential</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="php">
+$result = mysql_query("SELECT * FROM table");
+
+/* ... process blocked until query returns ... */
+
+if (!$result) {
+	die("no result");
+}
+
+while ($row = mysql_fetch_assoc($result)) {
+	/* iterate over result */
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Event-Loop, Callback, Non-Blocking</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+db.query("SELECT * FROM table", callback);
+/* program continues immediately, callback 
+is executed once query is finished. */
+
+var callback = function (result) {
+	for (var i in result) {
+	     /* iterate over result */
+	}
+};
+</pre>
+    </article>
+  </slide>
+
+<!--
+hinfuehrung / problematik / traditionelle, sequentielle herangehensweise
+
+design goals:
+	* No function should direct perform I/O.  To receive info from disk, network, or another process there must be a callback.
+	* Have built-in support for the most important protocols: TCP, DNS, HTTP
+
+the tools
+ * npm
+ * repl
+libraries
+was kann man jetzt damit cooles machen?
+
+node meme
+probleme: cpu intense tasks
+
+take away
+-->
 
   <slide class="hidden quote" style="color:#797979;">
     <article class="flexbox vleft">
@@ -58,9 +118,48 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide class="hidden">
+    <article class="flexbox vcenter">
+	<h2>The Tools</h2>
+
+<div style="float:left;width:50%;">
+<pre class="prettyprint" data-lang="shell" style="font-size:1.6em;height:110px;text-align:center;">
+$ node
+</pre>
+</div>
+<div style="float:right;width:50%;">
+<img src="images/npm.png" alt="Description" title="Description"/>
+</div>
+
+    <aside class="note">
+      <section>
+        <ul>
+		<li>skalierbar, langlebig, freie software</li>
+        </ul>
+      </section>
+    </aside>
+    </article>
+  </slide>
+
   <slide>
     <article class="flexbox vcenter">
-      <img src="images/erlang-logo.png" alt="Description" title="Description">
+      <img src="images/npm.png" alt="Description" title="Description">
+    <aside class="note">
+      <section>
+        <ul>
+		<li>skalierbar, langlebig, freie software</li>
+        </ul>
+      </section>
+    </aside>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <pre class="prettyprint" data-lang="shell" style="font-size:1.6em;margin-top:50px;left:0px;height:110px;text-align:center;width:80%;">
+
+$ node
+      </pre>
     <aside class="note">
       <section>
         <ul>

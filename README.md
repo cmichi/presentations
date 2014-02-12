@@ -4,7 +4,7 @@ I will try to update this list with talks I will give in the future.
 
 ---
 
-**node.js**  
+**node.js (Note: Currently WIP -- not yet finished!)**  
 General overview on node.js as part of the lecture
 [Web-Engineering](http://www.uni-ulm.de/in/mi/mi-lehre/2013ws/web-engineering.html).  
 University of Ulm, 13.2.2014  
