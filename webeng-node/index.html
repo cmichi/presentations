@@ -42,6 +42,7 @@ URL: https://code.google.com/p/io-2012-slides
 	<ul>
 		<li>Letztes halbes Jahr, nur sh & js</li>
 		<li>GitHub, dritte Stelle</li>
+		<li>serverseitiges JavaScript</li>
 	</ul>
 	</section>
 	</aside>
@@ -57,7 +58,7 @@ $ node
     <aside class="note">
       <section>
         <ul>
-		<li>skalierbar, langlebig, freie software</li>
+		<li>basiert auf Googles V8</li>
         </ul>
       </section>
     </aside>
@@ -147,7 +148,9 @@ fs.readFile("/etc/passwd", function (err, data) {
 var http = require("http");
 http.get("http://uni-ulm.de", function(res) {
 	console.log("Got response: " + res.statusCode);
-})
+}).on('error', function(e) {
+	console.log("Got error: " + e.message);
+});
 </pre>
     </article>
   </slide>
@@ -219,12 +222,24 @@ $ node
 </article>
 </slide>
 
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/npm.png" alt="Description" title="Description">
+    <aside class="note">
+      <section>
+        <ul>
+		<li>Berücksichtigung von Abhängigkeiten, Installation, Aktualisierung</li>
+		<li>&gt; 48k Pakete</li>
+        </ul>
+      </section>
+    </aside>
+    </article>
+  </slide>
+
   <slide class="fill nobackground" style="background-image: url(images/npm-screen.png);background-position:center center;">
       <aside class="note">
 	<section>
 	<ul>
-		<li>Letztes halbes Jahr, nur sh & js</li>
-		<li>GitHub, dritte Stelle</li>
 	</ul>
 	</section>
 	</aside>
@@ -233,17 +248,6 @@ $ node
 
 
 
-  <slide>
-    <article class="flexbox vcenter">
-      <img src="images/npm.png" alt="Description" title="Description">
-    <aside class="note">
-      <section>
-        <ul>
-        </ul>
-      </section>
-    </aside>
-    </article>
-  </slide>
 
 
   <slide>
@@ -359,7 +363,7 @@ $ cat package.json
       <br />
       <br />
       <br />
-      <pre class="prettyprint" data-lang="javascript" style="font-size:1.6em;margin-top:50px;left:0px;height:110px;text-align:center;width:100%;">
+      <pre class="prettyprint" data-lang="javascript" style="font-size:1.6em;margin-top:50px;padding-top:25px;left:0px;height:130px;text-align:center;width:100%;">
 
 michi.ask(questions);
       </pre>
