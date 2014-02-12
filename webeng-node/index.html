@@ -49,6 +49,39 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   <slide>
+    <article class="flexbox vcenter">
+      <pre class="prettyprint" data-lang="shell" style="font-size:1.6em;margin-top:0px;left:0px;height:110px;text-align:center;width:80%;">
+
+$ node
+      </pre>
+    <aside class="note">
+      <section>
+        <ul>
+		<li>skalierbar, langlebig, freie software</li>
+        </ul>
+      </section>
+    </aside>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Sequential</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="javascript">
+$ cat hello-world.js
+console.log("hello fellas!");
+
+$ node hello-world.js
+hello fellas!
+
+$
+</pre>
+    </article>
+  </slide>
+
+  <slide>
     <hgroup>
       <h2>Sequential</h2>
     </hgroup>
@@ -119,21 +152,6 @@ http.get("http://uni-ulm.de", function(res) {
     </article>
   </slide>
 
-  <slide>
-    <article class="flexbox vcenter">
-      <pre class="prettyprint" data-lang="shell" style="font-size:1.6em;margin-top:0px;left:0px;height:110px;text-align:center;width:80%;">
-
-$ node
-      </pre>
-    <aside class="note">
-      <section>
-        <ul>
-		<li>skalierbar, langlebig, freie software</li>
-        </ul>
-      </section>
-    </aside>
-    </article>
-  </slide>
 
   <slide>
     <hgroup>
@@ -175,28 +193,16 @@ $
     </article>
   </slide>
 
-
-<!--
- * repl
-libraries
-was kann man jetzt damit cooles machen?
-
-node meme
-probleme: cpu intense tasks
-
-take away
--->
-
-  <slide class="hidden quote" style="color:#797979;">
-    <article class="flexbox vleft">
-      <q>
-        How can we program systems which behave in a reasonable manner in the presence of software errors?
-      </q>
-      <div class="author" style="bottom:140px; right: 60px;">
-        Joe Armstrong
-      </div>
-    </article>
+  <slide class="fill nobackground" style="background-image: url(images/node-doc.png);background-position:center center;">
+      <aside class="note">
+	<section>
+	<ul>
+	</ul>
+	</section>
+	</aside>
+    <footer class="source white">https://www.npmjs.org/</footer>
   </slide>
+
 
   <slide class="hidden">
     <article class="flexbox vcenter">
@@ -212,6 +218,18 @@ $ node
 </div>
 </article>
 </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/npm-screen.png);background-position:center center;">
+      <aside class="note">
+	<section>
+	<ul>
+		<li>Letztes halbes Jahr, nur sh & js</li>
+		<li>GitHub, dritte Stelle</li>
+	</ul>
+	</section>
+	</aside>
+    <footer class="source white">https://www.npmjs.org/</footer>
+  </slide>
 
 
 
@@ -273,6 +291,17 @@ $ cat package.json
     </article>
   </slide>
 
+  <slide class="quote" style="color:#797979;">
+    <article class="flexbox vleft">
+      <q>
+	Any application that can be written in JavaScript, will eventually be written in JavaScript.
+      </q>
+      <div class="author" style="bottom:140px; right: 60px;">
+       Atwood's Law
+      </div>
+    </article>
+  </slide>
+
   <slide class="">
     <article class="flexbox vcenter">
       <h2 style="font-size:2em">Libraries</h2>
@@ -282,34 +311,7 @@ $ cat package.json
 
   <slide class="">
     <article class="flexbox vcenter">
-      <h2 style="font-size:2em">Vorteil client-seitig JS?</h2>
-      <h3>socket.io, express, cradle, jQuery, jsDOM, &hellip;</h3>
-    </article>
-  </slide>
-
-  <slide class="hidden segue dark quote nobackground">
-    <article class="flexbox vleft">
-      <q>
-        How can we program systems which behave in a reasonable manner in the presence of software errors?
-      </q>
-      <div class="author">
-        Joe Armstrong<br>
-        Erlang Designer
-      </div>
-    </article>
-  </slide>
-
-  <slide class="quote" style="color:#797979;">
-    <article class="flexbox vleft">
-      <q>
-	The world is concurrent.
-	Things in the world don't share data.
-	Things communicate with messages.
-	Things fail.
-      </q>
-      <div class="author" style="bottom:140px; right: 60px;">
-        Joe Armstrong
-      </div>
+      <h2 style="font-size:2em">Vorteile server-seitiges JavaScript?</h2>
     </article>
   </slide>
 
@@ -357,7 +359,7 @@ $ cat package.json
       <br />
       <br />
       <br />
-      <pre class="prettyprint" data-lang="erlang" style="font-size:1.6em;margin-top:50px;left:0px;height:110px;text-align:center;width:100%;">
+      <pre class="prettyprint" data-lang="javascript" style="font-size:1.6em;margin-top:50px;left:0px;height:110px;text-align:center;width:100%;">
 
 michi.ask(questions);
       </pre>
