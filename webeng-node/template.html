@@ -1,0 +1,942 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+    <aside style="width:360px;" class="gdbar"><img src="images/uulm-128-mi.png" style="height:85px;width:auto;"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/node.png);background-position:center center;">
+      <aside class="note">
+	<section>
+	<ul>
+		<li></li>
+	</ul>
+	</section>
+	</aside>
+    <footer class="source white"></footer>
+  </slide>
+
+  <slide class="hidden quote" style="color:#797979;">
+    <article class="flexbox vleft">
+      <q>
+        How can we program systems which behave in a reasonable manner in the presence of software errors?
+      </q>
+      <div class="author" style="bottom:140px; right: 60px;">
+        Joe Armstrong
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/erlang-logo.png" alt="Description" title="Description">
+    <aside class="note">
+      <section>
+        <ul>
+		<li>skalierbar, langlebig, freie software</li>
+        </ul>
+      </section>
+    </aside>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vcenter">
+      <h2 style="font-size:2em">Erlang<span style="color:#a32638;">/OTP</span>?</h2>
+      <h3>(The Open Telecom Platform)</h3>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/companies.png);background-position:center center;">
+      <aside class="note">
+	<section>
+	<ul>
+		<li>RabbitMQ implementiert Advanced Message Queuing Protocol</li>
+	</ul>
+	</section>
+      </aside>
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/coffee2.jpg);background-position:center center;">
+    <footer class="source white">source: www.flickr.com/photos/yukop/7588623620</footer>
+  </slide>
+
+  <slide class="hidden segue dark quote nobackground">
+    <article class="flexbox vleft">
+      <q>
+        How can we program systems which behave in a reasonable manner in the presence of software errors?
+      </q>
+      <div class="author">
+        Joe Armstrong<br>
+        Erlang Designer
+      </div>
+    </article>
+  </slide>
+
+  <slide class="hidden">
+    <hgroup>
+      <h2>Slide with Bullets</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
+        <li>Title capitalization is title case
+          <ul>
+            <li>Subtitle capitalization is title case</li>
+          </ul>
+        </li>
+        <li>Subtitle capitalization is title case</li>
+        <li>Titles and subtitles should never have a period at the end</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>The Erlang Shell</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+$ erl
+Erlang R15B01 (erts-5.9.1) [source] [64-bit] [smp:4:4] [async-threads:0]
+[kernel-poll:false]
+
+Eshell V5.9.1  (abort with ^G)
+1> A = 2 + 2.
+4
+2> 
+</pre>
+    </article>
+  </slide>
+
+  <slide class="hidden">
+    <article class="flexbox vcenter">
+      <h2 style="font-size:2em">Sprach-Eigenschaften?</h2>
+      <br />
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+      <ul>
+<li>Basiert auf Prolog</li>
+<li>Functions: als Argumente, R&uuml;ckgabewerte, Variablen, in Listen, etc.</li>
+<li>Anonyme Funktionen, Currying</li>
+
+<!--
+<li>grosse Buchstaben sind Variablen</li>
+<li>B = 1. ist ein Statement, keine Zuweisung. B = B + 1. ist nicht gueltig.</li>
+-->
+</ul>
+</section>
+</aside>
+    <article class="flexbox vcenter">
+      <h2>Sprach-Eigenschaften?</h2>
+      <h3>Functions as first-class citizens.</h3>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+      <ul>
+	<li>Dynamic Typing</li>
+	<li>Tupel - fixe L&auml;nge</li>
+	<li>Listen - beliebige L&auml;nge</li>
+	<li>"foo" syntactic sugar -- kein eigentlicher Datentyp</li>
+	</ul>
+      </section>
+     </aside>
+    <hgroup>
+      <h2>Datentypen</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+Integer
+	123456789
+
+Floats
+	3.14
+
+Atome 
+	januar, februar, true, false
+
+Tupel 
+	shape1 = {square, 4}
+	shape2 = {circle, 5}
+
+Listen
+	Y = ["foo", 9.5, {tuple, tuple}, [1, 2]].
+	X = [1, 2, 3].
+	"AB" = [65, 66]
+</pre>
+    </article>
+  </slide>
+
+
+  <slide>
+    <aside class="note">
+      <section>
+      <ul>
+<li>schleifen immer rekursiv</li>
+<li>tail-recursion optimization</li>
+      <ul>
+      </section>
+     </aside>
+
+    <hgroup>
+      <h2>Pattern Matching</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+1> math:fakultaet(3).
+6
+ok
+2>
+</pre>
+
+<pre class="prettyprint" data-lang="erlang">
+-module(math).
+-export([fakultaet/1]).
+		
+fakultaet(0) -> 1;
+fakultaet(N) -> N * fakultaet(N-1).
+</pre>
+
+    </article>
+  </slide>
+
+
+  <slide>
+    <aside class="note">
+      <section>
+      <ul>
+<li>auch fuer bits!</li> 
+<li>effizientes parsen von protokollen.</li>
+      </ul>
+      </section>
+    </aside>
+
+    <hgroup>
+      <h2>Pattern Matching: Binaries</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+processPacket(<<1:32/big, Rest>>) −> 
+	% process packets of type one
+	...
+;
+processPacket(<<2:32/big, Rest>>) −> 
+	% process packets of type two
+	...
+;
+</pre>
+
+<pre class="prettyprint" data-lang="erlang">
+httpGET(<<"GET / HTTP/1.1">>) -> ...;
+
+processPacket(<< IP_VERSION:4, HLen:4, SrvcType:8, TotLen:16,
+ID:16, Flgs:3, FragOff:13, TTL:8, Proto:8, HdrChkSum:16,
+SrcIP:32, DestIP:32, RestDgram/binary >>) -> ... ;
+</pre>
+    </article>
+  </slide>
+
+
+
+  <slide class="hidden">
+    <hgroup>
+      <h2>Noch was?</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+</pre>
+    </article>
+  </slide>
+
+  <!--
+  concurrency
+  fault-tolerance
+  hot-code swapping
+  -->
+
+  <slide>
+    <article class="flexbox vcenter">
+	<table style="border:none;">
+	<tr style="background:none">
+	<td style="text-align:center;">
+      <img src="images/conc-red.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/network.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/fault.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/refresh.png" alt="Description" title="Description">
+      </td>
+      </tr>
+	<tr>
+	<td style="text-align:center;color:#a32638;font-weight:normal;">
+	Concurrency
+	</td>
+	<td style="text-align:center;color:black;">
+	Distribution
+	</td>
+	<td style="text-align:center;color:black;">
+	Fault-Tolerancy
+	</td>
+	<td style="text-align:center;color:black;">
+	Hot-Code Swapping
+	</td>
+	</tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<h2 style="display:none">What about &hellip;?</h2>
+		<br />
+			<h3>Semaphoren &middot; Monitore &middot; Synchronization</h3>
+			<br />&nbsp;<br/>
+			<h3>Deadlocks &middot; Race Conditions &middot; Starvation</h3>
+
+		<ul style="list-style-type:none;display:none;">
+			<li>Semaphoren</li>
+			<li>Monitore</li>
+			<li>Synchronization<br />&nbsp;<br/></li>
+
+			<li>Deadlocks</li>
+			<li>Race Conditions</li>
+			<li>Starvation</li>
+		</ul>
+	    </div>
+	    <footer class="source"></footer>
+    </article>
+  </slide>
+
+  <slide class="quote" style="color:#797979;">
+    <article class="flexbox vleft">
+      <q>
+	The world is concurrent.
+	Things in the world don't share data.
+	Things communicate with messages.
+	Things fail.
+      </q>
+      <div class="author" style="bottom:140px; right: 60px;">
+        Joe Armstrong
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+      <aside class="note">
+	<section>
+	<ul>
+		<li>Alles ist ein Prozess. Prozesse fuehren sequentiellen Code aus und sind die Basis fuer Parallelitaet.</li>
+		<li>Sehr schnell zu spawnen: Von Erlang verwaltet, nicht OS.</li>
+		<li>Prozesse kommunizieren &uuml;ber Nachrichten. Keine Zeiger/Referenzen/gemeinsamen Speicherbereiche. Shared Nothing.</li>
+		<li>Message can be any language element, list tuples, integers</li>
+	</ul>
+	</section>
+	</aside>
+    <article class="flexbox vcenter">
+	    <div style="text-align:left;">
+		<h2>
+			1) Prozesse<br /><br/>
+			2) Nachrichten
+		</h2>
+	    </div>
+    </article>
+  </slide>
+
+  <slide>
+	    <hgroup>
+	      <h2>Aktorenmodell</h2>
+	    </hgroup>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<img src="images/actors.svg" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://berb.github.io/diploma-thesis/original/054_actors.html</footer>
+    </article>
+  </slide>
+
+  <slide>
+      <aside class="note">
+	<section>
+		<p>spawn function as a process referenced by Pid</p>
+	</section>
+	</aside>
+    <hgroup>
+      <h2>Processes &amp; Messages</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+Pid = spawn(Function).
+
+Pid ! Message.
+Pid ! {sender, do_task, notifyAll}
+
+Calculator = spawn(calculator).
+Calculator ! {self(), increment, 5}.
+</pre>
+</article>
+</slide>
+
+  <slide>
+    <hgroup>
+      <h2>Receiving Messages</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+calculator() ->
+  receive
+    {From, increment, Value} -> From ! Value + 1;
+
+    {From, decrement, Value} -> From ! Value - 1;
+
+    _ -> io:format("unknown operation")
+  end.
+</pre>
+
+<pre class="prettyprint" data-lang="erlang">
+3> Calculator = spawn(calculator).
+4> Calculator ! {self(), increment, 5}.
+6
+ok
+</pre>
+<!--
+calculate_area({square, Size}) -> Size * Size.
+calculate_area({circle, Radius}) -> 3.14 * Radius * Radius.
+calculate_area(_) -> unknown.
+-->
+
+</article>
+</slide>
+
+
+
+  <slide>
+    <article class="flexbox vcenter">
+	<table style="border:none;">
+	<tr style="background:none">
+	<td style="text-align:center;">
+      <img src="images/conc.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/network-red.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/fault.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/refresh.png" alt="Description" title="Description">
+      </td>
+      </tr>
+	<tr>
+	<td style="text-align:center;color:black;font-weight:normal;">
+	Concurrency
+	</td>
+	<td style="text-align:center;color:#a32638;">
+	Distribution
+	</td>
+	<td style="text-align:center;color:black;">
+	Fault-Tolerancy
+	</td>
+	<td style="text-align:center;color:black;">
+	Hot-Code Swapping
+	</td>
+	</tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<h2>Erlang Node</h2>
+	    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lokaler Erlang Node</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<img src="images/actors.svg" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://berb.github.io/diploma-thesis/original/054_actors.html</footer>
+
+	    <!--
+	    <div style="text-align:center;">
+		<img src="images/local.png" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://www.slideshare.net/kenpratt/erlang-overview-8709273</footer>
+	    -->
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Verteilte Erlang-Nodes</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<img src="images/actors-distributed.svg" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://berb.github.io/diploma-thesis/original/054_actors.html</footer>
+
+		<!--
+	    <div style="text-align:center;">
+		<img src="images/distributed.png" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://www.slideshare.net/kenpratt/erlang-overview-8709273</footer>
+	    -->
+    </article>
+    <!--
+local oder remote, macht keinen unterschied
+auf entfernten knoten spawnen etc
+-->
+  </slide>
+
+  <slide>
+      <aside class="note">
+	<section>
+		<p>bei der ersten verwendung des namens eines nodes wird eine verbindung</p>
+	</section>
+	</aside>
+    <hgroup>
+      <h2>Erlang Nodes</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="erlang">
+$ erl -name node0 -setcookie "node-group1"
+
+node1@localhost ! Message.
+node1@uni-ulm.de ! Message.
+</pre>
+
+</article>
+</slide>
+
+
+  <slide class="hidden">
+    <hgroup>
+      <h2>Erlang Nodes</h2>
+    </hgroup>
+    <article>
+    <!--
+% bei der ersten verwendung des namens eines nodes wird eine verbindung
+% hergestellt. hier wird z.b. yourmessage an process1 am node dilbert 
+% gesendet
+-->
+
+<pre class="prettyprint" data-lang="erlang">
+(node1@uni-ulm.de)1> spawn(node0@uni-ulm.de, 
+                           <b>fun() -> io:format("simple 'rpc' on node0~n") end)</b>.
+simple 'rpc' on node0
+<6448.50.0>
+</pre>
+
+<pre class="prettyprint" data-lang="erlang">
+{process1, node1@uni-ulm.de} ! your_message.
+{process1, node1@uni-ulm.de} ! {do_task, translate, "awesome"}.
+</pre>
+
+</article>
+</slide>
+
+
+
+  <slide class="hidden">
+    <article class="flexbox vcenter">
+	<table style="border:none;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img src="images/conc.png" alt="Description" title="Description">
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align:center;color:black;font-weight:normal;">
+			<h2 style="color:black;font-weight:normal;">Concurrency</h2>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+	<table style="border:none;">
+	<tr style="background:none">
+	<td style="text-align:center;">
+      <img src="images/conc.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/network.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/fault-red.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/refresh.png" alt="Description" title="Description">
+      </td>
+      </tr>
+	<tr>
+	<td style="text-align:center;color:black;font-weight:normal;">
+	Concurrency
+	</td>
+	<td style="text-align:center;color:black;">
+	Distribution
+	</td>
+	<td style="text-align:center;color:#a32638;">
+	Fault-Tolerancy
+	</td>
+	<td style="text-align:center;color:black;">
+	Hot-Code Swapping
+	</td>
+	</tr>
+      </table>
+    </article>
+  </slide>
+
+
+  <slide class="quote" style="color:#797979;">
+    <article class="flexbox vleft">
+      <q>
+        7 nines almost unachievable &hellip; but we did 9.
+
+	Why is this? No shared state, plus a sophisticated error recovery model.
+      </q>
+      <div class="author" style="bottom:140px; right: 60px;">
+        Joe Armstrong
+      </div>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vleft">
+      <h2>Fault tolerance?</h2>
+      <h3>Let it fail! Have another process deal with it.</h3>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Supervisor Trees</h2>
+    </hgroup>
+    <article style="text-align:center">
+      <img src="images/sup-tree.png" class="reflect" alt="Description" title="Description" style="width:440px;margin-top:0px;">
+      <footer class="source">source: http://learnyousomeerlang.com/supervisors</footer>
+    </article>
+  </slide>
+
+  <slide class="hidden">
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<h2>&Uuml;berwachungs-Strategien</h2>
+		<br />
+<pre style="width:100%">one_for_one, one_for_all, rest_for_one, simple_one_for_one, &hellip;</pre>
+<pre style="width:100%">MaxR, MaxT</pre>
+	    </div>
+	    <footer class="source"></footer>
+    </article>
+  </slide>
+
+  <slide>
+      <aside class="note">
+	<section>
+		<p>Austauschen ohne Herunterfahren des Systems</p>
+	</section>
+    </aside>
+    <article class="flexbox vcenter">
+	<table style="border:none;">
+	<tr style="background:none">
+	<td style="text-align:center;">
+      <img src="images/conc.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/network.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/fault.png" alt="Description" title="Description">
+      &nbsp;
+      </td>
+	<td style="text-align:center;">
+      <img src="images/refresh-red.png" alt="Description" title="Description">
+      </td>
+      </tr>
+	<tr>
+	<td style="text-align:center;color:black;font-weight:normal;">
+	Concurrency
+	</td>
+	<td style="text-align:center;color:black;">
+	Distribution
+	</td>
+	<td style="text-align:center;color:black;">
+	Fault-Tolerancy
+	</td>
+	<td style="text-align:center;color:#a32638;">
+	Hot-Code Swapping
+	</td>
+	</tr>
+      </table>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Hot-Code Swapping</h2>
+    </hgroup>
+    <article>
+
+<pre class="prettyprint" data-lang="erlang">
+2> Service = spawn(ServiceFunction).
+3> Service ! {get_price, milk}.
+The price of milk is: $0.99
+</pre>
+
+<br/>
+&rArr; Editing code
+<br/>&nbsp;<br/>
+
+<pre class="prettyprint" data-lang="erlang">
+4> c(pricing_service).
+{ok,pricing_service}
+5> Service ! {price, milk}.
+The price of milk is: $1.03
+</pre>
+
+</article>
+</slide>
+
+  <slide class="hidden">
+    <hgroup>
+      <h2>Hot-Code Swapping</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<img src="images/hot-code-loading.png" style="width:690px;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://learnyousomeerlang.com/designing-a-concurrent-application</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<img src="images/erlang-meme.jpg" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://memegenerator.net/instance/33519135</footer>
+
+    </article>
+  </slide>
+
+  <slide>
+      <aside class="note">
+	<section>
+	<ul>
+		<li>Kompression?</li>
+		<li>Sicherheit?</li>
+		<li>tcp als Transport-Protokoll, Heartbeats, HOL blocking.</li>
+	</ul>
+	</section>
+	</aside>
+    <article class="flexbox vcenter">
+	    <div style="text-align:center;">
+		<img src="images/holy.jpg" style="width:100%;margin-top:-60px;">
+	    </div>
+	    <footer class="source">source: http://www.empireonline.com/images/uploaded/indiana-jones-holy-grail.jpg</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Take-Away</h2>
+    </hgroup>
+    <article>
+	<table style="" class="white">
+	<tr>
+		<th width="30%" class="white">Sprache</th>
+		<td class="black">Funktional, Pattern Matching</td>
+	</tr>
+	<tr>
+		<th width="30%" class="white">Nebenl&auml;ufigkeit</th>
+		<td class="black">
+			Leichtgewichtige Prozesse + Asynchrones Message Passing<br />&nbsp;<br />
+			<strong>No shared state!</strong>
+		</td>
+	</tr>
+	<tr>
+		<th width="30%" class="white">Verteilung</th>
+		<td class="black">
+			Erlang Nodes + Message Passing
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="hidden">
+    <hgroup>
+      <h2>Resources</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>
+		<a href="http://learnyousomeerlang.com">learnyousomeerlang.com</a>
+	</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <h2>Dankesch&ouml;n!</h2>
+      <pre class="prettyprint" data-lang="erlang" style="font-size:1.6em;margin-top:50px;left:0px;height:110px;text-align:center;">
+
+Michi ! Fragen.
+      </pre>
+
+	<br />
+	<h3>Icons</h3>
+      <ul style="color:white">
+        <li>
+		<a style="color:white" href="http://thenounproject.com/term/error/2189/">Error by Anas Ramadan from The Noun Project</a>
+	</li>
+	<li>
+		<a style="color:white"  href="http://thenounproject.com/term/reload/23259/">Reload by aguycalledgary from The Noun Project</a>
+	</li>
+	<li>
+		<a style="color:white"  href="http://thenounproject.com/term/network/21272/">Network by Brennan Novak from The Noun Project</a>
+	</li>
+      </ul>
+    </article>
+    <p class="auto-fadein" data-config-contact style="display:none;">
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="hidden">
+    <hgroup>
+      <h2>Quellen</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>
+		<a href="http://thenounproject.com/term/error/2189/">Error by Anas Ramadan from The Noun Project</a>
+	</li>
+	<li>
+		<a href="http://thenounproject.com/term/reload/23259/">Reload by aguycalledgary from The Noun Project</a>
+	</li>
+	<li>
+		<a href="http://thenounproject.com/term/network/21272/">Network by Brennan Novak from The Noun Project</a>
+	</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide class="hidden">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Point I wanted to make #1</li>
+          <li>Point I wanted to make #2</li>
+          <li>Point I wanted to make #3</li>
+          <li>Example <a href="#">link</a> in notes.</li>
+        </ul>
+        <p><b>Remember to say this tag line!</b></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Slide with Speaker Notes</h2>
+    </hgroup>
+    <article>
+      <p>Press 'p' to toggle speaker notes.</p>
+    </article>
+  </slide>
+
+  <slide class="hidden">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
+        </ul>
+        <p><b>Remember to say this tag line!</b></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Presenter Mode</h2>
+    </hgroup>
+    <article>
+      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
+      This setting is sticky, meaning refreshing the page will persist presenter
+      mode.</p>
+      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
