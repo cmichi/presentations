@@ -26,7 +26,7 @@ University of Ulm, 13.2.2014
 ---
 
 **Open Data**  
-Monthly Chaosseminar organized by the [Chaos Computer Club Ulm](http://ulm.ccc.de)  
+Monthly Chaosseminar organized by the [Chaos Computer Club Ulm](http://ulm.ccc.de).  
 University of Ulm, 8.7.2013  
 [View the slides](http://cmichi.github.io/talks/chaosseminar-open-data)
 
