@@ -4,6 +4,16 @@ I will try to update this list with talks I will give in the future.
 
 ---
 
+**Erlang/OTP**  
+Seminar presentation on Erlang/OTP for the course
+*Research Trends in Distributed Systems*.  
+University of Ulm, 3.2.2014  
+[View the slides](http://cmichi.github.io/talks/erlang-otp)
+
+---
+
+---
+
 **node.js**  
 General overview on node.js as part of the lecture
 [Web-Engineering](http://www.uni-ulm.de/in/mi/mi-lehre/2013ws/web-engineering.html).  
