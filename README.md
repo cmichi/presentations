@@ -1,6 +1,10 @@
 # Talks
 
 I will try to update this list with talks I will give in the future. 
+If you are looking for a presentation I did, but can't find it here,
+it could possibly be over at the [UlmApi/talks](https://github.com/UlmApi/talks)
+respository.
+
 
 ---
 
@@ -33,6 +37,15 @@ University of Ulm, 8.7.2013
 ---
 
 
+---
+
+**Typography**  
+Seminar presentation on Erlang/OTP for the course
+*Research Trends in Distributed Systems*.  
+University of Ulm, 3.2.2014  
+[View the slides](http://cmichi.github.io/talks/erlang-otp)
+
+---
 # License
 
 The presentations are licensed under 
