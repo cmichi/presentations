@@ -27,9 +27,80 @@
     </hgroup>
   </slide>
 
-  <slide class="">
-    <article class="flexbox vcenter">
-      <h2 style="font-size:2em"><span class="uni-red">What?</span></h2>
+  <slide>
+    <hgroup>
+      <h2>http://social-network.de/</h2>
+      <!--
+      <h3>Stateless: each request contains all information necessary to
+      process it.</h3>
+	User is logged in
+      -->
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;h1>My Social Network!&lt;/h1&gt;
+
+&lt;h2&gt;Login&lt;/h2&gt;
+&lt;form method="POST" action="/"&gt;
+  &lt;input type="text" name="user" /&gt;
+  &lt;input type="text" name="pw" /&gt;
+  &lt;input type="submit" value="Login!" /&gt;
+&lt;/form&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>http://social-network.de/</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint">
+POST / HTTP/1.1
+Host: social-network.de
+
+user=santa&pw=claus
+</pre>
+
+<pre class="prettyprint">
+HTTP/1.1 200 OK
+Set-Cookie: sessionid=a212jhu2145912;
+            expires=Tue, 29-Mar-2014 19:30:42 GMT;
+            Max-Age=2592000;
+            Path=/
+
+<html>
+…
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>http://social-network.de/</h2>
+      <!--
+      <h3>Stateless: each request contains all information necessary to
+      process it.</h3>
+	User is logged in
+      -->
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;h1>My Social Network!&lt;/h1&gt;
+&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+
+&lt;h2&gt;My Whiteboard&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Took a walk.&lt;/li&gt;
+  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;New Entry&lt;/h2&gt;
+&lt;form method="GET" action="/new"&gt;
+  &lt;input type="text" name="entry" /&gt;
+  &lt;input type="submit" value="Submit!" /&gt;
+&lt;/form&gt;
+</pre>
     </article>
   </slide>
 
@@ -40,24 +111,142 @@
       process it.</h3>
     </hgroup>
     <article>
-<pre class="prettyprint">
-GET / HTTP/1.1
-Host: google.com
-
-HTTP/1.1 200 OK
-Set-Cookie: payload=YWxpY2Vsb3Zlc2JvYg==;
-            expires=Tue, 29-Mar-2014 19:30:42 GMT;
-            Max-Age=2592000;
-            Path=/
+<pre class="prettyprint" data-lang="HTML">
+GET /new?entry=huhu HTTP/1.1
+Host: social-network.de
+Cookie: sessionid=a212jhu2145912;
 </pre>
 
-<pre class="prettyprint">
-GET / HTTP/1.1
-Host: google.com
-Cookie: payload=YWxpY2Vsb3Zlc2JvYg==
-
+<pre class="prettyprint" data-lang="HTML">
 HTTP/1.1 200 OK
+
 …
+&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+&lt;h2&gt;Whiteboard entry 'huhu' created!&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;huhu&lt;/li&gt;
+  &lt;li&gt;Took a walk.&lt;/li&gt;
+  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
+&lt;/ul&gt;
+…
+</pre>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vcenter">
+      <h2 style="font-size:2em"><span class="uni-red">What is the problem?</span></h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>http://cat-gifs-forum.com/</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;h1&gt;Cat GIFs Forum!&lt;/h1&gt;
+
+
+&lt;div class="post"&gt;
+  Look at my funny gif!
+  &lt;img src="http://funny.com/cat.gif" /&gt;
+&lt;/div&gt;
+
+&lt;div class="post"&gt;
+  Look at my funny gif!
+  &lt;img src="http://social-network.de/?new=buy%20cheap%20pharmacy%20at%20www.medicals.org" /&gt;
+&lt;/div&gt;
+</pre>
+    </article>
+  </slide>
+
+  slide with all http get requests happening!
+  and cookie stuff
+
+  <slide class="">
+    <article class="flexbox vcenter">
+      <h2 style="font-size:2em"><span class="uni-red"><code>POST</code> instead of <code>GET</code>?</span></h2>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>http://social-network.de/</h2>
+      <!--
+      <h3>Stateless: each request contains all information necessary to
+      process it.</h3>
+	User is logged in
+      -->
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;h1>My Social Network!&lt;/h1&gt;
+&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+
+&lt;h2&gt;My Whiteboard&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Took a walk.&lt;/li&gt;
+  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;New Entry&lt;/h2&gt;
+&lt;form method="POST" action="/new"&gt;
+  &lt;input type="text" name="entry" /&gt;
+  &lt;input type="submit" value="Submit!" /&gt;
+&lt;/form&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>HTTP</h2>
+      <h3>Stateless: each request contains all information necessary to
+      process it.</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+POST /new HTTP/1.1
+Host: social-network.de
+Cookie: sessionid=a212jhu2145912;
+</pre>
+
+<pre class="prettyprint" data-lang="HTML">
+HTTP/1.1 200 OK
+
+…
+&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+&lt;h2&gt;Whiteboard entry 'huhu' created!&lt;/h2&gt;
+…
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>http://cat-gifs-forum.com/</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;h1&gt;Cat GIFs Forum!&lt;/h1&gt;
+
+
+&lt;div class="post"&gt;
+  Look at my funny gif!
+  &lt;img src="http://funny.com/cat.gif" /&gt;
+&lt;/div&gt;
+
+&lt;div class="post"&gt;
+  Look at my funny gif!
+  &lt;img src="<b style="background-color:lightblue">http://somesite/cat.gif"/&gt;
+  &lt;form name="frmCSRF" method="POST" action="http://social-network.de/new/"&gt;
+    &lt;input type="hidden" name="entry" value="buy cheap pharmacy at www.medicals.org"/&gt;
+  &lt;/form&gt;
+  &lt;script&gt;document.frmCSRF.submit(); &lt;/script&gt;&lt;br</b>/&gt;
+&lt;/div&gt;
 </pre>
     </article>
   </slide>
