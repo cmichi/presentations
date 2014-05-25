@@ -19,13 +19,13 @@
 \RequirePackage{graphicx}
 \graphicspath{{./}{../}{images/}}
 
-\RequirePackage[pdftex,
-	unicode=true,
-	breaklinks=true,
-	colorlinks=true,
-	linkcolor=black,
-	citecolor=black,
-	urlcolor=black]{hyperref}
+%\RequirePackage[pdftex,
+	%unicode=true,
+	%breaklinks=true,
+	%colorlinks=true,
+	%linkcolor=black,
+	%citecolor=black,
+	%urlcolor=black]{hyperref}
 
 \renewcommand{\baselinestretch}{1.1}
 \setlength{\parindent}{0pt}

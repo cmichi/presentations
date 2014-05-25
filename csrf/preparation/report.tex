@@ -14,6 +14,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{hyperref}
 
 % \begin{comment} ... \end{comment{}
 \usepackage{verbatim}
@@ -43,9 +44,10 @@
 
 Cross-Site-Request-Forgery (\textsc{CSRF}) is an attack on web-applications
 which will be further explained within the presentation.
-This document is meant as a preparation document, to get you ready to
+This document is meant as a preparation document in order to get you ready to
 understand the presentation and conduct the assignments.
 
+\begin{comment}
 \subsection{HTTP}
 The HTTP protocol is the driving force behind the web.
 
@@ -68,25 +70,86 @@ Host: google.com
 \end{lstlisting}
 
 \subsubsection{POST}
+\end{comment}
+
+
+%=================
+\subsection{Web Developer Tool}
+
+We aim to exploit several services in the assignments. Most of the exploits
+will be written in HTML in conjuction with JavaScript. For this purpose it
+comes handy if you are familiar with the developer tool of some browser.
+Most modern browsers come with some kind of Developer tools. Check the
+corresponding manual. For Firefox the extension is available via the menu:
+... .
+For Chromium via "Tools > Developer Tools" (or via pressing \texttt{F12}).
+
+The main features of the developer tools, which will come handy are: 
+
+\paragraph{The JavaScript Console}
+Lorem Ipsum
+
+\paragraph{The Network Capturer}
+Lorem Ipsum
 
 
 %=================
 \section{Assignments}
 
-To carry out the assignments you need to bring your own laptop. 
+To carry out the assignments you need to bring your own laptop configured
+to the run the services described in this section.
 
 \subsection{Damn Vulnerable Web App}
 \subsubsection{Installation}
 For the assignments we will use the Damn Vulnerable Web App (\textsc{DVWA}).
-Download the package from \mbox{\url{http://www.dvwa.co.uk/}} and install it 
-on your local machine. You will need a WebServer with PHP support and MySQL.
+Download the package from \href{http://www.dvwa.co.uk/}{the website} and 
+install it on your local machine. You will need a WebServer with PHP support 
+and MySQL. To install the package extract the project into a folder which
+is configured to contain PHP code and point your browser to 
+\href{http://localhost/dvwa/index.php}.
 
-I advise against installing \textsc{DVWA} on a server/hosting provider with 
-internet access. This may compromise other services on the same machine.
+The documentation advises against installing \textsc{DVWA} on a server/hosting 
+provider with internet access. This may compromise other services on the same 
+machine.
 The better way is to set up a local webserver. The easiest way to do so
 is probably to use XAMPP (Mac, Windows) or LAMP (Linux). Those packages
 come with a webserver, pre-configured PHP support and MySQL.
 
-\subsubsection{Test your installation}
+\subsubsection{Configuration}
+After you have completed the installation you should log into the
+application to get a feeling for the interface.
+
+Open up \url{http://localhost/dvwa} and login with the credentials
+User: \texttt{admin}, Password: \textt{password}.
+Open the navigation tab
+\texttt{DVWA Security} and configure \texttt{Security Level: Low}.
+
+During the assignment we will work our way through the security levels 
+\texttt{low} and \texttt{medium}. The level \texttt{high} is meant to show 
+the state of the art best-practice solution. It is not meant to be cracked.\\
+
+\textbf{Note:} The security level, which you configure is saved as a cookie 
+value. The default value is \texttt{high}. This might lead to problems
+while debugging: if you e.g. log into DVWA using Chromium and configure
+\texttt{low} you should also run your exploit in Chromium and not 
+in e.g. Firefox. Firefox would still be configured for the security level
+\texttt{high}.
+
+
+\section{Quick Checklist}
+
+\paragraph{You should have a basic understanding of}
+\ \\
+HTTP, HTML, the DOM, JavaScript.
+
+\paragraph{You should bring}
+\ \\
+A laptop. Configured to run the Metasploitable image. Damn 
+Vulnerable Web App should also be installed.
+
+\paragraph{You should have played with}
+\ \\
+A Web Developer Tool.
+
 
 \end{document}
