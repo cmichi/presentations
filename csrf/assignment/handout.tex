@@ -2,16 +2,32 @@
 \documentclass{./handout}
 
 \usepackage{hyperref}
+\usepackage{verbatim}
 
 \title{CSRF}
-\assignmentno{6}
+\assignmentno{1}
 
-\date{Tuesday, 4 Jun. 2014} % Abgabedatum
+\date{Tuesday, 4 Jun. 2014}
 
 \begin{document}
 \maketitle
 
+
+\section*{Structure}
+To structure the assignments:
+
+\begin{tabular}{{l}{l}}
+10.00-10.30	& Assignment 1\\
+10.30-10.40	& Solution\\
+10.40-11.40	& Assignment 2\\
+11.40-12.00	& Solution\\
+\end{tabular}
+
+
+
 \task{Metasploitable}{30}
+These tasks will be executed using Metasploitable. Please start the
+application.
 
 \begin{subtask}
 \paragraph{Damn Vulnerable Web App}
@@ -24,9 +40,11 @@ Try to exploit the CSRF vulnerability available via the navigation bar
 on \href{http://192.168.1.103/dvwa/vulnerabilities/csrf/}
 	{http://192.168.1.103/dvwa/vulnerabilities/csrf/}.
 The button \texttt{View Source} might provide additional information.
-Your exploit should consist solely of HTML markup code. Once this markup
-is interpreted by a browser a HTTP request should be send by the browser
-in order to set a new password.
+Your exploit should be a HTML page containing only HTML markup code. Once 
+this markup is interpreted by a browser a HTTP request should be send by 
+the browser in order to set a new password.
+Think about which typical HTML elements execute HTTP requests in order to
+load a further resource.
 \end{subtask}
 
 \begin{subtask}
@@ -39,26 +57,78 @@ Your exploit may consist of HTML markup and JavaScript code.
 \begin{subtask}
 \paragraph{TWiki}
 Write an exploit which creates a new wiki page. To achieve this, prepare 
-a HTML page with the embedded exploit. The page should execute the exploit
-once it is opened within a browser.
+a HTML page with the embedded exploit. 
 \end{subtask}
 
 
-\task{TWiki}{30}
+\task{Advanced CSRF}{60}
+These tasks will be done using the advanced-csrf-exploitation web application.
+
 \begin{subtask}
-in conjuction with xss. scenario: token is saved in cookie and we use xss
-to read it, create the form, fill it in.
+\paragraph{Token Synchronizer Pattern}
+The site ... contains a form which has been made safe against CSRF attacks
+using the Token Synchronizer Pattern.
+Since the server does not hold any state, the pattern has been implemented
+in a way that state is only saved on the client using cookies. 
+Try to exploit the application in a way that when a visitor visits .../home
+he automatically votes.
+
+%two pages: vote page, home page with messages for other visitors.
+%
+%in conjuction with xss. scenario: token is saved in cookie and we use xss
+%to read it, create the form, fill it in.
 \end{subtask}
 
 \begin{subtask}
-multi step form with json on last step
+\paragraph{Token Synchronizer Pattern}
+The implementation of the Token Synchronizer Pattern has been improved.
+Find a way to still exploit the web page.
+
+\begin{comment}
+``Usually, the tokens should be some function (with a secret key - known only
+to the server; e.g., MAC) of the cookie! not the cookie.
+
+Than the flow is as follows: 1. Client sends the server request with a
+cookie. 2. Server returns a web page with CSRF token(s) for different
+purposes (e.g., forms or just a simple get requests via the URL). 3. The
+client performs some action (via POST or GET) and sends request with the
+token (in the request body or in the URL) and with the cookie. 4. The
+server is stateless, but it can verify that the request was sent by the
+same client by calculating the function (with the secret key that the
+server knows) on the cookie (or on part of it), and comparing the output
+with the token.
+
+In the case of CSRF, the cookie is automatically appended to the request by
+the browser, but the attacker (that probably even doesn't know the cookie)
+cannot add the corresponding tokens.''
+\end{comment}
+
+% a fixed token is generated.
+% xss on other page
+% create iframe to vote page and read the token
+\end{subtask}
+
+%\begin{subtask}
+%referrer check
+%The site from the previous task has been improved and now also checks the 
+%\end{subtask}
+
+\begin{subtask}
+%multi step form with json of all answers on last step
+\paragraph{Multi-Step Form}
+The site ... contains a multi-step form of a survey. Your goal is to
+prepare an exploit which will lead the browser who interprets the code
+into submitting the completed survey.
 \end{subtask}
 
 \begin{subtask}
-
-multi-step form with state on each step
-
-semi-blind
+\paragraph{Semi-Blind, Multi-Step Form}
+The site from the previous task has been improved in manners of security. 
+However, it is still exploitable.
+Develop an exploit which subsequently fills each step of the survey with 
+data and eventually submits the completed survey.
+%multi-step form with state on each step
+%semi-blind
 \end{subtask}
 
 \end{document}

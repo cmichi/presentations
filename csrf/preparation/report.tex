@@ -87,10 +87,30 @@ The main features of the developer tools, which will come handy for us, are:
 
 \paragraph{The JavaScript Console}
 Enables us to view JavaScript errors in exploits.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]
+		{./images/jsconsole.png}
+	\caption{
+		Beware: the Security level is set only temporarily as a
+		Cookie!
+	}
+	\label{fig:jsconsole}
+\end{figure}
 
 \paragraph{The Network Capturer}
 Enables us to analyze and debug the HTTP requests and replies which area
 executed by the browser.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]
+		{./images/httpcapturer.png}
+	\caption{
+		Beware: the Security level is set only temporarily as a
+		Cookie!
+	}
+	\label{fig:httpcapturer}
+\end{figure}
 
 
 %=================
@@ -101,12 +121,12 @@ to the run the services described in this section.
 
 \subsection{Metasploitable}
 We will continue to use the Metasploitable image, which has been provided 
-in the Warm-Up phase of the course. If you no longer have it at hand you
+in the warm-up phase of the course. If you no longer have it at hand you
 should download it from the 
 \href{https://moodle.uni-ulm.de/course/view.php?id=1312}{Moodle} platform
 again. 
 
-Use a software, like for example VirtualBox, to get the image running
+Use a software like for example VirtualBox, to get the image running
 as a virtual machine (vm). Configure the vm in a way that you have
 access to it over network (e.g. by configuring a Bridged Adapter within 
 VirtualBox). If network access does not work out of the box you may
@@ -122,22 +142,12 @@ vm from your host machine, e.g. if the vm runs on
 \subsection{Damn Vulnerable Web App}
 After you have completed the installation you should log into the
 application to get a feeling for the interface.
-
 Open up \href{http://192.168.1.103/dvwa}{http://192.168.1.103/dvwa}
 and login with the credentials User: \texttt{admin}, Password: 
 \textt{password}.
 Open the navigation tab
-\texttt{DVWA Security} and configure \texttt{Security Level: Low}.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.8\textwidth]
-		{./images/dvwa-security.png}
-	\caption{
-		with the Eyeborg device.
-	}
-	\label{fig:eyeborg}
-\end{figure}
+\texttt{DVWA Security} and configure \texttt{Security Level: Low} (see
+Figure \ref{fig:dvwa0}).
 
 During the assignment we will work our way through the security levels 
 \texttt{low} and \texttt{medium}. The level \texttt{high} is meant to show 
@@ -150,6 +160,16 @@ while debugging: if you e.g. log into DVWA using Chromium and configure
 in e.g. Firefox. Firefox would still be configured for the security level
 \texttt{high}.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]
+		{./images/dvwa-security.png}
+	\caption{
+		Beware: the Security level is set only temporarily as a
+		Cookie!
+	}
+	\label{fig:dvwa0}
+\end{figure}
 
 \section{Quick Checklist}
 

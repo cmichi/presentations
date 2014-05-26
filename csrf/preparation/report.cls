@@ -13,7 +13,9 @@
 \RequirePackage{listings}
 \lstset{language=java}
 
-\RequirePackage[ngerman]{babel}
+%\RequirePackage[ngerman]{babel}
+\RequirePackage[english]{babel}
+\selectlanguage{english}
 \RequirePackage[margin=2cm,a4paper]{geometry}
 
 \RequirePackage{graphicx}
