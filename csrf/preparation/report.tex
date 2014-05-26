@@ -86,28 +86,26 @@ Tools}'' (or via pressing \texttt{F12}).
 The main features of the developer tools, which will come handy for us, are: 
 
 \paragraph{The JavaScript Console}
-Enables us to view JavaScript errors in exploits.
+Enables you to view JavaScript errors and debugg your code.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]
 		{./images/jsconsole.png}
 	\caption{
-		Beware: the Security level is set only temporarily as a
-		Cookie!
+		Firebug JavaScript console.
 	}
 	\label{fig:jsconsole}
 \end{figure}
 
 \paragraph{The Network Capturer}
-Enables us to analyze and debug the HTTP requests and replies which area
+Enables you to analyze and debug the HTTP requests and replies which area
 executed by the browser.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]
 		{./images/httpcapturer.png}
 	\caption{
-		Beware: the Security level is set only temporarily as a
-		Cookie!
+		Firebug captures HTTP traffic.
 	}
 	\label{fig:httpcapturer}
 \end{figure}
@@ -139,7 +137,7 @@ vm from your host machine, e.g. if the vm runs on
 192.168.1.103 via
 \href{http://192.168.1.103/}{http://192.168.1.103/}.
 
-\subsection{Damn Vulnerable Web App}
+\subsubsection{Damn Vulnerable Web App}
 After you have completed the installation you should log into the
 application to get a feeling for the interface.
 Open up \href{http://192.168.1.103/dvwa}{http://192.168.1.103/dvwa}
@@ -165,11 +163,34 @@ in e.g. Firefox. Firefox would still be configured for the security level
 	\includegraphics[width=0.8\textwidth]
 		{./images/dvwa-security.png}
 	\caption{
-		Beware: the Security level is set only temporarily as a
+		Beware! The Security level is set only temporarily as a
 		Cookie!
 	}
 	\label{fig:dvwa0}
 \end{figure}
+
+\subsubsection{Damn Vulnerable Web App}
+The other Metasploitable service which we will examine is TWiki. If the
+Metasploitable image is running you can access it via 
+\href{http://vmip/twiki}{http://your-vm-ip/twiki/}.
+
+\subsection{advanced-csrf-exploits}
+The advanced-csrf-exploits package is a simple web application designed
+to be exploitable for CSRF/XSS attacks. Please obtain the archive from
+\href{http://.../}{http://.../}.
+You will need a WebServer with PHP support in order to run it.
+To install the package extract the package into a folder which
+is configured to contain PHP code.
+
+The easiest way is to set up a local webserver. A comfortable way is
+to use XAMPP (Mac, Windows) or LAMP (Linux). Those packages
+come with a webserver and provide pre-configured PHP support.
+
+After successful installation of a webserver point your browser to 
+\href{http://localhost/advanced-csrf-exploits/index.php}
+	{http://localhost/advanced-csrf-exploits/index.php}. You should
+see a webpage similar to the one in Figure \ref{fig:ace} 
+there (todo: add figure).
 
 \section{Quick Checklist}
 
@@ -179,15 +200,17 @@ HTTP, HTML, the DOM, JavaScript.
 
 \paragraph{You should bring}
 \ \\
-A laptop. Configured to run the Metasploitable image. Damn 
-Vulnerable Web App should also be installed.
+A laptop. Configured to run the Metasploitable virtual machine. The
+advanced-csrf-exploits web application should be running as well.
 
 \paragraph{You should have played with}
 \ \\
-A Web Developer Tool.
+A tool to capture HTTP requests by the browser and a JavaScript console,
+which displays you errors and enables debugging.
 
 \paragraph{You should be willing}
-to enjoy learning something new and nibble on puzzles.
+\ \\
+To enjoy learning something new and nibble on puzzles.
 
 \center
 \ \\
