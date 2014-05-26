@@ -1,302 +1,64 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass{./handout}
 
-\title{Javascript}
+\usepackage{hyperref}
+
+\title{CSRF}
 \assignmentno{6}
 
-\date{Tuesday, 31 Jan. 2012, 23:59} % Abgabedatum
+\date{Tuesday, 4 Jun. 2014} % Abgabedatum
 
 \begin{document}
 \maketitle
 
-\task{Javascript Basics}{8}
-
-%\begin{subtask}
-%What is Ajax? What is the difference between synchronous and asynchronous requests?
-%\end{subtask}
+\task{Metasploitable}{30}
 
 \begin{subtask}
-A desperate student asks for your help. Fix the code and make sure that it produces the output ''[Hello, World]".
-\begin{lstlisting}
-function Object(){
-	this.elements = new Array("hello","bad","world");
-	this.delete(index){
-		delete this.elements[index];
-	}
-}
-var o = new Object();
-o.delete(1);
-alert(o.elements);
-\end{lstlisting}
-\end{subtask}
+\paragraph{Damn Vulnerable Web App}
+Direct your browser to the IP-address of the Metasploitable image,
+e.g. \href{http://192.168.1.103/dvwa}{http://192.168.1.103/dvwa}. 
+Configure Security Level \texttt{low} as described in the preparation 
+document.
 
-%\begin{subtask}
-%How is inheritance realized in Javascript? Provide an example.
-%\end{subtask}
-
-\begin{subtask}
-Call the following script in such away that "800 600" is displayed in the dialog without changing the function.
-\begin{lstlisting}
-function byName(args){
-	alert(args.x+" "+args.y);
-}
-\end{lstlisting}
+Try to exploit the CSRF vulnerability available via the navigation bar
+on \href{http://192.168.1.103/dvwa/vulnerabilities/csrf/}
+	{http://192.168.1.103/dvwa/vulnerabilities/csrf/}.
+The button \texttt{View Source} might provide additional information.
+Your exploit should consist solely of HTML markup code. Once this markup
+is interpreted by a browser a HTTP request should be send by the browser
+in order to set a new password.
 \end{subtask}
 
 \begin{subtask}
-Javascript supports closures. Shortly explain the concept of closures. How are closures managed in memory?
+\paragraph{Damn Vulnerable Web App}
+Configure Security Level \texttt{medium} and try to exploit the hardened 
+CSRF vulnerability.
+Your exploit may consist of HTML markup and JavaScript code.
 \end{subtask}
 
 \begin{subtask}
-What is the output of the follow script? Why?
-\begin{lstlisting}
-alert("1" == 1);
-alert("1" === 1);
-alert(1 === 1);
-alert("1" !== 1);
-\end{lstlisting}
+\paragraph{TWiki}
+Write an exploit which creates a new wiki page. To achieve this, prepare 
+a HTML page with the embedded exploit. The page should execute the exploit
+once it is opened within a browser.
+\end{subtask}
+
+
+\task{TWiki}{30}
+\begin{subtask}
+in conjuction with xss. scenario: token is saved in cookie and we use xss
+to read it, create the form, fill it in.
 \end{subtask}
 
 \begin{subtask}
-Name at least two alternative ways of calling the method \texttt{o.m} without resetting the counter \texttt{cnt}.
-% o.m.call(o);
-% o.m.apply(o);
-% o["m"]();
-\begin{lstlisting}
-function Object(){
-	this.cnt=0;
-	this.m=function(){
-		alert("hello world: "+this.cnt);
-		this.cnt++;
-	}
-} 
-var o = new Object();
-o.m();
-\end{lstlisting}
+multi step form with json on last step
 \end{subtask}
 
 \begin{subtask}
-What is the difference between declaring variables with \texttt{var} and \texttt{let}?
+
+multi-step form with state on each step
+
+semi-blind
 \end{subtask}
-
-\begin{subtask}
-In Javascript the \texttt{this} statement  behaves different from other programming languages such as Java. Explain the difference.
-
-The function \texttt{setTimeout(c,t)} calls a callback method \texttt{c} after $t/1000$s. Change the callback in the last line to output "hello" (from top.greeting!) after 1s.
-%setTimeout(function(){
-%	top.greet();
-%},100);
-\begin{lstlisting}
-function ThisObjectProblem(){
-	this.greeting = "hello";
-	this.greet = function(){
-		alert(this.greeting);
-	}
-}
-var top = new ThisObjectProblem();
-setTimeout(top.greet,1000);
-\end{lstlisting}
-\end{subtask}
-
-\begin{subtask}
-Convert the following object to a JSON string. Leave out attributes which cannot be represented in JSON.
-% {"a":"hello","b":[1,2,3],"d":{"prop1":"web","prop2":"engineering"}}
- \begin{lstlisting}
-function JSONObj(){
-	this.a="hello";
-	this.b =[1,2,3];
-	this.c = function(){
-		alert(2);
-	}
-	this.d = new Object();
-	this.d.prop1 = "web";
-	this.d["prop2"] = "engineering";
-}
-
-\end{lstlisting}
-\end{subtask}
-
-\pagebreak
-\task{Event System}{2+4+6}
-
-Javascript supports callback methods. They are frequently used in libraries, e.g. jQuery. One use case for callbacks is registering a callback method for an event and then react to it. The goal of this task is the implementation of such an event system in Javascript.
-To make this task a little bit more \emph{educative}, you have to implement it object oriented with inheritance.
-
-\begin{subtask}
-First, familiarize yourself with inheritance in Javascript by implementing a class \texttt{ArrayWrapper} that contains an empty array and one method that returns the size of the array.
-\end{subtask}
-
-\begin{subtask}
-Now, implement a class \texttt{EventSystem} that inherits from \texttt{ArrayWrapper}. The new class should provide the following functionality:
-\begin{itemize}
-	\item Provide a Singleton instance of \texttt{EventSystem}.
-	Also provide a static variable \texttt{EventSystem.instance} to access the Singleton instance-object.
-	\item Register events with \texttt{EventSystem.instance.on(EventString,callback)}. It should be possible to register multiple callback methods for the same event.
-	\item Deregister events with \texttt{EventSystem.instance.remove(EventString)}.
-	Here it will suffice when all registered events  on the particular String will be removed.
-	\item Firing events with \texttt{EventSystem.instance.emit(EventString)}. An exception should be thrown if the specified event does not exist.
-\end{itemize}
-\end{subtask}
-
-%
-%//TODO Implement:
-%
-%
-%function ArrayWrapper(){
-%	this.array=[]
-%	
-%	this.getSize=function(){
-%		return this.array.length;
-%	}
-%}
-%
-%function EventSystem(){
-%	
-%	this.on = function(event,function_){
-%		if (this.array[event] == undefined){
-%			this.array[event] = [];
-%		}
-%		this.array[event].push(function_);	
-%	
-%	}
-%	
-%	this.emit = function(event,args){
-%		if (this.array[event]==undefined){
-%			throw "No callback found";
-%		}
-%		for (callback in this.array[event]){
-%			this.array[event][callback].apply(this.array[event][callback],args);
-%		}
-%		
-%	}
-%	
-%	this.remove = function(event){
-%		var index = this.array.indexOf(event);
-%		this.array=this.array.splice(index,1);
-%	}
-%}
-%
-%
-%EventSystem.prototype = new ArrayWrapper();
-%EventSystem.prototype.constructor = EventSystem;
-%
-%EventSystem.instance = new EventSystem();
-
-
-\begin{subtask}
-Implement a horse racing game to test your event system. You can use the provided HTML template or create your own consisting of a start/reset button and two "horses", e.g., represented by images. In addition, two status fields show what the horses are doing (ready, running, finished). The user can bet on a specific horse by toggling a radio button. On pressing start the horses race across the screen and the user is informed if he has won or lost.
-
-Implement the following features:
-\begin{itemize}
-	\item When pressing the start button, the function \texttt{animations\_start} is called and the button text is changed to "reset".
-	\item When pressing the reset button, the function  \texttt{animations\_reset} is called and the button text is changed to "start".
-	\item \texttt{animations\_start} lets the horses run, i.e., they are moved over the screen from left to right. The finish line are the coordinates \texttt{left:500px}. A horse should need 3-6s to cover the distance. There should never be a tie between the two horses (just to keep it simple).
-	\item Once both horses reached the finish line, the user is informed if his horse won or lost.
-	\item \texttt{animations\_reset} returns the horses to the start of the race track.
-	\item The status fields should register for events at the horses, they should not be coupled with the animations functions.
-	\item Each horse submits an event when it starts running, when it reached the finish line and when it is ready to run again (after reset).
-\end{itemize}
-You can use the jQuery (1.7) library for your game (\url{http://jquery.com}).
-\end{subtask}
-%var winner = null;
-%var finished=0;
-%$(document).ready(function(){
-%	
-%	//text
-%	EventSystem.instance.on("anim1",function(){
-%		$("#status_1").text("done");
-%	});
-%	EventSystem.instance.on("anim2",function(){
-%		$("#status_2").text("done");
-%	});
-%	EventSystem.instance.on("reset",function(){
-%		$("#status_1").text("stopped");
-%		$("#status_2").text("stopped");
-%	});
-%	EventSystem.instance.on("start",function(){
-%		$("#status_1").text("running");
-%		$("#status_2").text("running");
-%	});
-%	
-%	//ctrl
-%	$("#ctrl").click(function(){
-%		if ($(this).text()=="start"){
-%			$(this).text("reset");
-%			animations_start();
-%		}else{
-%			$(this).text("start");
-%			animations_reset();
-%		}
-%		
-%	});
-%	
-%	//winner
-%	EventSystem.instance.on("anim1",function(){
-%		if (winner == null){
-%			winner = 1;
-%		}
-%		finished+=1;
-%		if (finished>1){
-%			finish();
-%		}
-%	});
-%	EventSystem.instance.on("anim2",function(){
-%		if (winner == null){
-%			winner = 2;
-%		}
-%		finished+=1;
-%		if (finished>1){
-%			finish();
-%		}
-%	});
-%});
-%
-%function getRandom(start,stop){
-%	return Math.floor(Math.random()*((stop-start)*1000))+start*1000
-%}
-%function animations_start(){
-%	var h1 = getRandom(2,6);
-%
-%	var h2 = getRandom(2,6);
-%	while (h2==h1){
-%		h2 += 500;
-%	}
-%	EventSystem.instance.emit("start");
-%	$("#animation1").animate({left:500},h1,function(){
-%		EventSystem.instance.emit("anim1");
-%	});
-%
-%	$("#animation2").animate({left:500},h2,function(){
-%		EventSystem.instance.emit("anim2");
-%	});
-%}
-%function animations_reset(){
-%	$("#animation1").css({left:30});
-%	$("#animation2").css({left:30});
-%	winner=null;
-%	finished=0;
-%	EventSystem.instance.emit("reset");
-%	
-%}
-%function finish(){
-%	var s1="you lose";
-%	var s2="you win";
-%	var a1;
-%	var a2;
-%	if (winner==1){
-%		a1=s1;
-%		a2=s2;
-%	}else{
-%		a1=s2;
-%		a2=s1;
-%	}
-%	if ($("#rd1:checked").length==0){
-%		alert(a1);
-%	}else{
-%		alert(a2);	
-%	}	
-%		
-%}
-
 
 \end{document}

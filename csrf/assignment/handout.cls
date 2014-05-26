@@ -9,6 +9,9 @@
 \RequirePackage[utf8]{inputenc}
 
 \usepackage{cfr-lm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
 
 \RequirePackage{listings}
 \lstset{language=java}
@@ -16,18 +19,22 @@
 % \RequirePackage{tikz}
 
 %\RequirePackage[ngerman]{babel}
+\RequirePackage[english]{babel}
+\selectlanguage{english}
+
 \RequirePackage[margin=2cm,a4paper]{geometry}
 
 \RequirePackage{graphicx}
 \graphicspath{{./}{../}{images/}}
 
-\RequirePackage[pdftex,
-	unicode=true,
-	breaklinks=true,
-	colorlinks=true,
-	linkcolor=black,
-	citecolor=black,
-	urlcolor=black]{hyperref}
+%\RequirePackage[pdftex,
+	%unicode=true,
+	%breaklinks=true,
+	%colorlinks=true,
+	%linkcolor=black,
+	%citecolor=black,
+	%urlcolor=black]{hyperref}
+%\RequirePackage{hyperref}
 
 \renewcommand{\baselinestretch}{1.1}
 \setlength{\parindent}{0pt}
@@ -78,7 +85,7 @@
                       % springen und subtask counter resetted werden.
 \addpenalty{\@secpenalty}%
 \addvspace{25pt}
-{\Large \textbf{Exercise \arabic{task}: #1}}\hfill{\normalsize #2 points}%
+{\Large \textbf{Exercise \arabic{task}: #1}}\hfill{\normalsize ca. #2 minutes}%
 \addcontentsline{toc}{section}{A\arabic{task}: #1}
 \par
 \addvspace{5pt}
