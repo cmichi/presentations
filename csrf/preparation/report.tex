@@ -99,30 +99,45 @@ executed by the browser.
 To carry out the assignments you need to bring your own laptop configured
 to the run the services described in this section.
 
+\subsection{Metasploitable}
+We will continue to use the Metasploitable image, which has been provided 
+in the Warm-Up phase of the course. If you no longer have it at hand you
+should download it from the 
+\href{https://moodle.uni-ulm.de/course/view.php?id=1312}{Moodle} platform
+again. 
+
+Use a software, like for example VirtualBox, to get the image running
+as a virtual machine (vm). Configure the vm in a way that you have
+access to it over network (e.g. by configuring a Bridged Adapter within 
+VirtualBox). If network access does not work out of the box you may
+have to log into Metasploitable (User: \texttt{msfadmin}, Password:
+\texttt{msfadmin}) and execute ``\texttt{\$ sudo dhclient eth0}'' in order
+to obtain an IP address.
+
+If everything worked you should be able to access the web server of the
+vm from your host machine, e.g. if the vm runs on
+192.168.1.103 via
+\href{http://192.168.1.103/}{http://192.168.1.103/}.
+
 \subsection{Damn Vulnerable Web App}
-\subsubsection{Installation}
-For the assignments we will use the Damn Vulnerable Web App (\textsc{DVWA}).
-Download the package from \href{http://www.dvwa.co.uk/}{the website} and 
-install it on your local machine. You will need a WebServer with PHP support 
-and MySQL. To install the package extract the project into a folder which
-is configured to contain PHP code and point your browser to 
-\href{http://localhost/dvwa/index.php}{http://localhost/dvwa/index.php}.
-
-The documentation advises against installing \textsc{DVWA} on a server/hosting 
-provider with internet access. This may compromise other services on the same 
-machine.
-The better way is to set up a local webserver. The easiest way to do so
-is probably to use XAMPP (Mac, Windows) or LAMP (Linux). Those packages
-come with a webserver, pre-configured PHP support and MySQL.
-
-\subsubsection{Configuration}
 After you have completed the installation you should log into the
 application to get a feeling for the interface.
 
-Open up \url{http://localhost/dvwa} and login with the credentials
-User: \texttt{admin}, Password: \textt{password}.
+Open up \href{http://192.168.1.103/dvwa}{http://192.168.1.103/dvwa}
+and login with the credentials User: \texttt{admin}, Password: 
+\textt{password}.
 Open the navigation tab
 \texttt{DVWA Security} and configure \texttt{Security Level: Low}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]
+		{./images/dvwa-security.png}
+	\caption{
+		with the Eyeborg device.
+	}
+	\label{fig:eyeborg}
+\end{figure}
 
 During the assignment we will work our way through the security levels 
 \texttt{low} and \texttt{medium}. The level \texttt{high} is meant to show 
@@ -151,5 +166,11 @@ Vulnerable Web App should also be installed.
 \ \\
 A Web Developer Tool.
 
+\paragraph{You should be willing}
+to enjoy learning something new and nibble on puzzles.
+
+\center
+\ \\
+\texttt{-> happy hacking :] <-}
 
 \end{document}

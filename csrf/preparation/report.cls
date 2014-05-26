@@ -38,12 +38,12 @@
 \begin{titlepage}
 	\thispagestyle{empty}
   \begin{minipage}[t]{1.0\textwidth}
-	\includegraphics[scale=0.23]{images/vs-logo-color.pdf}
+	\includegraphics[scale=0.17]{images/uulm.pdf}
   \end{minipage}
   \begin{minipage}[t]{1.0\textwidth}
-  \vspace{-2cm}
+  \vspace{-1.7cm}
 	\hfill
-	\includegraphics[scale=0.17]{images/uulm.pdf}
+	\includegraphics[scale=0.23]{images/vs-logo-color.pdf}
   \end{minipage}
 
  \begin{minipage}{\textwidth}
