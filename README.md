@@ -37,15 +37,6 @@ University of Ulm, 8.7.2013
 ---
 
 
----
-
-**Typography**  
-Seminar presentation on Erlang/OTP for the course
-*Research Trends in Distributed Systems*.  
-University of Ulm, 3.2.2014  
-[View the slides](http://cmichi.github.io/talks/erlang-otp)
-
----
 # License
 
 The presentations are licensed under 
