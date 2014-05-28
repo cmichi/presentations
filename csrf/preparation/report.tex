@@ -78,9 +78,10 @@ Host: google.com
 
 We aim to exploit several services in the assignments. Most of the exploits
 will be written in HTML in conjuction with JavaScript. For this purpose it
-comes handy if you are familiar with the developer tool of some browser.
-Most modern browsers come with some kind of developer tools. Check the
-corresponding manual or install a fitting plugin like FireBug (for Firefox). 
+comes handy if you are familiar with the developer tool of your favorite 
+browser.
+Most modern browsers come with some kind of developer tool. Check the
+corresponding manual or install a fitting plugin like Firebug (for Firefox). 
 For Chromium the developer tools are accessible via ``\emph{Tools > Developer 
 Tools}'' (or via pressing \texttt{F12}).
 The main features of the developer tools, which will come handy for us, are: 
@@ -98,8 +99,11 @@ Enables you to view JavaScript errors and debugg your code.
 \end{figure}
 
 \paragraph{The Network Capturer}
-Enables you to analyze and debug the HTTP requests and replies which area
-executed by the browser.
+Enables you to analyze and debug HTTP requests/replies which are send/received 
+by the browser. Of course, you can also use Wireshark or similar tools to as
+means to capture HTTP traffic. From my experience however it comes handy to
+use the builtin browser functions, since they oftentimes are nicely
+integrated and fit well with the HTML/JavaScript development workflow.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]
@@ -109,6 +113,19 @@ executed by the browser.
 	}
 	\label{fig:httpcapturer}
 \end{figure}
+
+\begin{comment}
+\paragraph{Disabling the Cache}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]
+		{./images/httpcapturer.png}
+	\caption{
+		Firebug captures HTTP traffic.
+	}
+	\label{fig:httpcapturer}
+\end{figure}
+\end{comment}
 
 
 %=================
@@ -120,15 +137,15 @@ to the run the services described in this section.
 \subsection{Metasploitable}
 We will continue to use the Metasploitable image, which has been provided 
 in the warm-up phase of the course. If you no longer have it at hand you
-should download it from the 
+could download it from the 
 \href{https://moodle.uni-ulm.de/course/view.php?id=1312}{Moodle} platform
 again. 
 
-Use a software like for example VirtualBox, to get the image running
-as a virtual machine (vm). Configure the vm in a way that you have
-access to it over network (e.g. by configuring a Bridged Adapter within 
-VirtualBox). If network access does not work out of the box you may
-have to log into Metasploitable (User: \texttt{msfadmin}, Password:
+Use a software  to get the image running as a virtual machine (vm). 
+The VirtualBox software works well, for example. Configure the vm in a way 
+that you have access to it over network (e.g. by configuring a Bridged 
+Adapter within VirtualBox). If network access does not work out of the box 
+you may have to log into Metasploitable (User: \texttt{msfadmin}, Password:
 \texttt{msfadmin}) and execute ``\texttt{\$ sudo dhclient eth0}'' in order
 to obtain an IP address.
 
@@ -138,10 +155,11 @@ vm from your host machine, e.g. if the vm runs on
 \href{http://192.168.1.103/}{http://192.168.1.103/}.
 
 \subsubsection{Damn Vulnerable Web App}
-After you have completed the installation you should log into the
-application to get a feeling for the interface.
-Open up \href{http://192.168.1.103/dvwa}{http://192.168.1.103/dvwa}
-and login with the credentials User: \texttt{admin}, Password: 
+If you have not already done so in the warm-up phase of the course,
+you should now log into the web application to get a feeling for the 
+interface.
+Open up \href{http://metasploitable-vm-ip/dvwa}{http://metasploitable-vm-ip/dvwa}
+and log-in with the credentials User: \texttt{admin}, Password: 
 \textt{password}.
 Open the navigation tab
 \texttt{DVWA Security} and configure \texttt{Security Level: Low} (see
@@ -154,7 +172,7 @@ the state of the art best-practice solution. It is not meant to be cracked.\\
 \textbf{Note:} The security level, which you configure is saved as a cookie 
 value. The default value is \texttt{high}. This might lead to problems
 while debugging: if you e.g. log into DVWA using Chromium and configure
-\texttt{low} you should also run your exploit in Chromium and not 
+\texttt{low} you should also run your exploits in Chromium and not 
 in e.g. Firefox. Firefox would still be configured for the security level
 \texttt{high}.
 
@@ -163,7 +181,7 @@ in e.g. Firefox. Firefox would still be configured for the security level
 	\includegraphics[width=0.8\textwidth]
 		{./images/dvwa-security.png}
 	\caption{
-		Beware! The Security level is set only temporarily as a
+		Beware! The security level is set only temporarily as a
 		Cookie!
 	}
 	\label{fig:dvwa0}
@@ -172,10 +190,10 @@ in e.g. Firefox. Firefox would still be configured for the security level
 \subsubsection{Damn Vulnerable Web App}
 The other Metasploitable service which we will examine is TWiki. If the
 Metasploitable image is running you can access it via 
-\href{http://vmip/twiki}{http://your-vm-ip/twiki/}.
+\href{http://metasploitable-vm-ip/twiki}{http://metasploitable-vm-ip/twiki/}.
 
 \subsection{advanced-csrf-exploits}
-The advanced-csrf-exploits package is a simple web application designed
+The \texttt{advanced-csrf-exploits} package is a simple web application designed
 to be exploitable for CSRF/XSS attacks. Please obtain the archive from
 \href{http://.../}{http://.../}.
 You will need a WebServer with PHP support in order to run it.
@@ -197,11 +215,17 @@ there (todo: add figure).
 \paragraph{You should bring a basic understanding of}
 \ \\
 HTTP, HTML, the DOM, JavaScript.
+We won't dive deep into markup or language subtleties, but you should have
+a basic understanding. 
+For the assignments it would be a pity if you would spent a lot of effort
+into fiddling on syntax particularities, so don't be afraid to ask me
+if you get stuck.
 
 \paragraph{You should bring}
 \ \\
 A laptop. Configured to run the Metasploitable virtual machine. The
-advanced-csrf-exploits web application should be running as well.
+advanced-csrf-exploits web application should be running as well 
+(requires PHP and MySQL).
 
 \paragraph{You should have played with}
 \ \\
