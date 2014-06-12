@@ -3,7 +3,7 @@
 I will try to update this list with talks I will give in the future. 
 If you are looking for a presentation I did, but can't find it here,
 it could possibly be over at the [UlmApi/talks](https://github.com/UlmApi/talks)
-respository.
+respository.  
 <br>
 
 ---
@@ -55,6 +55,5 @@ University of Ulm, 8.7.2013
 
 # License
 
-The presentations are licensed under 
-[Creative Commons Attribution 3.0 Unported (CC BY 3.0)](http://creativecommons.org/licenses/by/3.0).
-
+For licensing information please see the notes in the presentations
+themselves (usually on the last slide). I usually license them under CC-BY.
