@@ -4,12 +4,12 @@ I will try to update this list with talks I will give in the future.
 If you are looking for a presentation I did, but can't find it here,
 it could possibly be over at the [UlmApi/talks](https://github.com/UlmApi/talks)
 respository.
-
+<br>
 
 ---
 
 **Cross-Site Request Forgery (CSRF)**  
-Talk and assignments within the course [Practial IT-Security (PSEC)](http://www.uni-ulm.de/in/vs/teach/pssec.html).  
+Talk and assignments as part of the course [Practial IT-Security (PSEC)](http://www.uni-ulm.de/in/vs/teach/pssec.html).  
 University of Ulm, 4. June, 2014  
 [View the slides](http://cmichi.github.io/talks/csrf/talk)  
 [View the preparation document](http://cmichi.github.io/talks/csrf/preparation/report.pdf)  
