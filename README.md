@@ -37,6 +37,21 @@ University of Ulm, 8.7.2013
 ---
 
 
+---
+
+**Cross-Site Request Forgery (CSRF)**  
+Talk within the course Practial IT-Security (PSEC) at the University Ulm.
+University of Ulm, 4. June, 2014  
+[View the slides](http://cmichi.github.io/talks/csrf/talk)
+[View the preparation document](http://cmichi.github.io/talks/csrf/preparation/report.pdf)
+[View the assignments document](http://cmichi.github.io/talks/csrf/assignment/handout.pdf)
+[The advanced-csrf.zip file, necessary for Part 2 of the assignments](http://cmichi.github.io/talks/csrf/advanced-csrf.zip)
+
+[Solutions Assignments, Part 1](http://cmichi.github.io/talks/csrf/advanced-csrf-solutions/presentation1/)
+[Solutions Assignments, Part 2](http://cmichi.github.io/talks/csrf/advanced-csrf-solutions/presentation2/)
+---
+
+
 # License
 
 The presentations are licensed under 
