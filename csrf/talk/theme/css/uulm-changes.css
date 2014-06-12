@@ -12,7 +12,7 @@ pre.questions {
       font-size:1.6em;
       padding-top:60px;
       margin-top:50px;
-      left:4px;
+      left:0px;
       height:140px;
       text-align:center;
 }
@@ -59,3 +59,27 @@ footer.white a {
 slides > slide > article:only-child > iframe {
 	height: 90% !important;
 }
+
+em {
+  color: #A32638;
+  font-style:italic;
+}
+
+.nodisc:before {
+	content: "" !important;
+}
+.nodisc {
+	content: "" !important;
+}
+
+.strikeout {
+    position: relative;
+    }
+    .strikeout::after {
+	border-bottom: 5px solid red;
+	    content: "";
+		left: 0;
+		    position: absolute;
+			right: 0;
+			    top: 50%;
+			    }

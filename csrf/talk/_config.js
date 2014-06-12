@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Cross-Site Request Forgery',
-    subtitle: 'Practical IT-Security',
+    title: 'node.js',
+    subtitle: 'Web-Engineering WS13/14',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
@@ -17,13 +17,16 @@ var SLIDE_CONFIG = {
       'Open Sans:regular,semibold,italic,italicsemibold',
       'Source Code Pro'
     ],
-    theme: ['default', 'uulm-changes'], // Add your own custom themes or styles in /theme/css. Leave off the .css extension.
+    //theme: ['mytheme'], // Add your own custom themes or styles in /theme/css. Leave off the .css extension.
   },
 
   // Author information
   presenters: [{
-    name: 'Michael M&uuml;ller',
-    company: 'Ulm University'
+	name: 'Michael Müller',
+	company: 'Universität Ulm',
+	twitter: '@cmichi',
+	www: 'http://micha.elmueller.net',
+	github: 'http://github.com/cmichi'
   }/*, {
     name: 'Second Name',
     company: 'Job Title, Google',

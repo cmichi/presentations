@@ -45,7 +45,7 @@
   \begin{minipage}[t]{1.0\textwidth}
   \vspace{-1.7cm}
 	\hfill
-	\includegraphics[scale=0.23]{images/vs-logo-color.pdf}
+	\includegraphics[scale=0.23]{images/vs-logo-color-en.pdf}
   \end{minipage}
 
  \begin{minipage}{\textwidth}

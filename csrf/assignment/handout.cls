@@ -57,7 +57,7 @@
 	%\includegraphics[scale=0.17]{uulm-logo}
 	\vspace{-1.7cm}
 	\hfill
-	\includegraphics[scale=0.25]{vs-logo-color}
+	\includegraphics[scale=0.25]{vs-logo-color-en}
   \end{minipage}
 
   \ \\
