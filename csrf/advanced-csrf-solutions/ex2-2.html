@@ -1,0 +1,8 @@
+<script type="text/javascript">
+function foo() { 
+        $("#ifr").contents().find("select option[value=banana]").attr("selected",true); 
+	$("#ifr").contents().find("form").submit();
+}
+</script>
+
+<iframe onload="javascript:foo()" id="ifr" src="./vote.php"></iframe>

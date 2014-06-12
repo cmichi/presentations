@@ -1,0 +1,70 @@
+body {
+	font-family: "Lucida Sans Unicode","Lucida Grande","Trebuchet MS",Helvetica,Arial,sans-serif;
+	font-size: 1em;
+	background:#ffe345;
+}
+
+h1 {
+	margin:0px;
+	color:#ffa800;
+}
+
+h2 {
+	margin:0px;
+	color:#603b00;
+}
+
+ul {
+	margin:0px;
+	padding:0px;
+}
+
+#login {
+	position:absolute;
+	right:10%;
+	top:10%;
+}
+
+.chat {
+	border: 1px solid black;
+}
+
+#last-msgs li {
+	/ * display:inline; 
+	list-style: none; */
+	margin-right:10px;
+}
+
+.suche {
+	float:left;
+	margin-right:150px;
+}
+.login {
+	margin-right:10px;
+	float:left;
+}
+
+.produkte {
+	float:left;
+	clear:both;
+	margin-top:25px;
+}
+
+.product {
+	width:700px;
+	float:left;
+	clear:both;
+	border:1px solid #e79902;
+	padding:10px;
+	margin-bottom:20px;
+}
+
+.product img {
+	width: 200px;
+	border:1px solid #e79902;
+	margin-right:15px;
+}
+
+.product h4 {
+	
+}

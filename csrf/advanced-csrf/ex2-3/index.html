@@ -1,0 +1,51 @@
+<h1>Super-Great Online Magazine</h1>
+
+<div id="step1">
+	<h2>Step 1</h2>
+	<h3>What do you want to subscribe to?</h3>
+
+	<select id="subscribe_to">
+		<option value="weekly_newsletter">Weekly newsletter</option>
+		<option value="daily_newsletter">Daily newsletter</option>
+	</select>
+
+	<p>
+		<button onclick="javascript:nextStep();">Go to next step</button>
+	</p>
+</div>
+
+<div id="step2" style="display:none;">
+	<h2>Step 2</h2>
+	<h3>What is your e-mail address?</h3>
+
+	<input type="text" id="mail" />
+
+	<p>
+		<button onclick="javascript:subscribeMe();">Subscribe me!</button>
+	</p>
+</div>
+
+<div id="step3" style="display:none;">
+	<h2 id="success"></h2>
+</div>
+
+
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+function nextStep() {
+	document.getElementById('step1').style.display = 'none';
+	document.getElementById('step2').style.display = 'block';
+}
+
+function subscribeMe() {
+	var obj = {};
+	obj.subscribe_to = document.getElementById("subscribe_to").value;
+	obj.mail = document.getElementById("mail").value;
+
+	jQuery.post('./subscribe.php', JSON.stringify(obj), function(response) {
+		document.getElementById('step2').style.display = 'none';
+		document.getElementById('step3').style.display = 'block';
+		document.getElementById('success').innerHTML = response;
+	});
+}
+</script>
