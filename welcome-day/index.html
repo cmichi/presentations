@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="hidden logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue">
+  <!--
+  <slide class="title-slide segue thank-you-slide">
+    <aside class="gdbar"><img src="images/slide-institute/uulm-128.png"></aside>
+  -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 style="color:#555 !important" data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/uni.jpg);background-position:center top;">
+	<footer class="source" style="color:white;bottom:15px !important;left:600px !important;">
+		source: http://www.noise-online.de/lifestyle/campus/wohin-zum-studium/
+	</footer>
+  </slide>
+
+  <slide class="">
+    <hgroup>
+      <h2>
+      </h2>
+    </hgroup>
+    <article class="">
+	<center>
+	<div style="margin-left:70px;">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/ma.png" alt="Graph" title="Description">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/code.png" alt="Graph" title="Description">
+	</div>
+	</center>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/sa.jpg);background-position:center bottom;">
+	<footer class="source" style="color:white">
+		Cusco / Peru
+	</footer>
+  </slide>
+
+  <slide>
+    <article class="flexbox">
+	<table style="border:none; margin-top:80px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="290" src="images/nh0.jpeg">
+				&nbsp;
+			</td>
+			<td style="text-align:center;">
+				<img width="290" src="images/nh1.jpeg">
+				&nbsp;
+			</td>
+			<td style="text-align:center;">
+				<img width="290" src="images/nh2.jpeg">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+	<div class="source reference">
+		re:publica 2013 - Neil Harbisson, Moon Ribas: <em>Life with extra
+		Senses &ndash; How to become a Cyborg.</em>
+		<a href="https://www.youtube.com/watch?v=6hUg48vf0QI">
+			https://www.youtube.com/watch?v=6hUg48vf0QI
+		</a>
+	</div>
+    </article>
+  </slide>
+
+
+  <slide class="nobackground" style="background:white;">
+	<article style="text-align:center;padding-top:110px;">
+		<img src="images/instances.png" style="width:900px;height:auto;"  />
+	</article>
+  </slide>
+
+  <slide class="">
+    <hgroup>
+      <h2>
+      </h2>
+    </hgroup>
+    <article class="">
+	<center>
+	<div style="margin-left:70px;">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/logo.jpg" alt="Graph" title="Description">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/ubi-title.png" alt="Graph" title="Description">
+	</div>
+	</center>
+    </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/armband.jpg);background-position:bottom;">
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/IMG_9119.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="">
+    <article class="">
+	<table style="border:none; margin-top:-20px;margin-left:10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="250" src="images/armband-large.jpg" style="margin-bottom:7px"><br/>
+			<!--
+			<img height="250" src="images/vib_proto.jpg" style="margin-bottom:7px"><br/>
+			-->
+			<h4><span class="uni-red">Vibration</span></h4>
+		</td>
+		<td width="40">
+			&nbsp;&nbsp;&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="250" src="images/servos.jpg" style="margin-bottom:7px"><br/>
+			<h4><span style="font-weight:600;" class="uni-red">Pressure</span></h4>
+		</td>
+	</tr>
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="250" src="images/temp_proto.jpg" style="margin-bottom:7px"><br/>
+			<h4><span class="uni-red">Temperature</span></h4>
+		</td>
+		<td width="40">
+			&nbsp;&nbsp;&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="250" src="images/electro.jpg" style="margin-bottom:7px"><br/>
+			<h4><span  style="font-weight:600;"class="uni-red">Electrical Stimulation</span></h4>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <slide class="">
+    <article class="flexbox">
+	<table style="border:none; margin-top:-5px;margin-left:-10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/start.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/navigation.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="">
+	<table style="border:none; margin-top:-10px;margin-left:20px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="530" src="images/hideandseek.png">
+			&nbsp;<br/><br/>
+			<h4><span class="uni-red">&ldquo;Hide And Seek&rdquo; App</span></h4>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="">
+	<table style="border:none; margin-top:-10px;margin-left:20px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="530" src="images/ifeelyou.png">
+			&nbsp;<br/><br/>
+			<h4><span style="font-weight:600;" class="uni-red">&ldquo;I Feel You&rdquo; App</span></h4>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/kate-study.jpg);background-position:center top;">
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
+SELECT * FROM `questions`;
+      </pre>
+    </article>
+  </slide>
+
+  <slide class="hidden thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/slide-institute/uulm-128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank you!</h2>
+      <p>&nbsp;</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+  <slide class="hidden nobackground" style="background:white;">
+	<article class="flexbox vcenter">
+		<img src="images/bild3.png" style="height:600px;width:auto;"  />
+	</article>
+  </slide>
+
+
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/armband-large.jpg);background-position:bottom;">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/aufbau.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/electro-stimulation.jpg)">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/reverse-engineering.jpg);background-position:center center;">
+  </slide>
+
+  <slide class=" fill nobackground" style="background-image: url(images/platine2.png);background-position:center center;">
+  </slide>
+
+  <slide class=" fill nobackground" style="background-image: url(images/P1020391.jpg);background-position:center center;">
+  </slide>
+
+
+
+  <slide class=" nobackground" style="background:white;">
+	<article style="text-align:center;padding-top:110px;">
+		<img src="images/instances-labeled.png" style="width:900px;height:auto;"  />
+	</article>
+  </slide>
+
+  <slide class=" nobackground" style="background:white;">
+	<article style="text-align:center;">
+		<img src="images/bild4.png" style="height:620px;" />
+	</article>
+  </slide>
+
+
+  <slide class=" fill nobackground" style="background-image: url(images/IMG_9159_small.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/peltier.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden">
+    <article class="flexbox">
+	<table style="border:none; margin-top:5px;margin-left:10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/app.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/hideandseek.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/arm.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden fill" style="">
+    <article class="flexbox vcenter">
+      <img src="images/screen-drawer.png" alt="" title="" height="100%">
+    </article>
+  </slide>
+
+  <slide class="hidden fill" style="">
+    <article class="flexbox vcenter">
+      <img src="images/screen-mappings.png" alt="" title="" height="100%">
+      <img src="images/screen-mappings2.png" alt="" title="" style="float:right;margin-left:40px;" height="100%">
+    </article>
+  </slide>
+
+  <slide class="hidden fill " style="">
+    <article class="flexbox vcenter">
+      <img src="images/screen-spinner.png" alt="" title="" height="100%">
+    </article>
+  </slide>
+
+
+  <slide class=" fill" style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/2.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+  <slide class=" fill" style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/3.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+  <slide class=" fill" style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/1.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+
+  <slide class=" fill " style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/0.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+  <slide class=" fill" style="" >
+      <center>
+      <img src="images/qr-screen.png" style="margin-right:15px" alt="" title="" align="" width="30%"/>
+      <img src="images/qr-screen2.png" style="margin-right:15px" alt="" title="" align="" width="30%"/>
+      <img src="images/qr-screen3.png" alt="" title="" align="" width="30%"/>
+      </center>
+  </slide>
+
+
+  <slide class="hidden">
+    <article class="flexbox">
+	<table style="border:none; margin-top:-5px;margin-left:-10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/start.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/walk1.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/navigation.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox">
+	<table style="border:none; margin-top:-5px;margin-left:-10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping_empty.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping_empty2.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <slide class=" fill nobackground" style="background-image: url(images/qr.png);background-position:center center;">
+  </slide>
+
+  <slide class=" nobackground" style="background:white;">
+	<article style="text-align:center;">
+		<img src="images/data.png" style="width:900px;height:auto;margin-top:180px;"  />
+	</article>
+  </slide>
+
+
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
