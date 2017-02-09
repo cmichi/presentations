@@ -8,6 +8,23 @@ respository.
 
 ---
 
+**Welcome Day**
+Berlin, 3. August 2016
+[View the slides](http://cmichi.github.io/talks/csrf/welcome-day)
+---
+
+
+---
+
+**Master's Thesis Final Presentation**
+University Ulm, 11. April 2016
+[View the slides](http://cmichi.github.io/talks/csrf/masterthesis)
+[View the thesis](https://oparu.uni-ulm.de/xmlui/bitstream/handle/123456789/4150/RetroactiveComputing_Mueller2016.pdf)
+---
+
+
+---
+
 **Cross-Site Request Forgery (CSRF)**  
 Talk and assignments as part of the course [Practial IT-Security (PSEC)](http://www.uni-ulm.de/in/vs/teach/pssec.html).  
 University Ulm, 4. June 2014  
