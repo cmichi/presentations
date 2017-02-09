@@ -8,17 +8,17 @@ respository.
 
 ---
 
-**Welcome Day**
-Berlin, 3. August 2016
-[View the slides](http://cmichi.github.io/talks/csrf/welcome-day)
+**Welcome Day**  
+Berlin, 3. August 2016  
+[View the slides](http://cmichi.github.io/csrf/welcome-day)
 ---
 
 
 ---
 
-**Master's Thesis Final Presentation**
-University Ulm, 11. April 2016
-[View the slides](http://cmichi.github.io/talks/csrf/masterthesis)
+**Master's Thesis Final Presentation** 
+University Ulm, 11. April 2016  
+[View the slides](http://cmichi.github.io/talks/masterthesis)  
 [View the thesis](https://oparu.uni-ulm.de/xmlui/bitstream/handle/123456789/4150/RetroactiveComputing_Mueller2016.pdf)
 ---
 
