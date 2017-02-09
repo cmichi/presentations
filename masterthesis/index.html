@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="hidden logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/slide-institute/uulm-128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <!-- what i did -->
+  <slide class="">
+    <hgroup>
+      <h2>
+      </h2>
+    </hgroup>
+    <article class="">
+	<center>
+	<div style="margin-left:70px;">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/title.png" alt="Graph" title="Description">
+
+		<div style="float:left;">	
+			<img style="margin-top:-35px;border:1px solid #444;" width="400" src="images/paper_sm.png" alt="Graph" title="Description">
+			<br/>
+			<img style="border:1px solid #444;margin-top:4px;" width="400" src="images/code_sm2.png" alt="Graph" title="Description">
+			<br/>
+			<img style="border:1px solid #444;margin-top:4px;" width="400" src="images/code_sm1.png" alt="Graph" title="Description">
+		</div>
+		</div>
+	</center>
+    </article>
+  </slide>
+
+  <!-- es vs. active record (mention ddd) -->
+  <slide class="">
+    <article>
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Event Sourcing?
+	</h2>
+
+	<table style="border:none; margin-top:110px;;margin-left:0px;">
+		<tr style="background:none" class="build">
+			<td style="text-align:center;">
+				<img width="260" src="images/table.png" style="">
+			</td>
+			<td style="text-align:center;">
+				<h3><strong>&nbsp;vs.&nbsp;</strong></h3>
+			</td>
+			<td style="text-align:center;">
+				<img width="500" src="images/account-stream.png" style="margin-top:-30px;">
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <!-- retroactive computing? opportuninities (insert/delete, change implementation) -->
+  <slide>
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:40px;" class="uni-red">Retroactive Opportunities</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:280px;margin-top:80px;line-height:1.2em;">
+		<ul>
+			<li>Read History</li>
+			<li>Insert/Delete</li>
+			<li>Compare Implementations</li>
+			<li>&hellip;</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- related work unterscheidet sich: losgeloest, etc. -->
+  <slide>
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:40px;" class="uni-red">Related Work</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:180px;margin-top:50px;line-height:1.2em;">
+		<ul>
+			<li>Retroactive Datastructures</li>
+			<li>History-aware Algorithms &amp; Languages</li> 
+			<li>Reversible Debugging</li>
+			<li>Version Control Systems</li>
+			<li>Time Travel Theory</li>
+
+			<li>&hellip;</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- cqrs -->
+  <slide class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		ES + CQRS
+	</h2>
+
+	<table style="border:none; margin-top:40px;width:530px;margin-left:160px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="650" src="images/cqrs.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <!-- es + cqrs -->
+  <slide class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		ES + CQRS
+	</h2>
+
+	<table style="border:none; margin-top:20px;width:530px;margin-left:230px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="420" src="images/es-cqrs-logic.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+	<div class="source reference" style="bottom:10px">
+		Benjamin Erb, Frank Kargl: <i>Combining Discrete Event Simulations and Event Sourcing</i><br/>
+		Seventh International Conference on Simulation Tools and Techniques (2014)
+	</div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Commands as Intentions
+	</h2>
+
+	<table style="border:none; margin-top:40px;width:530px;margin-left:190px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="600" src="images/processors.png" style="margn-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <!-- conceptual considerations: command sourcing -->
+  <slide>
+    <article class="">
+	<h2 style=";text-align:center;margin-top:20px;" class="uni-red">
+		Event vs. Command Sourcing
+	</h2>
+
+	<table style="border:none; margin-top:80px;width:530px;margin-left:90px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="800" src="images/event-log2.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Event vs. Command Sourcing
+	</h2>
+
+	<table style="border:none; margin-top:80px;width:530px;margin-left:90px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="800" src="images/event-log3.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Event vs. Command Sourcing
+	</h2>
+
+	<table style="border:none; margin-top:80px;width:530px;margin-left:90px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="800" src="images/event-log4.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+  <!-- conceptual considerations: editing the log (append-only vs direct)-->
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Editing the Event Log<br/>
+		<h2 style="font-size:1.2em;text-align:center;">Fowler's Retroactive Events</h2>
+	</h2>
+
+	<table style="border:none; margin-top:20px;width:530px;margin-left:40px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="800" src="images/reversal-events2.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Editing the Event Log<br/>
+		<h2 style="font-size:1.2em;text-align:center;">Fowler's Retroactive Events</h2>
+	</h2>
+
+	<table style="border:none; margin-top:20px;width:530px;margin-left:40px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="800" src="images/reversal-events2-1.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Mitigate Issues <br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:180px;margin-top:70px;line-height:1.2em;">
+		<ul>
+			<li>Parallel Universe
+				<ul>
+					<li class="uni-red">Main Timeline &harr;  Branches</li>
+					<li class="uni-red">Return results from computations on branches 
+					to main timeline via event primitives</li>
+				</ul>
+			</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Editing the Event Log<br/>
+		<h2 style="font-size:1.2em;text-align:center;">Direct Editing</h2>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:140px;margin-top:70px;line-height:1.2em;">
+		<div style="float:left;margin-right:25px;"><ul><li>Temporal Paradoxes:</li></ul></div>
+		<ul style="float:left;">
+			<li>Grandfather Paradox</li>
+			<li>Causal Loop</li>
+		</ul>
+
+		<br/>
+		<div style="clear:both"></div>
+		
+		<div style="float:left;margin-right:25px;"><ul><li>Consistency Violations</li></ul></div>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- conceptual considerations: ctc vs. parallel universes -->
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Consistency?<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:240px;margin-top:70px;line-height:1.2em;">
+		<ul>
+			<li>Parallel Universes</li>
+			<li>Self-consistency Principle</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Consistency?<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:150px;margin-top:70px;line-height:1.2em;">
+		<ul>
+			<li>Parallel Universe
+			<ul>
+				<li class="uni-red">Distinguish: Main Timeline vs. Branches</li>
+				<li class="uni-red">Use event primitives to return results<br/> to main timeline</li>
+			</ul>
+			</li>
+			<li>Self-consistency Principle</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Consistency?<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:150px;margin-top:70px;line-height:1.2em;">
+		<ul>
+			<li>Parallel Universe
+			<ul>
+				<li class="uni-red">Distinguish: Main Timeline vs. Branches</li>
+				<li class="uni-red">Use event primitives to return results<br/> to main timeline</li>
+			</ul>
+			</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Consistency?<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:150px;margin-top:70px;line-height:1.2em;">
+		<ul>
+			<li>Parallel Universe
+			<ul>
+				<li class="uni-red">Distinguish: Main Timeline vs. Branches<br/><br/></li>
+			</ul>
+			</li>
+			<li>Self-consistency Principle
+			<ul>
+				<li class="uni-red">Validation</li>
+				<li class="uni-red">Replay All</li>
+				<li class="uni-red">Remove All Consequences</li>
+			</ul>
+
+			</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Consistency?<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:150px;margin-top:70px;line-height:1.2em;">
+		<ul>
+			<li>Parallel Universe
+			<ul>
+				<li class="uni-red">Distinguish: Main Timeline vs. Branches</li>
+				<li class="uni-red">Use event primitives to return results<br/> to main timeline</li>
+			</ul>
+			</li>
+			<li>Self-consistency Principle
+			<ul>
+				<li class="uni-red">Validation</li>
+				<li class="uni-red">Replay All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Tracing Causalities)</li>
+				<li class="uni-red">Remove All Consequences&nbsp;&nbsp;&nbsp;&nbsp;(Tracing Causalities)</li>
+			</ul>
+			</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- conceptual considerations: consistency and validation: illustrate problem -->
+
+  <!-- conceptual considerations: consistency and validation: four possibilities  -->
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Consistency?<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:280px;margin-top:50px;line-height:1.2em;">
+		<ul>
+			<li>Replay All (track causal dependencies)</li>
+			<li>Remove All (track causal dependencies)</li>
+			<li>Validation</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- conceptual considerations: tracing causal dependencies -->
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Tracking Causal Dependencies<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:180px;margin-top:50px;line-height:1.2em;">
+		<ul>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+  <!-- conceptual considerations: side effects -->
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.8em;margin-left:-70px !important;text-align:center;margin-top:0px;" class="uni-red">Side Effects</h2>
+
+	<table style="border:none; margin-top:50px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="950" src="images/side-effect-reading.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide style="background:white !important;" class="hidden">
+    <article class="">
+	<h2 style="font-size:1.8em;margin-left:-70px !important;text-align:center;margin-top:0px;" class="uni-red">Side Effects</h2>
+
+	<table style="border:none; margin-top:50px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="950" src="images/side-effect-writing.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+
+<div class="build" style="margin-top:50px;margin-left:90px;">
+		<code style="font-size:0.9em;margin-top:25px;">
+CommandModel.process("ValidateCreditcard"){<br/>
+&nbsp;&nbsp;/* side effect */<br/>
+&nbsp;&nbsp;var validation = fetch("https://.../check-card", ...);<br/>
+&nbsp;&nbsp;if (validation == true) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;return Event("OrderPlaced");<br/>
+&nbsp;&nbsp;} else {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;return Event("OrderCanceled");<br/>
+&nbsp&nbsp}<br/>
+}<br/>
+		</code>
+
+		<br/>
+		<br/>
+
+		<code style="font-size:0.9em;margin-top:25px;">
+c0: ValidateCreditcard()<br/>
+e0: ValidationSuccessful<br/>
+<br/>
+c1: PlaceOrder()<br/>
+e1: OrderPlaced
+		</code>
+	</div>
+
+    </article>
+  </slide>
+
+
+  <!-- (conceptual considerations: separated query and command model) -->
+
+  <!-- limitations: hidden causalities  -->
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Limitations of Retroaction<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.4em;text-align:left;margin-left:250px;margin-top:80px;line-height:1.2em;">
+		<ul>
+			<li>Hidden Causalities</li>
+			<li>Command Semantics</li>
+			<li>Determinism in Replays</li>
+			<li>Performance of Retroaction</li>
+			<li>&hellip;</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- retroaction-enabled architectures -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Retroaction-enabled Architecture?
+	</h2>
+
+	<table style="border:none; margin-top:40px;width:530px;margin-left:220px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="450" src="images/es-cqrs-logic.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <!-- retroaction-enabled architectures: plug-in -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Retroaction-enabled Architecture?
+	</h2>
+
+	<table style="border:none; margin-top:40px;width:530px;margin-left:130px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="750" src="images/cqrs-focus-separate.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <!-- retroaction-enabled architectures: unified -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Retroaction-enabled Architecture?
+	</h2>
+
+	<table style="border:none; margin-top:40px;width:530px;margin-left:120px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="750" src="images/cqrs-focus-embedded2.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+  
+
+  <!-- programming-model: primitives of retroaction (events) -->
+  <slide class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:10px;" class="uni-red">
+		Programming Model
+	</h2>
+
+<pre class="prettyprint" data-lang="javascript" style="margin-top:20px;font-size:0.8em;line-height:1.2em;">
+commands.tags.applyDiscount = ["discount-modifications"];
+
+commands.applyDiscount = function(request, state) {
+    /* find total order price in global state object, apply discount */
+    var totalPrice = state.orders[request.orderId].totalPrice;
+    state.orders[request.orderId].discount = totalPrice * 0.1;
+
+    /* if order is changed retroactively at a past point this 
+       command needs to be replayed, since a different discount
+       would then be computed */
+    var readDuringComputation = [ "state.orders[" + request.orderId + "].totalPrice" ];
+
+
+    return {
+        success: true,
+        newState: state,
+        read: readDuringComputation,
+        eventTags: ["applied-discount"]
+    }
+}
+</pre>
+    </article>
+  </slide>
+
+  <!-- programming-model: primitives of retroaction (events) -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:10px;" class="uni-red">
+		Programming Model
+	</h2>
+
+<pre class="prettyprint" data-lang="javascript" style="margin-top:65px;font-size:0.8em;line-height:1.2em;">
+commandTags.someCmd = [ "..." ];
+
+commands.someCmd = function(request, state) {
+    state.foo = state.bar + 1;
+
+    var b = retroactive.createBranch("big bang");
+    b.deleteEvents(...);
+    b.getState();
+
+    return {
+        read: [ "state.bar" ],
+        eventTags: [ "..." ]
+    }
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Programming Model<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.4em;text-align:left;margin-left:210px;margin-top:100px;line-height:1.2em;">
+		<ul>
+			<li>Event Format (Delta Encoding)</li>
+			<li>Retroaction-aware Programming</li>
+			<li>&hellip;</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- implementation: the api -->
+  <slide>
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:20px;" class="uni-red">Implementation</h2>
+
+	<h2 style="font-weight:normal;font-size:1.4em;text-align:left;margin-left:185px;margin-top:90px;line-height:1.3em;">
+		<ul>
+			<li>JavaScript + node.js</li>
+			<li><code>Object.observe()</code> from ECMAScript 7</li>
+			<li>JSON Patches (RFC 6902)</li>
+			<li>HTTP + REST</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Implementation
+	</h2>
+
+	<table style="border:none; margin-top:20px;width:530px;margin-left:240px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="400" src="images/rest.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:20px;" class="uni-red">
+		Online Shop Scenario
+	</h2>
+
+	<table style="border:none; margin-top:40px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/httpapi.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+  <slide class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Implemenation: Automatically Generated Events
+	</h2>
+
+<div style="margin-left:200px;margin-top:20px;">
+<code style="font-size:0.6em;margin-top:10px;margin-left:90px;"><br/>
+/* add product id 172 to the "state.cart" object with quantity 1 */<br/>
+[ { "op": "add", "path": "/cart/172", "value": 1 } ]<br/>
+<br/>
+/* update the quantity of the product "state.cart[172]" */<br/>
+[ { "op": "replace", "path": "/cart/172", "value": 3 } ]<br/>
+<br/>
+/* add an object to "state.orders" array and remove it from cart */<br/>
+[{<br/>
+	&nbsp;&nbsp;"op": "add",<br/>
+	&nbsp;&nbsp;"path": "/orders/-",<br/>
+	&nbsp;&nbsp;"value": {<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;	"timestamp": 1458061070313,<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;	"content": { "172": 3 }<br/>
+	&nbsp;&nbsp;}<br/>
+},<br/>
+{<br/>
+	&nbsp;&nbsp;"op": "remove",<br/>
+	&nbsp;&nbsp;"path": "/cart/172"<br/>
+}]
+</code>
+</div>
+
+    </article>
+  </slide>
+
+  <!-- chronograph: different than previous architectures -->
+  <slide style="background-color:white !important">
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:20px;" class="uni-red">Chronograph + Retroaction</h2>
+
+	<table style="border:none; margin-top:60px;width:530px;margin-left:160px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="500" src="images/graph.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;" class="hidden">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;margin-bottom:10px;" class="uni-red">
+		Chronograph
+	</h2>
+
+<div style="margin-left:150px">
+<!--
+	<code style="font-size:0.9em;line-height:1.2em;margin-top:190px;margin-left:160px !important;"><br/>
+-->
+<pre class="prettyprint" data-lang="javascript" style="margin-left:-10px !important;margin-top:120px;font-size:0.8em;line-height:1.2em;">
+
+vertices["foo"].behaviorFn = function(state, msg) {
+    // local computations
+    state.foo = state.bar + 1;
+
+    return [state, vertices["foo"].behaviorFn];
+}
+	</pre>
+	</div>
+
+    </article>
+  </slide>
+
+  <!-- chronograph: how to implement i/o vertices -->
+
+
+
+  <!-- future work -->
+  <slide>
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:20px;" class="uni-red">Future Work/Outlook</h2>
+
+	<h2 style="font-weight:normal;font-size:1.2em;text-align:left;margin-left:180px;margin-top:90px;line-height:1.3em;">
+		<ul class="">
+			<li>Examine more architectures</li>
+
+			<li>Self-referential, self-improving software</li>
+
+			<li>Artificial intelligence, machine learning</li>
+
+			<li>Novel debugging schemes</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+  <!-- summary -->
+  <slide>
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:0px;" class="uni-red">Summary</h2>
+
+	<h2 style="font-weight:normal;font-size:1.1em;text-align:left;margin-left:100px;margin-top:20px;line-height:1.3em;">
+		<ul class="build">
+			<li>ES is great match for retroaction<br>
+			&rarr;All state changes are inherently captured<br/>
+			&rarr;Side effects can be recorded and reused as well</li>
+
+			<li>A lot of issues come from direct editing<br/>
+			&rarr;Temporal Paradoxes, Consistency Issues</li>
+
+			<li>Clever restrictions can be imposed<br/>
+			&rarr;Main Timeline vs. Branches, &hellip;</li>
+
+			<li>A number of limitations need to be taken into account<br/>
+			&rarr;Hidden Causalities, Command Semantics, &hellip;</li>
+
+			<li>Pratical application yields new problems<br/>
+			&rarr;Delta Encoding, Retroaction-aware Programming</li>
+
+			<li>History-aware Algorithms, Explore alternate Program States, &hellip;</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <pre class="questions" style="margin-top:-80px;margin-left:-50px;line-height:1.6em;background:none;color:white !important;text-align:left;">
+      $ find . -name "question_*"
+      </pre>
+<!--
+      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
+SELECT * FROM `questions`;
+      </pre>
+-->
+    </article>
+  </slide>
+
+  <slide>
+    <article class="">
+	<h2 style="font-size:1.8em;text-align:center;margin-top:40px;" class="uni-red">Delimitations to Related Work</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:100px;margin-top:80px;line-height:1.2em;">
+		<ul>
+			<li>Thesis: Retroaction <span class="uni-red">in</span> the event-sourced environment<br/></li>
+			<li>Meta (VCSes)</li>
+			<li>Decoupled (Debugging)</li> 
+			<li>Passive (Datastructures, Languages)</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Editing the Event Log<br/>
+		<h2 style="font-size:1.2em;text-align:center;">Direct Editing</h2>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:150px;margin-top:50px;line-height:1.2em;">
+		<ul>
+			<li>
+				Consistency Violations:<br/><br/>
+				<div style="margin-left:40px">
+		<code>
+		e0: Created Account<br/>
+		e1: +500<br/>
+		<div class="build"><span class="uni-red">&rarr; eX: -1000</span><br/></div>
+		e2: -500
+		</code>
+		</div>
+
+<br/>
+
+			</li>
+			<!--
+			<li>Can break Traceability as well!</li>
+			-->
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Direct Editing: Ignore Consistency<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:180px;margin-top:110px;line-height:1.2em;">
+		<ul class="">
+			<li class="uni-red">Use Case: Iterate towards Target State</li>
+			<li>1. Define state as target state</li>
+			<li>2. Iteratively modify past (insert, delete, &hellip;)<br/>
+			until target reached</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- conceptual considerations: direct editing -- causal loops -->
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Editing the Event Log<br/>
+		<h2 style="font-size:1.2em;text-align:center;">Direct Editing</h2>
+	</h2>
+
+	<table style="border:none; margin-top:80px;width:530px;margin-left:80px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="800" src="images/causal-loop.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:40px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="950" src="images/side-effect-gateways.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:40px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="950" src="images/side-effect-gateways.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+	<div style="text-align:center;font-weight:normal;" class="uni-red">
+		How to record their result? Control their behavior in replays? Branching? 
+	</div>
+    </article>
+  </slide>
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:20px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:50px;margin-top:80px;line-height:1.2em;">
+		<ul>
+			<li>Isolate Side-Effects</li>
+			<li>Split Commands<br/><br/></li>
+			<!--
+			<li>Utilize Command/Event Primitives</li>
+			<li>Trace Causalities &mdash; remove/replay only dependent events<br/><br/></li>
+			<li><span  class="uni-red">Example:</span><br/>Split <code>PlaceOrder</code> in<br/> <code>FetchCurrencyRate&nbsp;+&nbsp;ProcessOrder&nbsp;+&nbsp;SendConfirmation</code></li>
+			-->
+			<li><span  class="uni-red">Example:</span><br/>
+			<code class="uni-red" style="font-size:0.75em">PlaceOrder = FetchCurrencyRate&nbsp;+&nbsp;ProcessOrder&nbsp;+&nbsp;SendConfirmation</code></li>
+		</ul>
+	</h2>
+
+    </article>
+  </slide>
+
+
+  <slide style="background: white !important;">
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Limitations of Retroaction<br/>
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:-10px;margin-top:80px;line-height:1.2em;">
+		<ul class="" style="float:left;">
+			<li>Hidden Causalities<br/>(Outside System, I/O)<br/><br/></li>
+			<li>Command Semantics<br/>(May annihilate Retroaction)</li>
+		</ul>
+		<ul class="" style="float:right;margin-left:-35px;">
+			<li>Determinism in Replays<br/>(Causally equivalent Replay)<br/><br/></li>
+			<li>Performance of Retroaction<br/>
+			(Efficiency can be important)</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+  <!-- implementation: retroactive use cases -->
+  <slide class="">
+    <article class="">
+	<h2 style="font-weight:normal;text-align:center;margin-top:20px;" class="uni-red">
+		Programming Model: Retroactive Use Cases
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.2em;text-align:left;margin-left:140px;margin-top:90px;line-height:1.3em;">
+		<ul>
+			<li>Calculate discount based on previous orders</li>
+			<li>Observe alternate states (execute orders as premium customer)</li>
+			<li>Evaluate different command processing implementations</li>
+			<li>Retroaction for optimization</li>
+			<li>&hellip;</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:10px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/partial-replay2-0.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:10px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/partial-replay2-1.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:10px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/partial-replay2-2.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:10px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/partial-replay2-3.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:10px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/partial-replay2.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+  <slide style="background:white !important;">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:20px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+	<table style="border:none; margin-top:110px;margin-left:10px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="880" src="images/partial-replay2-5.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+
+
+  <slide style="background: white !important;" class="">
+    <article class="">
+	<h2 style="font-size:1.6em;margin-left:0px !important;text-align:center;margin-top:0px;" class="uni-red">
+		Side Effects: How to control them in a replay?
+	</h2>
+
+
+<div class="build" style="margin-top:50px;margin-left:90px;">
+<pre class="prettyprint" data-lang="javascript" style="margin-top:5px;font-size:0.8em;line-height:1.2em;">
+CommandModel.process("ValidateCreditcard"){
+    /* side effect */
+    var validation = fetch("https://.../check-card", ...);
+    if (validation == true) {
+        return Event("OrderPlaced");
+    } else {
+        return Event("OrderCanceled");
+    }
+}
+		</pre>
+
+<pre class="prettyprint" data-lang="javascript" style="margin-top:30px;font-size:0.8em;line-height:1.2em;">
+c0: ValidateCreditcard()
+e0: ValidationSuccessful
+
+c1: PlaceOrder()
+e1: OrderPlaced
+		</pre>
+	</div>
+
+    </article>
+  </slide>
+
+  <!-- programming-model -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Programming Model
+	</h2>
+
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:140px;margin-top:80px;line-height:1.2em;">
+	<ul class="">
+	<li>Analyze Practicality in a Programming Model</li>
+
+	<li>Events = Explicit Changes to State</li>
+	<!--
+	&rarr;Easier to track changes<br/>
+	&rarr;State more tangible</li>
+	-->
+
+	<li>Commands as Intentions<br/>
+	<li>Command Processing decoupled from Command<br/>
+	&rarr;Can be retroactively exchanged</li>
+	</ul>
+	</h2>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:5px;" class="uni-red">
+		Implemenation: Automatically Generated Events
+	</h2>
+
+<div style="margin-left:80px;">
+<pre class="prettyprint" data-lang="javascript" style="margin-top:30px;font-size:0.8em;line-height:1.2em;">
+
+/* add product id 172 to the "state.cart" object with quantity 1 */
+[ { "op": "add", "path": "/cart/172", "value": 1 } ]
+
+/* update the quantity of the product "state.cart[172]" */
+[ { "op": "replace", "path": "/cart/172", "value": 3 } ]
+
+/* add an object to "state.orders" array and remove it from cart */
+[{
+     "op": "add",
+     "path": "/orders/-",
+     "value": {
+         "timestamp": 1458061070313,
+         "content": { "172": 3 }
+     }
+},
+{
+    "op": "remove",
+    "path": "/cart/172"
+}]
+</pre>
+</div>
+
+    </article>
+  </slide>
+
+  <!-- implementation: skizze mit gesplitteten commands/events -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Implementation
+	</h2>
+
+	<table style="border:none; margin-top:40px;width:530px;margin-left:20px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="950" src="images/splitting.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+    </article>
+  </slide>
+
+  <!-- programming-model: primitives of retroaction (events) -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Programming Model: Events
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:80px;margin-top:40px;line-height:1.2em;margin-bottom:30px;">
+Unix diff</h2>
+
+<div style="margin-left:80px">
+<code>
+-state.shoppingCart = [1, 2, 3];<br/>
++state.shoppingCart = [1, 2, 3, 4];
+</code>
+</div>
+
+<br/>
+<br/>
+
+<div class="">
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:80px;margin-top:40px;line-height:1.2em;margin-bottom:30px;">
+&hellip; vs. JSON Patches (RFC 6902)</h2>
+<div style="margin-left:80px">
+<code>
+{ "op": "add", "path": "/state/shoppingCart/-", "value": 4 }
+</code>
+</div>
+</div>
+    </article>
+  </slide>
+
+
+  <!-- programming-model: primitives of retroaction (retroaction-aware programming) -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Retroaction-aware programming
+	</h2>
+
+<pre class="prettyprint" data-lang="javascript" style="margin-top:80px;font-size:0.8em;line-height:1.2em;">
+state.foo[99] = "new last element";
+
+// vs.
+
+state.foo.push("new last element");
+</pre>
+
+<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:60px;margin-top:50px;line-height:1.2em;">
+<!--
+Other implicit assumptions: Value in range, &hellip;<br/><br/>
+-->
+&rarr; Helper functions to provide more semantics to instructions
+</h2>
+    </article>
+  </slide>
+
+
+
+  <!-- programming-model: primitives of retroaction (retroaction) -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Programming Model: Nested Branches
+	</h2>
+
+	<table style="border:none; margin-top:90px;width:530px;margin-left:40px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="850" src="images/nested-branches.png" style="margin-bottom:15px">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:10px;" class="uni-red">
+		Programming Model
+	</h2>
+
+
+	<h2 style="font-weight:normal;font-size:1.3em;text-align:left;margin-left:100px;margin-top:25px;line-height:1.2em;">
+	<ul class="">
+		<li>Branches encapsulated in objects</li>
+		<li>One cannot modify own timeline, only branches of it</li>
+		<li>Results from retroaction are persisted as Events</li>
+		<!--
+		<li>Prevent nested Branches</li>
+		-->
+	</ul>
+	</h2>
+
+<div class="build">
+<pre class="prettyprint" data-lang="javascript" style="margin-top:10px;font-size:0.75em;line-height:1.2em;">
+commands.placeOrder = function(request, state) {
+	var b = retroactive.createBranch("big bang");
+	b.deleteEvents("product-removed-from-cart", false);
+	b.getState();
+
+	// ...
+
+	return {
+             newState: state,
+	     success: true,
+	     read: []
+	}
+}
+</pre>
+</div>
+    </article>
+  </slide>
+
+  <!-- chronograph: portals -->
+  <slide>
+    <article class="">
+	<h2 style="text-align:center;margin-top:20px;" class="uni-red">
+		Chronograph + Retroaction
+	</h2>
+
+	<h2 style="font-weight:normal;font-size:1.2em;text-align:left;margin-left:150px;margin-top:50px;line-height:1.3em;">
+		<ul>
+			<li>Limitations apply as well</li>
+			<li>Larger degree of hidden causalities outside of vertex</li>
+			<li>Entire graph can be taken into account</li>
+			<li>Some concepts can be transferred<br/>(I/O Vertices, Branches vs. Main Timeline) </li>
+			<li>Specific platform solutions can be found<br/>(Portals, etc.)</li>
+		</ul>
+	</h2>
+    </article>
+  </slide>
+
+
+
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentvertex.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
