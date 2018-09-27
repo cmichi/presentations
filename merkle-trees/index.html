@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+
+  <link rel="stylesheet" media="all" href="theme/css/uulm-changes.css">
+
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue">
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 style="color:#555 !important" data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide class="nobackground" style="background:white;">
+	<article style="text-align:center;padding-top:110px;">
+		<img src="imgs/btc-nomarker.jpg" style="width:900px;height:auto;margin-top:30px;"  />
+		<footer class="source" style="color:white">
+			source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+		</footer>
+	</article>
+  </slide>
+
+  <slide class="nobackground" style="background:white;">
+	<article style="text-align:center;padding-top:110px;">
+		<img src="imgs/btc.jpg" style="width:900px;height:auto;margin-top:30px;"  />
+		<footer class="source" style="color:white">
+			source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+		</footer>
+	</article>
+  </slide>
+
+<!--
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				
+			</center>
+    </article>
+  </slide>
+-->
+
+  <slide class="fill nobackground" style="background-image: url(imgs/merkletree.png);background-position:center bottom;">
+	<footer class="source" style="color:white">
+		source: https://hackernoon.com/merkle-trees-181cb4bc30b4
+	</footer>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				Folie auf der ein Hash in dem Baum veraendert wurde und der
+				Pfad eingezeichnet ist, der sich dann veraendert und
+				dass der root hash dann auch anders ist.
+
+				--> it's easily possible to make sure that even small changes 
+				already affect the integrity of the entire tree
+
+				--> you could also do this by just concatenating everything and
+				then hashing
+
+				--> this would be extremely inefficient. with merkle trees you just
+				need to rehash the path to the leaf --> O(log(n))?
+
+				--> that's why merkle trees are very well suited for e.g.
+				filesystems or git
+			</center>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				Scenario:
+				I have a transaction T and want to know if it was included in the
+				latest block.
+
+				What is needed to proof that a leaf is in the node?
+				--> just the path
+			</center>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				Scenario:
+				I know the HEAD of the database.
+
+				Hey database, tell me the entry at position 5871.
+				--> I get returned Entry + Path up to Merkle Root
+				--> I can verify the info is correct by rehashing Entry + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root
+
+				--> Authenticate a small amount of data in a potentially unbounded large dataset.
+			</center>
+    </article>
+  </slide>
+
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				Scenario in Blockchains:
+				I know the HEAD of the (longest) chain.
+
+				Hey full node, was transaction X in the last block?
+				--> I get returned Transaction + Path up to Merkle Root
+				--> I can verify the info is correct by rehashing Transaction + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root
+			</center>
+    </article>
+  </slide>
+
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				Simple Payment Verification (SPV) in Bitcoin:
+
+				Instead of downloading every block with every transaction (~1MB)
+				it's just necessary to download the block headers (~80 bytes) per
+				block) to follow the chain.
+
+				--> Light Clients / Android Wallet / etc.
+				~43 MB vs. ~185 GB
+			</center>
+    </article>
+  </slide>
+
+  <slide class="nobackground" style="background:white;">
+	<article style="text-align:center;padding-top:110px;">
+		<img src="imgs/btctree.png" style="width:900px;height:auto;"  />
+		<footer class="source" style="color:white">
+			source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+		</footer>
+	</article>
+  </slide>
+
+	<!--
+  <slide class="fill nobackground" style="background-image: url(imgs/btctree.png);background-position:center bottom;">
+	<footer class="source" style="color:white">
+		source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+	</footer>
+  </slide>
+	-->
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			The way as described so far works very well for:
+			<ul>
+				<li>Simple Blockchains with key-value pairs of e.g. Account-Balance (as in Bitcoin)</li>
+				<li>Databases</li>
+				<li>Version Control Systems</li>
+				<li>Filesystems</li>
+			</ul>
+    </article>
+  </slide>
+
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+				Shortcomings of Merkle Tress so far:
+				They cannot proof anything about the current state:
+
+				<ul>
+					<li>
+						What is the balance of an accout?
+						You can ask a full node, but there is no way to verify it.
+					</li>
+					<li>
+						Who is the owner of some digital asset?
+					</li>
+					<li>
+						What is the status of a smart contract?
+					</li>
+				</ul>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+			<center>
+				Ethereum: 3 Merkle Tress:
+
+				* Transactions
+				* Receipts
+				* State
+			</center>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+				This enables:
+				<ul>
+					<li>Was transaction T included in this block?<br/><br/></li>
+
+					<li>
+						Fetch me all events of a type T emmited by address A in the last two weeks<br/>
+						(e.g. a funding goal was reached)
+					</li>
+					<li>What is the current balance of an account?</li>
+					<li>Does account with address A exist?</li>
+				</ul>
+
+				<p>
+					Full node finds the object and returns it with the Merkle branch<br/>
+					(list of hashes going up from the object to the root tree)
+				</p>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2>
+			There is more&hellip;
+		</h2></hgroup>
+    <article class="">
+			<p>
+			 	<h3 class="mbr">Merkle State Transition Proofs</h3>
+				Pretend to run this transaction on this contract. What would the output be?
+			</p>
+
+			<p>
+				<h3 class="mbr">Merkle Patricia Tree</h3>
+				Merkle Trees are not ideal for insert/delete/etc. 
+			</p>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2>
+			Further references
+		</h2></hgroup>
+    <article class="">
+			<center>
+				<p>
+					<h3>Mekling in Ethereum</h3>
+					https://blog.ethereum.org/2015/11/15/merkling-in-ethereum/
+				</p>
+			</center>
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
+SELECT * FROM `questions`;
+      </pre>
+    </article>
+  </slide>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <slide>
+    <article class="flexbox">
+	<table style="border:none; margin-top:80px;">
+		<tr style="background:none">
+			<td style="text-align:center;">
+				<img width="290" src="images/nh0.jpeg">
+				&nbsp;
+			</td>
+			<td style="text-align:center;">
+				<img width="290" src="images/nh1.jpeg">
+				&nbsp;
+			</td>
+			<td style="text-align:center;">
+				<img width="290" src="images/nh2.jpeg">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+
+	<div class="source reference">
+		re:publica 2013 - Neil Harbisson, Moon Ribas: <em>Life with extra
+		Senses &ndash; How to become a Cyborg.</em>
+		<a href="https://www.youtube.com/watch?v=6hUg48vf0QI">
+			https://www.youtube.com/watch?v=6hUg48vf0QI
+		</a>
+	</div>
+    </article>
+  </slide>
+
+  <slide class="">
+    <hgroup>
+      <h2>
+      </h2>
+    </hgroup>
+    <article class="">
+	<center>
+	<div style="margin-left:70px;">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/logo.jpg" alt="Graph" title="Description">
+		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/ubi-title.png" alt="Graph" title="Description">
+	</div>
+	</center>
+    </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/armband.jpg);background-position:bottom;">
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/IMG_9119.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="">
+    <article class="">
+	<table style="border:none; margin-top:-20px;margin-left:10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="250" src="images/armband-large.jpg" style="margin-bottom:7px"><br/>
+			<!--
+			<img height="250" src="images/vib_proto.jpg" style="margin-bottom:7px"><br/>
+			-->
+			<h4><span class="uni-red">Vibration</span></h4>
+		</td>
+		<td width="40">
+			&nbsp;&nbsp;&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="250" src="images/servos.jpg" style="margin-bottom:7px"><br/>
+			<h4><span style="font-weight:600;" class="uni-red">Pressure</span></h4>
+		</td>
+	</tr>
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="250" src="images/temp_proto.jpg" style="margin-bottom:7px"><br/>
+			<h4><span class="uni-red">Temperature</span></h4>
+		</td>
+		<td width="40">
+			&nbsp;&nbsp;&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="250" src="images/electro.jpg" style="margin-bottom:7px"><br/>
+			<h4><span  style="font-weight:600;"class="uni-red">Electrical Stimulation</span></h4>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <slide class="">
+    <article class="flexbox">
+	<table style="border:none; margin-top:-5px;margin-left:-10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/start.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/navigation.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="">
+	<table style="border:none; margin-top:-10px;margin-left:20px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="530" src="images/hideandseek.png">
+			&nbsp;<br/><br/>
+			<h4><span class="uni-red">&ldquo;Hide And Seek&rdquo; App</span></h4>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="">
+	<table style="border:none; margin-top:-10px;margin-left:20px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="530" src="images/ifeelyou.png">
+			&nbsp;<br/><br/>
+			<h4><span style="font-weight:600;" class="uni-red">&ldquo;I Feel You&rdquo; App</span></h4>
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/kate-study.jpg);background-position:center top;">
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
+SELECT * FROM `questions`;
+      </pre>
+    </article>
+  </slide>
+
+  <slide class="hidden thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/slide-institute/uulm-128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank you!</h2>
+      <p>&nbsp;</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+  <slide class="hidden nobackground" style="background:white;">
+	<article class="flexbox vcenter">
+		<img src="images/bild3.png" style="height:600px;width:auto;"  />
+	</article>
+  </slide>
+
+
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/armband-large.jpg);background-position:bottom;">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/aufbau.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/electro-stimulation.jpg)">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/reverse-engineering.jpg);background-position:center center;">
+  </slide>
+
+  <slide class=" fill nobackground" style="background-image: url(images/platine2.png);background-position:center center;">
+  </slide>
+
+  <slide class=" fill nobackground" style="background-image: url(images/P1020391.jpg);background-position:center center;">
+  </slide>
+
+
+
+  <slide class=" nobackground" style="background:white;">
+	<article style="text-align:center;padding-top:110px;">
+		<img src="images/instances-labeled.png" style="width:900px;height:auto;"  />
+	</article>
+  </slide>
+
+  <slide class=" nobackground" style="background:white;">
+	<article style="text-align:center;">
+		<img src="images/bild4.png" style="height:620px;" />
+	</article>
+  </slide>
+
+
+  <slide class=" fill nobackground" style="background-image: url(images/IMG_9159_small.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/peltier.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden">
+    <article class="flexbox">
+	<table style="border:none; margin-top:5px;margin-left:10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/app.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/hideandseek.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="hidden fill nobackground" style="background-image: url(images/arm.jpg);background-position:center center;">
+  </slide>
+
+  <slide class="hidden fill" style="">
+    <article class="flexbox vcenter">
+      <img src="images/screen-drawer.png" alt="" title="" height="100%">
+    </article>
+  </slide>
+
+  <slide class="hidden fill" style="">
+    <article class="flexbox vcenter">
+      <img src="images/screen-mappings.png" alt="" title="" height="100%">
+      <img src="images/screen-mappings2.png" alt="" title="" style="float:right;margin-left:40px;" height="100%">
+    </article>
+  </slide>
+
+  <slide class="hidden fill " style="">
+    <article class="flexbox vcenter">
+      <img src="images/screen-spinner.png" alt="" title="" height="100%">
+    </article>
+  </slide>
+
+
+  <slide class=" fill" style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/2.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+  <slide class=" fill" style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/3.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+  <slide class=" fill" style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/1.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+
+  <slide class=" fill " style="">
+    <article class="flexbox vcenter">
+      <center>
+      <img src="images/more-hardware/0.jpg" alt="" title="" width="90%"/>
+      </center>
+    </article>
+  </slide>
+
+  <slide class=" fill" style="" >
+      <center>
+      <img src="images/qr-screen.png" style="margin-right:15px" alt="" title="" align="" width="30%"/>
+      <img src="images/qr-screen2.png" style="margin-right:15px" alt="" title="" align="" width="30%"/>
+      <img src="images/qr-screen3.png" alt="" title="" align="" width="30%"/>
+      </center>
+  </slide>
+
+
+  <slide class="hidden">
+    <article class="flexbox">
+	<table style="border:none; margin-top:-5px;margin-left:-10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/start.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/walk1.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/navigation.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+  <slide class="">
+    <article class="flexbox">
+	<table style="border:none; margin-top:-5px;margin-left:-10px;">
+	<tr style="background:none">
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping_empty.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping_empty2.png">
+			&nbsp;
+		</td>
+		<td style="text-align:center;">
+			<img height="550" src="images/mapping.png">
+			&nbsp;
+		</td>
+	</tr>
+	</table>
+    </article>
+  </slide>
+
+
+  <slide class=" fill nobackground" style="background-image: url(images/qr.png);background-position:center center;">
+  </slide>
+
+  <slide class=" nobackground" style="background:white;">
+	<article style="text-align:center;">
+		<img src="images/data.png" style="width:900px;height:auto;margin-top:180px;"  />
+	</article>
+  </slide>
+
+
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
