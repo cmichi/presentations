@@ -29,609 +29,457 @@
     </hgroup>
   </slide>
 
+  <slide class="" >
+    <hgroup><h2>Blockchain</h2></hgroup>
+    <article class="build">
 
-  <slide class="nobackground" style="background:white;">
-	<article style="text-align:center;padding-top:110px;">
-		<img src="imgs/btc-nomarker.jpg" style="width:900px;height:auto;margin-top:30px;"  />
-		<footer class="source" style="color:white">
-			source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-		</footer>
-	</article>
-  </slide>
+      <h3 style="color:white">
+        &hellip;a distributed ledger without the need for a trusted, centralized entity.<br/><br/>
+      </h3>
 
-  <slide class="nobackground" style="background:white;">
-	<article style="text-align:center;padding-top:110px;">
-		<img src="imgs/btc.jpg" style="width:900px;height:auto;margin-top:30px;"  />
-		<footer class="source" style="color:white">
-			source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-		</footer>
-	</article>
-  </slide>
+      <h3 style="color:white">
+        <img src="imgs/schema0.png" style="width:900px;height:auto;margin-top:-20px;"  />
+      </h3>
+
+      <h3 style="color:white">
+        &hellip;consensus is achieved using <em>Proof-of-Work</em>, <em>Proof-of-Stake</em>,
+        <em>Proof-of-Authority</em>, or some other Byzantine agreement protocol.
+      </h3>
 
 <!--
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-			<center>
-				
-			</center>
-    </article>
-  </slide>
--->
-
-  <slide class="fill nobackground" style="background-image: url(imgs/merkletree.png);background-position:center bottom;">
-	<footer class="source" style="color:white">
-		source: https://hackernoon.com/merkle-trees-181cb4bc30b4
-	</footer>
-  </slide>
-
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-			<center>
-				Folie auf der ein Hash in dem Baum veraendert wurde und der
-				Pfad eingezeichnet ist, der sich dann veraendert und
-				dass der root hash dann auch anders ist.
-
-				--> it's easily possible to make sure that even small changes 
-				already affect the integrity of the entire tree
-
-				--> you could also do this by just concatenating everything and
-				then hashing
-
-				--> this would be extremely inefficient. with merkle trees you just
-				need to rehash the path to the leaf --> O(log(n))?
-
-				--> that's why merkle trees are very well suited for e.g.
-				filesystems or git
-			</center>
+        <footer class="source" style="color:white;">
+          source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+        </footer>
+        -->
+      </h3>
     </article>
   </slide>
 
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-			<center>
-				Scenario:
-				I have a transaction T and want to know if it was included in the
-				latest block.
+  <slide class="hidden nobackground" style="background:white;">
+  <article style="text-align:center;padding-top:110px;">
+    <img src="imgs/schema0.png" style="width:900px;height:auto;margin-top:30px;"  />
+    <footer class="source" style="color:white;">
+      source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+    </footer>
+  </article>
+  </slide>
 
-				What is needed to proof that a leaf is in the node?
-				--> just the path
-			</center>
+  <slide class="">
+    <hgroup><h2>
+      Full Nodes
+    </h2></hgroup>
+    <article class="">
+      <ul class="large-list" style="margin-top:100px;margin-left:50px;">
+        <li>Contain every single block with all transactions</li>
+        <li>Full capabilities: creating transactions, &hellip;</li>
+        <li>Bitcoin: Currently ~185 GB</li>
+      </ul>
     </article>
   </slide>
 
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
+  <slide class="">
+    <hgroup><h2>
+      The problem
+    </h2></hgroup>
     <article class="">
-			<center>
-				Scenario:
-				I know the HEAD of the database.
-
-				Hey database, tell me the entry at position 5871.
-				--> I get returned Entry + Path up to Merkle Root
-				--> I can verify the info is correct by rehashing Entry + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root
-
-				--> Authenticate a small amount of data in a potentially unbounded large dataset.
-			</center>
-    </article>
-  </slide>
-
-
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-			<center>
-				Scenario in Blockchains:
-				I know the HEAD of the (longest) chain.
-
-				Hey full node, was transaction X in the last block?
-				--> I get returned Transaction + Path up to Merkle Root
-				--> I can verify the info is correct by rehashing Transaction + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root
-			</center>
-    </article>
-  </slide>
-
-
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-			<center>
-				Simple Payment Verification (SPV) in Bitcoin:
-
-				Instead of downloading every block with every transaction (~1MB)
-				it's just necessary to download the block headers (~80 bytes) per
-				block) to follow the chain.
-
-				--> Light Clients / Android Wallet / etc.
-				~43 MB vs. ~185 GB
-			</center>
+      <ul class="large-list" style="margin-top:100px;margin-left:150px;">
+        <li>Smartphones?</li>
+        <li>Cars?</li>
+        <li>Washing Machines?</li>
+        <li>Toothbrushes?</li>
+        <li>&hellip;</li>
+      </ul>
     </article>
   </slide>
 
   <slide class="nobackground" style="background:white;">
-	<article style="text-align:center;padding-top:110px;">
-		<img src="imgs/btctree.png" style="width:900px;height:auto;"  />
-		<footer class="source" style="color:white">
-			source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-		</footer>
-	</article>
+    <hgroup><h2>
+      Simplified Blockchain Header
+    </h2></hgroup>
+  <article style="text-align:center;padding-top:110px;">
+    <img src="imgs/btc-nomarker.jpg" style="width:1000px;height:auto;margin-top:0px;"  />
+    <footer class="source" style="color:white;">
+      source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+    </footer>
+  </article>
   </slide>
 
-	<!--
-  <slide class="fill nobackground" style="background-image: url(imgs/btctree.png);background-position:center bottom;">
-	<footer class="source" style="color:white">
-		source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-	</footer>
+  <slide class="nobackground" style="background:white;">
+    <hgroup><h2>
+      Simplified Blockchain Header
+    </h2></hgroup>
+    <article style="text-align:center;padding-top:110px;">
+      <img src="imgs/btc.jpg" style="width:1000px;height:auto;margin-top:0px;"  />
+      <footer class="source" style="color:white">
+        source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+      </footer>
+    </article>
   </slide>
-	-->
 
-  <slide class="" >
+  <slide class="fill nobackground" style="background-image: url(imgs/tree0.png);background-position:center bottom;">
+  <footer class="source" style="color:white">
+    source: https://hackernoon.com/merkle-trees-181cb4bc30b4
+  </footer>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(imgs/tree2.png);background-position:center bottom;">
+  <footer class="source" style="color:white">
+    source: https://hackernoon.com/merkle-trees-181cb4bc30b4
+  </footer>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(imgs/tree3.png);background-position:center bottom;">
+  <footer class="source" style="color:white">
+    source: https://hackernoon.com/merkle-trees-181cb4bc30b4
+  </footer>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(imgs/tree1.png);background-position:center bottom;">
+  <footer class="source" style="color:white">
+    source: https://hackernoon.com/merkle-trees-181cb4bc30b4
+  </footer>
+  </slide>
+
+  <slide class="">
     <hgroup><h2></h2></hgroup>
     <article class="">
-			The way as described so far works very well for:
-			<ul>
-				<li>Simple Blockchains with key-value pairs of e.g. Account-Balance (as in Bitcoin)</li>
-				<li>Databases</li>
-				<li>Version Control Systems</li>
-				<li>Filesystems</li>
-			</ul>
+      <ul class="large-list" style="margin-top:100px;margin-left:50px;">
+        <li>Every Change affects root</li>
+        <li>Integrity of entire dataset is encapsulated in root<br/><br/></li>
+          <li>&rarr;Only necessary to store root hash</li>
+          <li>&rarr;Recalculating root hash is efficient</li>
+         </ul>
+
+      <div>
+        <ul class="large-list build" style="margin-left:50px;">
+          <li>&rarr;<span class="italic mbr">Validating that a hash is part of a tree: Merkle Proofs<span></li>
+       </div>
+
+    </article>
+  </slide>
+
+  <slide class="hidden" >
+    <hgroup><h2></h2></hgroup>
+    <article class="">
+      <center>
+        Folie auf der ein Hash in dem Baum veraendert wurde und der
+        Pfad eingezeichnet ist, der sich dann veraendert und
+        dass der root hash dann auch anders ist.
+
+        --> it's easily possible to make sure that even small changes 
+        already affect the integrity of the entire tree
+
+        --> you could also do this by just concatenating everything and
+        then hashing
+
+        --> this would be extremely inefficient. with merkle trees you just
+        need to rehash the path to the leaf --> O(log(n))?
+
+        --> that's why merkle trees are very well suited for e.g.
+        filesystems or git
+      </center>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2>Scenario</h2></hgroup>
+    <article class="large-list" style="line-spacing:4em !important;">
+      I made a transaction T and want to know:<br/><br/>
+      "<span class="italic">Was T included in the latest block?</span>"<br/>
+      <!--
+      (<i>i.e. it went through</i>)
+      -->
+      <br/><br/><br/>
+
+        Option 1:<br/><br/>
+      <div class="build">
+        <ul>
+          <li>Set up full node, download entire chain</li>
+          <li>In each block search through transactions</li>
+          <li>&rarr; Not feasible for Smartphones/IoT devices/&hellip;</li>
+        </ul>
+      </div>
+
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2>Option 2</h2></hgroup>
+    <article class="">
+      <ul class="large-list" style="margin-left:50px;">
+        <li>Follow chain, but download only headers &ndash; not transactions.<li>
+        <li>Bitcoin: Header = 80 bytes, ~43 MB entire chain.<br/></li>
+      </ul>
+      <ul class="large-list build" style="margin-left:50px;">
+        <li><img src="imgs/btc.jpg" style="width:1000px;height:auto;margin-top:0px;"  /></li>
+      </ul>
     </article>
   </slide>
 
 
   <slide class="" >
-    <hgroup><h2></h2></hgroup>
+    <hgroup><h2>A better Idea</h2></hgroup>
     <article class="">
-				Shortcomings of Merkle Tress so far:
-				They cannot proof anything about the current state:
-
-				<ul>
-					<li>
-						What is the balance of an accout?
-						You can ask a full node, but there is no way to verify it.
-					</li>
-					<li>
-						Who is the owner of some digital asset?
-					</li>
-					<li>
-						What is the status of a smart contract?
-					</li>
-				</ul>
+      <center>
+        <img src="imgs/tree-local.png" style="width:900px;height:auto;"  />
+      </center>
     </article>
   </slide>
 
   <slide class="" >
-    <hgroup><h2></h2></hgroup>
+    <hgroup><h2>Option 2</h2></hgroup>
     <article class="">
-			<center>
-				Ethereum: 3 Merkle Tress:
-
-				* Transactions
-				* Receipts
-				* State
-			</center>
-    </article>
-  </slide>
-
-  <slide class="" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-				This enables:
-				<ul>
-					<li>Was transaction T included in this block?<br/><br/></li>
-
-					<li>
-						Fetch me all events of a type T emmited by address A in the last two weeks<br/>
-						(e.g. a funding goal was reached)
-					</li>
-					<li>What is the current balance of an account?</li>
-					<li>Does account with address A exist?</li>
-				</ul>
-
-				<p>
-					Full node finds the object and returns it with the Merkle branch<br/>
-					(list of hashes going up from the object to the root tree)
-				</p>
+      <center>
+        <img src="imgs/tree-spv.png" style="width:900px;height:auto;
+				margin-top:-20px;margin-bottom:10px;"  />
+      </center>
+			<div class="build">
+				<center>&rarr; In Bitcoin the tree typically has hundreds transactions/branches</center>
+			</div>
     </article>
   </slide>
 
   <slide class="" >
     <hgroup><h2>
-			There is more&hellip;
-		</h2></hgroup>
+      Simple Payment Verification (SPV)
+    </h2></hgroup>
     <article class="">
-			<p>
-			 	<h3 class="mbr">Merkle State Transition Proofs</h3>
-				Pretend to run this transaction on this contract. What would the output be?
-			</p>
-
-			<p>
-				<h3 class="mbr">Merkle Patricia Tree</h3>
-				Merkle Trees are not ideal for insert/delete/etc. 
-			</p>
+      <ul class="build large-list" style="">
+        <li>
+          Ask a full node:<br/>
+          <span class="italic">"Was T in the last block?"</span>
+        </li>
+        <li>Full node checks transactions and responds:<br/><span class="italic">"Yes, here's the path from transaction up to root hash"</span></li>
+        <li>Light client computes<br/><span style="font-family:monospace;">MerkleRoot' = Hash(T) + receivedPath</span></li>
+        <li>T is in block if:<br/><span style="font-family:monospace;">MerkleRoot' == MerkleRoot</span><br/><br/></li>
+        <li style="list-style-type:none !imporatnt;">&rarr;No need to trust anyone!</li>
+        <li>&rarr;You "just" have to be on the correct chain.</li>
+      </ul>
     </article>
   </slide>
 
-  <slide class="" >
+  <slide class="hidden">
     <hgroup><h2>
-			Further references
-		</h2></hgroup>
+      The Correct Chain
+    </h2></hgroup>
     <article class="">
-			<center>
-				<p>
-					<h3>Mekling in Ethereum</h3>
-					https://blog.ethereum.org/2015/11/15/merkling-in-ethereum/
-				</p>
-			</center>
+      <ul class="build large-list" style="">
+        <li>6 Confirmations</li>
+      </ul>
     </article>
   </slide>
 
 
-  <slide class="thank-you-slide segue nobackground">
-    <article class="flexbox vleft">
-      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
-SELECT * FROM `questions`;
-      </pre>
-    </article>
-  </slide>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <slide>
-    <article class="flexbox">
-	<table style="border:none; margin-top:80px;">
-		<tr style="background:none">
-			<td style="text-align:center;">
-				<img width="290" src="images/nh0.jpeg">
-				&nbsp;
-			</td>
-			<td style="text-align:center;">
-				<img width="290" src="images/nh1.jpeg">
-				&nbsp;
-			</td>
-			<td style="text-align:center;">
-				<img width="290" src="images/nh2.jpeg">
-				&nbsp;
-			</td>
-		</tr>
-	</table>
-
-	<div class="source reference">
-		re:publica 2013 - Neil Harbisson, Moon Ribas: <em>Life with extra
-		Senses &ndash; How to become a Cyborg.</em>
-		<a href="https://www.youtube.com/watch?v=6hUg48vf0QI">
-			https://www.youtube.com/watch?v=6hUg48vf0QI
-		</a>
-	</div>
-    </article>
-  </slide>
-
-  <slide class="">
-    <hgroup>
-      <h2>
-      </h2>
-    </hgroup>
+  <slide class="hidden">
+    <hgroup><h2>
+      Simple Payment Verification (SPV) in Bitcoin
+    </h2></hgroup>
     <article class="">
-	<center>
-	<div style="margin-left:70px;">
-		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/logo.jpg" alt="Graph" title="Description">
-		<img style="float:left;margin-top:-35px;border:1px solid #444;margin-right:45px;float:left;" width="400" src="images/ubi-title.png" alt="Graph" title="Description">
-	</div>
-	</center>
+      <h5>
+        <p>
+          Instead of downloading every block with every transaction
+          it's just necessary to download the block headers (80 bytes) per block) to follow the chain.
+        </p>
+
+        &rarr; Light Clients (i.e. Thin Nodes) / Android Wallet / etc.<br/>
+        &rarr;~43 MB vs. ~185 GB
+      </h5>
     </article>
   </slide>
 
-
-  <slide class="fill nobackground" style="background-image: url(images/armband.jpg);background-position:bottom;">
+  <slide class="hidden fill nobackground" style="background-image: url(imgs/tree1.png);background-position:center bottom;">
+  <footer class="source" style="color:white">
+    source: https://hackernoon.com/merkle-trees-181cb4bc30b4
+  </footer>
   </slide>
 
-
-  <slide class="fill nobackground" style="background-image: url(images/IMG_9119.jpg);background-position:center center;">
-  </slide>
-
-  <slide class="">
+  <slide class="hidden">
+    <hgroup><h2></h2></hgroup>
     <article class="">
-	<table style="border:none; margin-top:-20px;margin-left:10px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="250" src="images/armband-large.jpg" style="margin-bottom:7px"><br/>
-			<!--
-			<img height="250" src="images/vib_proto.jpg" style="margin-bottom:7px"><br/>
-			-->
-			<h4><span class="uni-red">Vibration</span></h4>
-		</td>
-		<td width="40">
-			&nbsp;&nbsp;&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="250" src="images/servos.jpg" style="margin-bottom:7px"><br/>
-			<h4><span style="font-weight:600;" class="uni-red">Pressure</span></h4>
-		</td>
-	</tr>
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="250" src="images/temp_proto.jpg" style="margin-bottom:7px"><br/>
-			<h4><span class="uni-red">Temperature</span></h4>
-		</td>
-		<td width="40">
-			&nbsp;&nbsp;&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="250" src="images/electro.jpg" style="margin-bottom:7px"><br/>
-			<h4><span  style="font-weight:600;"class="uni-red">Electrical Stimulation</span></h4>
-		</td>
-	</tr>
-	</table>
+      <center>
+        Scenario:
+        I know the HEAD of the database.
+
+        Hey database, tell me the entry at position 5871.
+        --> I get returned Entry + Path up to Merkle Root
+        --> I can verify the info is correct by rehashing Entry + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root
+
+        --> Authenticate a small amount of data in a very large dataset.
+      </center>
     </article>
   </slide>
 
-
-  <slide class="">
-    <article class="flexbox">
-	<table style="border:none; margin-top:-5px;margin-left:-10px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="550" src="images/start.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/navigation.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/mapping.png">
-			&nbsp;
-		</td>
-	</tr>
-	</table>
-    </article>
-  </slide>
-
-  <slide class="">
+  <slide class="hidden">
+    <hgroup><h2></h2></hgroup>
     <article class="">
-	<table style="border:none; margin-top:-10px;margin-left:20px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="530" src="images/hideandseek.png">
-			&nbsp;<br/><br/>
-			<h4><span class="uni-red">&ldquo;Hide And Seek&rdquo; App</span></h4>
-		</td>
-	</tr>
-	</table>
+        Scenario in Blockchains:
+
+      <ul>
+        <li>I know the header of the (longest) chain.</li>
+        <li>Header includes Merkle Root</li>
+        <li>Hey full node, was transaction X in the last block?</li>
+        <li>&rarr; I get returned Transaction + Path up to Merkle Root</li>
+        <li>&rarr; I can verify the info is correct by rehashing Transaction + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root</li>
+      </ul>
     </article>
   </slide>
 
-  <slide class="">
-    <article class="">
-	<table style="border:none; margin-top:-10px;margin-left:20px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="530" src="images/ifeelyou.png">
-			&nbsp;<br/><br/>
-			<h4><span style="font-weight:600;" class="uni-red">&ldquo;I Feel You&rdquo; App</span></h4>
-		</td>
-	</tr>
-	</table>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image: url(images/kate-study.jpg);background-position:center top;">
-  </slide>
-
-  <slide class="thank-you-slide segue nobackground">
-    <article class="flexbox vleft">
-      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
-SELECT * FROM `questions`;
-      </pre>
-    </article>
-  </slide>
-
-  <slide class="hidden thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/slide-institute/uulm-128.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <h2>Thank you!</h2>
-      <p>&nbsp;</p>
-    </article>
-    <p class="auto-fadein" data-config-contact>
-      <!-- populated from slide_config.json -->
-    </p>
-  </slide>
-
-  <slide class="backdrop"></slide>
+  <!-- Picture of Mobile Device where Confirmations are shown -->
 
   <slide class="hidden nobackground" style="background:white;">
-	<article class="flexbox vcenter">
-		<img src="images/bild3.png" style="height:600px;width:auto;"  />
-	</article>
+  <article style="text-align:center;padding-top:110px;">
+    <img src="imgs/btctree.png" style="width:900px;height:auto;"  />
+    <footer class="source" style="color:white">
+      source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+    </footer>
+  </article>
   </slide>
 
-
-
-  <slide class="hidden fill nobackground" style="background-image: url(images/armband-large.jpg);background-position:bottom;">
+  <!--
+  <slide class="fill nobackground" style="background-image: url(imgs/btctree.png);background-position:center bottom;">
+  <footer class="source" style="color:white">
+    source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+  </footer>
   </slide>
+  -->
 
-  <slide class="hidden fill nobackground" style="background-image: url(images/aufbau.jpg);background-position:center center;">
-  </slide>
-
-  <slide class="hidden fill nobackground" style="background-image: url(images/electro-stimulation.jpg)">
-  </slide>
-
-  <slide class="hidden fill nobackground" style="background-image: url(images/reverse-engineering.jpg);background-position:center center;">
-  </slide>
-
-  <slide class=" fill nobackground" style="background-image: url(images/platine2.png);background-position:center center;">
-  </slide>
-
-  <slide class=" fill nobackground" style="background-image: url(images/P1020391.jpg);background-position:center center;">
-  </slide>
-
-
-
-  <slide class=" nobackground" style="background:white;">
-	<article style="text-align:center;padding-top:110px;">
-		<img src="images/instances-labeled.png" style="width:900px;height:auto;"  />
-	</article>
-  </slide>
-
-  <slide class=" nobackground" style="background:white;">
-	<article style="text-align:center;">
-		<img src="images/bild4.png" style="height:620px;" />
-	</article>
-  </slide>
-
-
-  <slide class=" fill nobackground" style="background-image: url(images/IMG_9159_small.jpg);background-position:center center;">
-  </slide>
-
-  <slide class="hidden fill nobackground" style="background-image: url(images/peltier.jpg);background-position:center center;">
-  </slide>
-
-  <slide class="hidden">
-    <article class="flexbox">
-	<table style="border:none; margin-top:5px;margin-left:10px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="550" src="images/app.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/hideandseek.png">
-			&nbsp;
-		</td>
-	</tr>
-	</table>
+  <slide class="" >
+    <hgroup><h2>Works very well for&hellip;</h2></hgroup>
+    <article class="large-list">
+      <ul>
+        <li>Simple blockchains with key-value pairs</li>
+        <li>Databases</li>
+        <li>Version Control Systems</li>
+        <li>Filesystems</li>
+				<li>&hellip;</li>
+      </ul>
+			<br/>
+      &rarr;Authenticate a small amount of data in a very large dataset
     </article>
   </slide>
 
-  <slide class="hidden fill nobackground" style="background-image: url(images/arm.jpg);background-position:center center;">
-  </slide>
+  <slide class="" >
+    <hgroup><h2>
+      Shortcomings
+    </h2></hgroup>
+    <article class="large-list">
+      Not possible to proof anything about current state.<br/><br/>
 
-  <slide class="hidden fill" style="">
-    <article class="flexbox vcenter">
-      <img src="images/screen-drawer.png" alt="" title="" height="100%">
+      <ul>
+        <li>
+          What is the balance of an account?<br/>
+          &rarr;You can ask full nodes, but no way to verify.
+        </li>
+        <li>
+          Who is the owner of some digital asset?
+        </li>
+        <li>
+          What is the status of a smart contract?
+        </li>
+      </ul>
     </article>
   </slide>
 
-  <slide class="hidden fill" style="">
-    <article class="flexbox vcenter">
-      <img src="images/screen-mappings.png" alt="" title="" height="100%">
-      <img src="images/screen-mappings2.png" alt="" title="" style="float:right;margin-left:40px;" height="100%">
+  <slide class="" >
+    <hgroup><h2>Ethereum</h2></hgroup>
+    <article class="large-list">
+      <ul>
+        <li>Blockchain with turing-complete smart contracts</li>
+        <li>Contract accounts can get into arbitrary states</li>
+        <li>&rarr;No longer just key-value state pairs</li>
     </article>
   </slide>
 
-  <slide class="hidden fill " style="">
-    <article class="flexbox vcenter">
-      <img src="images/screen-spinner.png" alt="" title="" height="100%">
+  <slide class="" >
+    <hgroup><h2>Ethereum: Three Merkle Trees in Header</h2></hgroup>
+    <article class="">
+      <ul class="large-list">
+        <li>Transactions<br/></li>
+        <li>Receipts:<br/>
+				The effect of the block</li>
+        <li>State:<br/>Merkle Tree representing entire state of network<br/>(i.e. each account)</li>
     </article>
   </slide>
 
+  <slide class="" >
+    <hgroup><h2>
+      Possibilities
+    </h2></hgroup>
+    <article class="build">
+        <ul class="build large-list" style="margin-top:-15px">
+          <li>Was transaction T included in this block?<br/><br/></li>
 
-  <slide class=" fill" style="">
-    <article class="flexbox vcenter">
+          <li>
+            Fetch me all events of type T emmited by address A in the last two weeks
+						<!--
+						<br/>
+            (e.g. a funding goal was reached)
+						-->
+						<br/><br/>
+          </li>
+          <li>What is the current balance of an account?<br/><br/></li>
+          <li>Does account with address A exist?<br/><br/></li>
+
+        <li>
+          &rarr;Full node finds object and returns it with Merkle branch<br/><br/>
+          &rarr;Light client verifies by computing Merkle root<br/><br/>
+          &rarr;Mostly doable in <i>O(log(n))</i><br/>
+          <!-- (list of hashes going up from the object to the root tree) -->
+        </li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2>
+      There is more&hellip;
+    </h2></hgroup>
+    <article class="">
+      <p>
+        <h3 class="mbr">Merkle State Transition Proofs</h3>
+        Pretend to run this transaction on this contract. What would the output be?
+      </p>
+
+      <p>
+        <h3 class="mbr">Merkle Patricia Tree</h3>
+        Merkle Trees are not ideal for insert/delete/etc. 
+      </p>
+    </article>
+  </slide>
+
+  <slide class="" >
+    <hgroup><h2>
+      Further references
+    </h2></hgroup>
+    <article class="">
       <center>
-      <img src="images/more-hardware/2.jpg" alt="" title="" width="90%"/>
+        <p>
+          <h3>Vitalik Buterin &ndash; Merkling in Ethereum</h3>
+          https://blog.ethereum.org/2015/11/15/merkling-in-ethereum/
+        </p>
+
+        <p>
+          <h3>Ethereum Spec &ndash; Light client protocol</h3>
+          https://github.com/ethereum/wiki/wiki/Light-client-protocol
+        </p>
+
+        <p>
+          <h3>"The Paper"</h3>
+          https://bitcoin.org/bitcoin.pdf
+        </p>
       </center>
     </article>
   </slide>
 
-  <slide class=" fill" style="">
-    <article class="flexbox vcenter">
-      <center>
-      <img src="images/more-hardware/3.jpg" alt="" title="" width="90%"/>
-      </center>
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft">
+      <pre class="questions" style="margin-top:-30px;margin-left:60px;line-height:1.6em;background:none;color:white !important;text-align:left;">
+SELECT * FROM `questions`;
+      </pre>
     </article>
   </slide>
-
-  <slide class=" fill" style="">
-    <article class="flexbox vcenter">
-      <center>
-      <img src="images/more-hardware/1.jpg" alt="" title="" width="90%"/>
-      </center>
-    </article>
-  </slide>
-
-
-  <slide class=" fill " style="">
-    <article class="flexbox vcenter">
-      <center>
-      <img src="images/more-hardware/0.jpg" alt="" title="" width="90%"/>
-      </center>
-    </article>
-  </slide>
-
-  <slide class=" fill" style="" >
-      <center>
-      <img src="images/qr-screen.png" style="margin-right:15px" alt="" title="" align="" width="30%"/>
-      <img src="images/qr-screen2.png" style="margin-right:15px" alt="" title="" align="" width="30%"/>
-      <img src="images/qr-screen3.png" alt="" title="" align="" width="30%"/>
-      </center>
-  </slide>
-
-
-  <slide class="hidden">
-    <article class="flexbox">
-	<table style="border:none; margin-top:-5px;margin-left:-10px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="550" src="images/start.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/walk1.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/navigation.png">
-			&nbsp;
-		</td>
-	</tr>
-	</table>
-    </article>
-  </slide>
-
-  <slide class="">
-    <article class="flexbox">
-	<table style="border:none; margin-top:-5px;margin-left:-10px;">
-	<tr style="background:none">
-		<td style="text-align:center;">
-			<img height="550" src="images/mapping_empty.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/mapping_empty2.png">
-			&nbsp;
-		</td>
-		<td style="text-align:center;">
-			<img height="550" src="images/mapping.png">
-			&nbsp;
-		</td>
-	</tr>
-	</table>
-    </article>
-  </slide>
-
-
-  <slide class=" fill nobackground" style="background-image: url(images/qr.png);background-position:center center;">
-  </slide>
-
-  <slide class=" nobackground" style="background:white;">
-	<article style="text-align:center;">
-		<img src="images/data.png" style="width:900px;height:auto;margin-top:180px;"  />
-	</article>
-  </slide>
-
 
 
 </slides>

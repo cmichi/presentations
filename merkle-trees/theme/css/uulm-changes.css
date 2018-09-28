@@ -75,6 +75,10 @@ h2 {
   color: #ff0080;
 }
 
+h3 {
+  color: #ff0080;
+}
+
 .source {
 	bottom: 50px;
 }
@@ -97,4 +101,17 @@ slides > slide > article:only-child > iframe {
 
 article {
 	color: white !important;
+}
+
+.large-list {
+ font-size:1.3em;
+ line-spacing: 2em !important;
+}
+
+.large-list li {
+ margin-bottom: 20px !importang;
+}
+
+.italic {
+	font-style: italic;
 }
