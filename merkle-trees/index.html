@@ -145,7 +145,7 @@
     <hgroup><h2></h2></hgroup>
     <article class="">
       <ul class="large-list" style="margin-top:100px;margin-left:50px;">
-        <li>Every Change affects root</li>
+        <li>Every change affects root</li>
         <li>Integrity of entire dataset is encapsulated in root<br/><br/></li>
           <li>&rarr;Only necessary to store root hash</li>
           <li>&rarr;Recalculating root hash is efficient</li>
@@ -241,6 +241,19 @@
   </slide>
 
   <slide class="" >
+    <hgroup><h2>Option 2</h2></hgroup>
+    <article class="">
+      <center>
+        <img src="imgs/tree-spv2.png" style="width:900px;height:auto;
+				margin-top:-20px;margin-bottom:10px;"  />
+      </center>
+			<div class="build">
+				<center>&rarr; In Bitcoin the tree typically has hundreds transactions/branches</center>
+			</div>
+    </article>
+  </slide>
+
+  <slide class="" >
     <hgroup><h2>
       Simple Payment Verification (SPV)
     </h2></hgroup>
@@ -252,7 +265,7 @@
         </li>
         <li>Full node checks transactions and responds:<br/><span class="italic">"Yes, here's the path from transaction up to root hash"</span></li>
         <li>Light client computes<br/><span style="font-family:monospace;">MerkleRoot' = Hash(T) + receivedPath</span></li>
-        <li>T is in block if:<br/><span style="font-family:monospace;">MerkleRoot' == MerkleRoot</span><br/><br/></li>
+        <li>T is in block if:<br/><span style="font-family:monospace;">Computed MerkleRoot' == MerkleRoot in local Chain</span><br/><br/></li>
         <li style="list-style-type:none !imporatnt;">&rarr;No need to trust anyone!</li>
         <li>&rarr;You "just" have to be on the correct chain.</li>
       </ul>
@@ -396,9 +409,9 @@
     <article class="">
       <ul class="large-list">
         <li>Transactions<br/></li>
-        <li>Receipts:<br/>
+        <li>Receipts<br/>
 				The effect of the block</li>
-        <li>State:<br/>Merkle Tree representing entire state of network<br/>(i.e. each account)</li>
+        <li>State<br/>Merkle Tree representing entire state of network<br/>(i.e. each account)</li>
     </article>
   </slide>
 

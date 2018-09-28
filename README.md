@@ -8,6 +8,15 @@ respository.
 
 ---
 
+**Merkle Trees & Merkle Proofs**  
+Berlin, 28. September 2018  
+[View the slides](http://cmichi.github.io/talks/merkle-trees)
+
+---
+
+
+---
+
 **Welcome Day**  
 Berlin, 3. August 2016  
 [View the slides](http://cmichi.github.io/talks/welcome-day)
