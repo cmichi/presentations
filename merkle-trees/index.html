@@ -12,7 +12,7 @@
   <link rel="stylesheet" media="all" href="theme/css/default.css">
   <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
 
-  <link rel="stylesheet" media="all" href="theme/css/uulm-changes.css">
+  <link rel="stylesheet" media="all" href="theme/css/mbr-changes.css">
 
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
@@ -32,7 +32,6 @@
   <slide class="" >
     <hgroup><h2>Blockchain</h2></hgroup>
     <article class="build">
-
       <h3 style="color:white">
         &hellip;a distributed ledger without the need for a trusted, centralized entity.<br/><br/>
       </h3>
@@ -45,23 +44,7 @@
         &hellip;consensus is achieved using <em>Proof-of-Work</em>, <em>Proof-of-Stake</em>,
         <em>Proof-of-Authority</em>, or some other Byzantine agreement protocol.
       </h3>
-
-<!--
-        <footer class="source" style="color:white;">
-          source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-        </footer>
-        -->
-      </h3>
     </article>
-  </slide>
-
-  <slide class="hidden nobackground" style="background:white;">
-  <article style="text-align:center;padding-top:110px;">
-    <img src="imgs/schema0.png" style="width:900px;height:auto;margin-top:30px;"  />
-    <footer class="source" style="color:white;">
-      source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-    </footer>
-  </article>
   </slide>
 
   <slide class="">
@@ -86,7 +69,6 @@
         <li>Smartphones?</li>
         <li>Cars?</li>
         <li>Washing Machines?</li>
-        <li>Toothbrushes?</li>
         <li>&hellip;</li>
       </ul>
     </article>
@@ -159,37 +141,12 @@
     </article>
   </slide>
 
-  <slide class="hidden" >
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-      <center>
-        Folie auf der ein Hash in dem Baum veraendert wurde und der
-        Pfad eingezeichnet ist, der sich dann veraendert und
-        dass der root hash dann auch anders ist.
-
-        --> it's easily possible to make sure that even small changes 
-        already affect the integrity of the entire tree
-
-        --> you could also do this by just concatenating everything and
-        then hashing
-
-        --> this would be extremely inefficient. with merkle trees you just
-        need to rehash the path to the leaf --> O(log(n))?
-
-        --> that's why merkle trees are very well suited for e.g.
-        filesystems or git
-      </center>
-    </article>
-  </slide>
-
   <slide class="" >
     <hgroup><h2>Scenario</h2></hgroup>
     <article class="large-list" style="line-spacing:4em !important;">
       I made a transaction T and want to know:<br/><br/>
       "<span class="italic">Was T included in the latest block?</span>"<br/>
-      <!--
       (<i>i.e. it went through</i>)
-      -->
       <br/><br/><br/>
 
         Option 1:<br/><br/>
@@ -208,8 +165,8 @@
     <hgroup><h2>Option 2</h2></hgroup>
     <article class="">
       <ul class="large-list" style="margin-left:50px;">
-        <li>Follow chain, but download only headers &ndash; not transactions.<li>
-        <li>Bitcoin: Header = 80 bytes, ~43 MB entire chain.<br/></li>
+        <li>Follow chain, but download only headers &ndash; not transactions.<br/><br/><li>
+        <li>Bitcoin: Header = 80 bytes, ~43 MB entire chain.<br/><br/></li>
       </ul>
       <ul class="large-list build" style="margin-left:50px;">
         <li><img src="imgs/btc.jpg" style="width:1000px;height:auto;margin-top:0px;"  /></li>
@@ -232,11 +189,11 @@
     <article class="">
       <center>
         <img src="imgs/tree-spv.png" style="width:900px;height:auto;
-				margin-top:-20px;margin-bottom:10px;"  />
+        margin-top:-20px;margin-bottom:10px;"  />
       </center>
-			<div class="build">
-				<center>&rarr; In Bitcoin the tree typically has hundreds transactions/branches</center>
-			</div>
+      <div class="build">
+        <center>&rarr; In Bitcoin the tree typically has hundreds transactions/branches</center>
+      </div>
     </article>
   </slide>
 
@@ -245,11 +202,11 @@
     <article class="">
       <center>
         <img src="imgs/tree-spv2.png" style="width:900px;height:auto;
-				margin-top:-20px;margin-bottom:10px;"  />
+        margin-top:-20px;margin-bottom:10px;"  />
       </center>
-			<div class="build">
-				<center>&rarr; In Bitcoin the tree typically has hundreds transactions/branches</center>
-			</div>
+      <div class="build">
+        <center>&rarr; In Bitcoin the tree typically has hundreds transactions/branches</center>
+      </div>
     </article>
   </slide>
 
@@ -267,97 +224,12 @@
         <li>Light client computes<br/><span style="font-family:monospace;">MerkleRoot' = Hash(T) + receivedPath</span></li>
         <li>T is in block if:<br/><span style="font-family:monospace;">Computed MerkleRoot' == MerkleRoot in local Chain</span><br/><br/></li>
         <li style="list-style-type:none !imporatnt;">&rarr;No need to trust anyone!</li>
-        <li>&rarr;You "just" have to be on the correct chain.</li>
+        <li>&rarr;You "just" have to be on the correct (i.e. longest) chain.</li>
       </ul>
     </article>
   </slide>
 
-  <slide class="hidden">
-    <hgroup><h2>
-      The Correct Chain
-    </h2></hgroup>
-    <article class="">
-      <ul class="build large-list" style="">
-        <li>6 Confirmations</li>
-      </ul>
-    </article>
-  </slide>
-
-
-  <slide class="hidden">
-    <hgroup><h2>
-      Simple Payment Verification (SPV) in Bitcoin
-    </h2></hgroup>
-    <article class="">
-      <h5>
-        <p>
-          Instead of downloading every block with every transaction
-          it's just necessary to download the block headers (80 bytes) per block) to follow the chain.
-        </p>
-
-        &rarr; Light Clients (i.e. Thin Nodes) / Android Wallet / etc.<br/>
-        &rarr;~43 MB vs. ~185 GB
-      </h5>
-    </article>
-  </slide>
-
-  <slide class="hidden fill nobackground" style="background-image: url(imgs/tree1.png);background-position:center bottom;">
-  <footer class="source" style="color:white">
-    source: https://hackernoon.com/merkle-trees-181cb4bc30b4
-  </footer>
-  </slide>
-
-  <slide class="hidden">
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-      <center>
-        Scenario:
-        I know the HEAD of the database.
-
-        Hey database, tell me the entry at position 5871.
-        --> I get returned Entry + Path up to Merkle Root
-        --> I can verify the info is correct by rehashing Entry + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root
-
-        --> Authenticate a small amount of data in a very large dataset.
-      </center>
-    </article>
-  </slide>
-
-  <slide class="hidden">
-    <hgroup><h2></h2></hgroup>
-    <article class="">
-        Scenario in Blockchains:
-
-      <ul>
-        <li>I know the header of the (longest) chain.</li>
-        <li>Header includes Merkle Root</li>
-        <li>Hey full node, was transaction X in the last block?</li>
-        <li>&rarr; I get returned Transaction + Path up to Merkle Root</li>
-        <li>&rarr; I can verify the info is correct by rehashing Transaction + Path = Merkle Root' and comparing MerkleRoot' == Merkle Root</li>
-      </ul>
-    </article>
-  </slide>
-
-  <!-- Picture of Mobile Device where Confirmations are shown -->
-
-  <slide class="hidden nobackground" style="background:white;">
-  <article style="text-align:center;padding-top:110px;">
-    <img src="imgs/btctree.png" style="width:900px;height:auto;"  />
-    <footer class="source" style="color:white">
-      source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-    </footer>
-  </article>
-  </slide>
-
-  <!--
-  <slide class="fill nobackground" style="background-image: url(imgs/btctree.png);background-position:center bottom;">
-  <footer class="source" style="color:white">
-    source: https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
-  </footer>
-  </slide>
-  -->
-
-  <slide class="" >
+  <slide class="">
     <hgroup><h2>Works very well for&hellip;</h2></hgroup>
     <article class="large-list">
       <ul>
@@ -365,14 +237,14 @@
         <li>Databases</li>
         <li>Version Control Systems</li>
         <li>Filesystems</li>
-				<li>&hellip;</li>
+        <li>&hellip;</li>
       </ul>
-			<br/>
+      <br/>
       &rarr;Authenticate a small amount of data in a very large dataset
     </article>
   </slide>
 
-  <slide class="" >
+  <slide class="">
     <hgroup><h2>
       Shortcomings
     </h2></hgroup>
@@ -382,10 +254,10 @@
       <ul>
         <li>
           What is the balance of an account?<br/>
-          &rarr;You can ask full nodes, but no way to verify.
+          &rarr;You can ask full nodes, but no way to verify.<br/><br/>
         </li>
         <li>
-          Who is the owner of some digital asset?
+          Who is the owner of some digital asset?<br/><br/>
         </li>
         <li>
           What is the status of a smart contract?
@@ -398,8 +270,8 @@
     <hgroup><h2>Ethereum</h2></hgroup>
     <article class="large-list">
       <ul>
-        <li>Blockchain with turing-complete smart contracts</li>
-        <li>Contract accounts can get into arbitrary states</li>
+        <li>Blockchain with turing-complete smart contracts<br/><br/></li>
+        <li>Contract accounts can get into arbitrary states<br/><br/></li>
         <li>&rarr;No longer just key-value state pairs</li>
     </article>
   </slide>
@@ -408,9 +280,9 @@
     <hgroup><h2>Ethereum: Three Merkle Trees in Header</h2></hgroup>
     <article class="">
       <ul class="large-list">
-        <li>Transactions<br/></li>
-        <li>Receipts<br/>
-				The effect of the block</li>
+        <li>Transactions<br/><br/></li>
+        <li>Receipts<br/><br/>
+        The effect of the block</li>
         <li>State<br/>Merkle Tree representing entire state of network<br/>(i.e. each account)</li>
     </article>
   </slide>
@@ -425,24 +297,53 @@
 
           <li>
             Fetch me all events of type T emmited by address A in the last two weeks
-						<!--
-						<br/>
-            (e.g. a funding goal was reached)
-						-->
-						<br/><br/>
+            <br/><br/>
           </li>
           <li>What is the current balance of an account?<br/><br/></li>
           <li>Does account with address A exist?<br/><br/></li>
+        </ul>
+    </article>
+  </slide>
 
+  <slide class="" >
+    <hgroup><h2>
+      How?
+    </h2></hgroup>
+    <article>
+        <ul class="build large-list" style="margin-top:-15px">
         <li>
-          &rarr;Full node finds object and returns it with Merkle branch<br/><br/>
-          &rarr;Light client verifies by computing Merkle root<br/><br/>
-          &rarr;Mostly doable in <i>O(log(n))</i><br/>
-          <!-- (list of hashes going up from the object to the root tree) -->
+          Full node finds object and returns it with Merkle branch<br/><br/>
+        </li>
+        <li>
+          Light client verifies by computing Merkle root<br/><br/>
+        </li>
+        <li>
+          Mostly doable in <i>O(log(n))</i><br/>
         </li>
         </ul>
     </article>
   </slide>
+
+
+  <slide class="" >
+    <hgroup><h2>
+      Example
+    </h2></hgroup>
+    <article>
+        <ul class="large-list" style="margin-top:-15px">
+        <li>
+          Full node returns "<span class="italic">Balance of A: 13 + Branch up to root</span>"<br/><br/>
+        </li>
+        <li>
+          Light client computes the Merkle root from this<br/><br/>
+        </li>
+        <li>
+          And compares MerkleRoot' == MerkleRoot
+        </li>
+        </ul>
+    </article>
+  </slide>
+
 
   <slide class="" >
     <hgroup><h2>
